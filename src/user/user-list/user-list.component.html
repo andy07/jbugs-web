@@ -1,0 +1,14 @@
+<ul>
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+  <li>4</li>
+  <li>5</li>
+  <li>6</li>
+</ul>
+<ul *ngIf="show">
+  <li *ngFor="let person of userList">{{person.firstName}}, {{person.lastName}},{{person.email}},{{person.mobileNumber}}
+   <button (click)="alertUser(person)">Alert {{person.firstName}}</button>
+  </li>
+
+</ul>
