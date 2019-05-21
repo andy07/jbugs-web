@@ -12,7 +12,7 @@ export class UserService {
   constructor(private backendServie: BackendService) { }
 
   public getAllUsers() : Observable<RestUser[]> {
-    return   this.backendServie.get('/jbugs/jbugs-api/users');
+    return   this.backendServie.get('/api/users');
   //     return of([{
   //       firstName:"Viorica",
   //       lastName:"FAdministrator",
