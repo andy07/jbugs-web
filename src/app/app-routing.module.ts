@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from '../login/login.component';
-import {BugCreateComponent} from "../bug/bug-create/bug-create.component";
+import {BugCreateComponent} from '../bug/bug-create/bug-create.component';
 
 const routes: Routes = [
   {
