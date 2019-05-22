@@ -1,8 +1,6 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
-
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 
 /**
@@ -67,7 +65,7 @@ export class BackendService {
       body: data,
       params,
       headers: {
-        'Accept-Language': "en"
+        'Accept-Language': 'en'
       }
     };
     if (!url) {

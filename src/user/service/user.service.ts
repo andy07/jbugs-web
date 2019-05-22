@@ -1,8 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {RestUser} from "../models/restUser";
-import {BackendService} from "./backend.service";
-import {Observable, of} from "rxjs";
-import {delay} from "rxjs/operators";
+import {BackendService} from "../../assets/backend.service";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
