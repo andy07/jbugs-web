@@ -9,10 +9,11 @@ import {BugModule} from '../bug/bug.module';
 import {UserModule} from '../user/user.module';
 import {LoginComponent} from '../login/login.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
   ],
 
   imports: [
