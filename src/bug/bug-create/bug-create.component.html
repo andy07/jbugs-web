@@ -1,3 +1,80 @@
-<form #form="ngForm" (ngSubmit)="create(form)">
-  <input>
-</form>
+<mat-card>
+  <p>Create a new bug</p>
+  <mat-card-content>
+    <form #form="ngForm" (ngSubmit)="create(form)">
+      <mat-form-field>
+        <input matInput
+               [(ngModel)]="bug.title"
+               #title="ngModel"
+               id="title"
+               name="title"
+               required
+               placeholder="Title">
+        <mat-error *ngIf="title.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput
+               [(ngModel)]="bug.version"
+               #version="ngModel"
+               id="version"
+               name="version"
+               required
+               placeholder="Version">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput
+               [(ngModel)]="bug.fixedVersion"
+               #revision="ngModel"
+               id="revision"
+               name="revision"
+               required
+               placeholder="Revision">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput
+               [(ngModel)]="bug.severity"
+               #severity="ngModel"
+               id="severity"
+               name="severity"
+               required
+               placeholder="Severity">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput
+               [(ngModel)]="bug.createdBy"
+               #createdBy="ngModel"
+               id="created_by"
+               name="created_by"
+               required
+               placeholder="Created By">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput
+               [ngModel]="bug.targetDate"
+               #date="ngModel"
+               id="date"
+               name="date"
+               required
+               [matDatepicker]="picker"
+               placeholder="Target date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+      <textarea matInput
+                [(ngModel)]="bug.description"
+                #title="ngModel"
+                id="description"
+                name="description"
+                cols="10"
+                rows="10"
+                placeholder="Description"></textarea>
+      </mat-form-field>
+      <button mat-raised-button class="save" color="primary" type="submit">Save</button>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+<p>
+  {{form.value|json}}
+</p>
