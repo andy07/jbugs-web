@@ -1,7 +1,9 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {RestUser} from '../models/restUser';
-import {UserService} from '../service/user.service';
-import {Router} from '@angular/router';
+import {User} from "../models/user.model";
+import {RestUser} from "../models/restUser";
+import {UserService} from "../service/user.service";
+import {MatTableModule} from '@angular/material/table';
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -30,7 +32,7 @@ export class UserListComponent implements OnInit {
     this.output.emit(person);
   }
 
-  add() {
+  add(){
     this.router.navigate(['/add-user']);
   }
 
