@@ -11,7 +11,6 @@ export class BugService {
   }
 
   save(form: NgForm) {
-    console.log('sir');
     this.backend.post('', form);
   }
 }
