@@ -3,4 +3,6 @@ export interface RestUser {
   lastName : string;
   email: string;
   mobileNumber: string;
+  status: boolean;
+  username: string;
 }
