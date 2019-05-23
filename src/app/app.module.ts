@@ -8,7 +8,6 @@ import {FormsModule} from '@angular/forms';
 import {BugModule} from '../bug/bug.module';
 import {UserModule} from '../user/user.module';
 import {LoginComponent} from '../login/login.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -23,7 +22,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     FormsModule,
     BugModule,
     UserModule,
-    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [
