@@ -2,6 +2,9 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from '../login/login.component';
 import {BugCreateComponent} from '../bug/bug-create/bug-create.component';
+import {BugListComponent} from '../bug/bug-list/bug-list.component';
+import {UserListComponent} from '../user/user-list/user-list.component';
+import {AddUserComponent} from '../user/add-user/add-user.component';
 
 const routes: Routes = [
   {
@@ -22,9 +25,21 @@ const routes: Routes = [
     component: BugCreateComponent
   },
   {
+    path: 'user-list',
+    component: UserListComponent
+  },
+  {
+    path: 'bug-list',
+    component: BugListComponent
+  },
+  {
     path: 'users',
     component: LoginComponent,
-  }
+  },
+  {
+    path: 'add-user',
+    component: AddUserComponent
+  },
 ];
 
 @NgModule({
