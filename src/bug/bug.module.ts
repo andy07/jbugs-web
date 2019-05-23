@@ -1,16 +1,20 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BugCreateComponent} from './bug-create/bug-create.component';
+import {BugListComponent} from './bug-list/bug-list.component';
+
 
 @NgModule({
   declarations: [
-    BugCreateComponent
+    BugCreateComponent,
+    BugListComponent
   ],
   exports: [
-    BugCreateComponent
+    BugCreateComponent,
+    BugListComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ]
 })
 export class BugModule {

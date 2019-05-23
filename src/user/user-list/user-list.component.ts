@@ -16,20 +16,19 @@ export class UserListComponent implements OnInit {
   displayedColumns: string[] = ['firstname', 'lastname', 'email', 'mobileNumber', 'status', 'username'];
 
   @Input()
-  public show= true;
+  public show = true;
 
   @Output()
-
   public output = new EventEmitter<RestUser>();
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
-    this.userService.getAllUsers().subscribe((userList)=>{
-      this.userList=userList;
-    })
+    this.userService.getAllUsers().subscribe((userList) => {
+      this.userList = userList;
+    });
   }
 
-  alertUser(person:RestUser){
+  alertUser(person: RestUser) {
     this.output.emit(person);
   }
 

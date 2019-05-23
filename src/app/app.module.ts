@@ -10,10 +10,11 @@ import {UserModule} from '../user/user.module';
 import {LoginComponent} from '../login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
   ],
 
   imports: [

@@ -1,6 +1,6 @@
-export interface RestUser {
+export interface RestUser {  /*ce primim din backend */
   firstName: string;
-  lastName : string;
+  lastName: string;
   email: string;
   mobileNumber: string;
   status: boolean;
