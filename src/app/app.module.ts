@@ -9,7 +9,6 @@ import {BugModule} from '../bug/bug.module';
 import {UserModule} from '../user/user.module';
 import {LoginComponent} from '../login/login.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatTableModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -25,7 +24,6 @@ import {MatTableModule} from '@angular/material';
     BugModule,
     UserModule,
     BrowserAnimationsModule,
-    MatTableModule
   ],
   providers: [],
   bootstrap: [
