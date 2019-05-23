@@ -3,13 +3,6 @@ import {CommonModule} from '@angular/common';
 import {BugCreateComponent} from './bug-create/bug-create.component';
 import {BugListComponent} from './bug-list/bug-list.component';
 import {FormsModule} from '@angular/forms';
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatDatepickerModule,
-  MatInputModule,
-  MatNativeDateModule
-} from '@angular/material';
 
 
 @NgModule({
@@ -23,12 +16,7 @@ import {
   ],
   imports: [
     CommonModule,
-    FormsModule,
-    MatInputModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatCardModule,
-    MatButtonModule
+    FormsModule
   ]
 })
 export class BugModule {
