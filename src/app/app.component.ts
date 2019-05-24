@@ -1,6 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
-import {Role, User} from "../user/models/user.model";
-import {RestUser} from "../user/models/restUser";
+import {User} from '../user/models/user.model';
+import {RestUser} from '../user/models/restUser';
 
 @Component({
   selector: 'app-root',
@@ -9,49 +9,18 @@ import {RestUser} from "../user/models/restUser";
 })
 export class AppComponent {
   title = 'Andrei';
-  titleApp='Title 2';
+  titleApp = 'Title 2';
 
   @ViewChild('userComponent')
   public userComponent;
 
-  public users: User[]= [
-    {
-      firstname : "Perry",
-      lastname : "Cox",
-      age : 48,
-      roles : [Role.create_bug]
-    },
-    {
-      firstname : "John",
-      lastname : "Dorian",
-      age : 29,
-      roles : [Role.create_bug]
-    },
-    {
-      firstname : "Carla",
-      lastname : "Espinosa",
-      age : 32,
-      roles : [Role.create_bug]
-    },
-    {
-      firstname : "Elliot",
-      lastname : "Reid",
-      age : 25,
-      roles : [Role.create_bug]
-    }
-  ]
-  public newUser : User ={
-    firstname : "Zsombor",
-    lastname : "Reid",
-    age : 25,
-    roles : [Role.create_bug, Role.edit_bug]
-  }
+  public users: User[] = [];
 
-  alertUserFromList(user:RestUser){
+  alertUserFromList(user: RestUser) {
     alert(user.firstName);
   }
 
-  alertUserChildComponent(){
+  alertUserChildComponent() {
     alert(this.userComponent.user.firstname);
   }
 }
