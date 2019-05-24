@@ -12,16 +12,19 @@ import {
   MatSelectModule,
   MatTableModule
 } from '@angular/material';
-
+import { BugStatusComponent } from './bug-status/bug-status.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     BugCreateComponent,
-    BugListComponent
+    BugListComponent,
+    BugStatusComponent
   ],
   exports: [
     BugCreateComponent,
-    BugListComponent
+    BugListComponent,
+    BugStatusComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +38,11 @@ import {
     FormsModule,
     MatCardModule,
     MatSelectModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatCardModule,
+    ReactiveFormsModule
   ]
 })
 export class BugModule {

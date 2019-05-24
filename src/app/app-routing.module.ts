@@ -24,6 +24,10 @@ const routes: Routes = [
     component: BugCreateComponent
   },
   {
+    path: 'user-list',
+    component: UserListComponent
+  },
+  {
     path: 'bug-list',
     component: BugListComponent
   },
@@ -32,13 +36,17 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: 'user-list',
-    component: UserListComponent,
+    path: 'add-user',
+    component: AddUserComponent
+  },
+  {
+    path: 'status-bug',
+    component: BugStatusComponent
   }
 ];
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule { }

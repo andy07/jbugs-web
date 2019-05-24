@@ -1,4 +1,5 @@
-import { JumperDirective } from './jumper.directive';
+import {JumperDirective} from "./jumper.directive";
+
 
 describe('JumperDirective', () => {
   it('should create an instance', () => {

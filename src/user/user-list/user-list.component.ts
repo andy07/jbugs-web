@@ -18,9 +18,7 @@ export class UserListComponent implements OnInit {
 
   @Output()
   public output = new EventEmitter<RestUser>();
-
-  constructor(private userService: UserService, private router: Router) {
-  }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.userService.getAllUsers().subscribe((userList) => {
