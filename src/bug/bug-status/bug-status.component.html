@@ -1,0 +1,13 @@
+
+<mat-card>
+<mat-form-field>
+  <mat-label>Status</mat-label>
+  <mat-select formControlName="status">
+    <mat-option value="option1">Option 1</mat-option>
+    <mat-option >{{selected}}</mat-option>
+    <mat-option *ngFor="let status of bugStatusList">{{status}}</mat-option>
+  </mat-select>
+</mat-form-field>
+</mat-card>
+
+
