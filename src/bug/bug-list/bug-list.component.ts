@@ -11,6 +11,7 @@ export class BugListComponent implements OnInit {
 
   /*declaram o lista de bug-uri care sa provina din backend*/
   public bugList: RestBug[];
+  displayedColumns: string[] = ['Title', 'Description', 'Version', 'FixedVersion', 'Severity', 'AssignedTo'];
 
   @Output()
   public outputFromBackend = new EventEmitter<RestBug>();
@@ -24,5 +25,4 @@ export class BugListComponent implements OnInit {
        this.bugList = bugList;
      });*/
   }
-
 }

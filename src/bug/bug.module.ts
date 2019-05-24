@@ -2,20 +2,26 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BugCreateComponent} from './bug-create/bug-create.component';
 import {FormsModule} from '@angular/forms';
+import {BugListComponent} from './bug-list/bug-list.component';
 import {
   MatButtonModule,
   MatCardModule,
   MatDatepickerModule,
   MatInputModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatSelectModule,
+  MatTableModule
 } from '@angular/material';
+
 
 @NgModule({
   declarations: [
-    BugCreateComponent
+    BugCreateComponent,
+    BugListComponent
   ],
   exports: [
-    BugCreateComponent
+    BugCreateComponent,
+    BugListComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +30,12 @@ import {
     MatDatepickerModule,
     MatNativeDateModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule,
+    FormsModule,
+    MatCardModule,
+    MatSelectModule,
+    MatInputModule
   ]
 })
 export class BugModule {
