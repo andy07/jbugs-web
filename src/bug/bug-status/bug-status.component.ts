@@ -1,8 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {BugStatus} from "../../user/models/bugStatus.model";
-import {BugService} from "../../user/service/bug.service";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Food} from "../models/Food";
+import {BugStatus} from '../models/bugStatus.model';
+import {BugService} from '../service/bug.service';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-bug-status',
@@ -11,28 +10,32 @@ import {Food} from "../models/Food";
 })
 export class BugStatusComponent implements OnInit {
 
-
-
+  private bugActualStatus: BugStatus = BugStatus.FIXED;
   private bugStatusList: BugStatus[];
-  private bugStatusActual: BugStatus = BugStatus.IN_PROGRESS;
-  private statusControl = new FormControl(this.bugStatusActual,[Validators.required]);
-  private selectValue : BugStatus=this.bugStatusActual;
+
+  private statusControl = new FormControl(this.bugActualStatus, [Validators.required]);
+  private selectValue: BugStatus = this.bugActualStatus;
 
   @Output()
   public outputBugsStatus = new EventEmitter<BugStatus>();
 
-  constructor(private bugService: BugService) { }
+  constructor(private bugService: BugService) {
+  }
 
   ngOnInit() {
 
-    this.bugService.getPostAllAllowedStatus(this.bugStatusActual.valueOf()).subscribe((bugStatusList)=>{
-      this.bugStatusList=bugStatusList;
+    this.bugService.getPostAllAllowedStatus(this.bugActualStatus.valueOf()).subscribe((bugStatusList) => {
+      this.bugStatusList = bugStatusList;
     });
 
-    // this.bugService.getAllAllowedStatus().subscribe((bugStatusList)=>{
-    //   this.bugStatusList=bugStatusList;
-    // });
+  }
 
+  setActualStatus(bugStatus: BugStatus) {
+    this.bugActualStatus=bugStatus;
+  }
+
+  getSelectedStatus() : BugStatus{
+      return this.selectValue;
   }
 
 
