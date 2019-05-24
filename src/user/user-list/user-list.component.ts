@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {User} from "../models/user.model";
-import {RestUser} from "../models/restUser";
-import {UserService} from "../service/user.service";
+import {RestUser} from '../models/restUser';
+import {UserService} from '../service/user.service';
 
 @Component({
   selector: 'app-user-list',
@@ -11,19 +10,21 @@ import {UserService} from "../service/user.service";
 export class UserListComponent implements OnInit {
   public userList: RestUser[];
   @Input()
-  public show= true;
+  public show = true;
 
   @Output()
   public output = new EventEmitter<RestUser>();
-  constructor(private userService: UserService) { }
 
-  ngOnInit() {
-    this.userService.getAllUsers().subscribe((userList)=>{
-      this.userList=userList;
-    })
+  constructor(private userService: UserService) {
   }
 
-  alertUser(person:RestUser){
+  ngOnInit() {
+    this.userService.getAllUsers().subscribe((userList) => {
+      this.userList = userList;
+    });
+  }
+
+  alertUser(person: RestUser) {
     this.output.emit(person);
   }
 
