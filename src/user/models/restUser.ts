@@ -3,4 +3,6 @@ export interface RestUser {  /*ce primim din backend */
   lastName: string;
   email: string;
   mobileNumber: string;
+  status: boolean;
+  username: string;
 }

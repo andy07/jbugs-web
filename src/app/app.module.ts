@@ -8,12 +8,16 @@ import {FormsModule} from '@angular/forms';
 import {BugModule} from '../bug/bug.module';
 import {UserModule} from '../user/user.module';
 import {LoginComponent} from '../login/login.component';
-
+<<<<<<< HEAD
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatTableModule} from '@angular/material';
+=======
+>>>>>>> parent of d1d16fb... + Bug-Create
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
+    LoginComponent
   ],
 
   imports: [
@@ -23,6 +27,11 @@ import {LoginComponent} from '../login/login.component';
     FormsModule,
     BugModule,
     UserModule,
+<<<<<<< HEAD
+    BrowserAnimationsModule,
+    MatTableModule
+=======
+>>>>>>> parent of d1d16fb... + Bug-Create
   ],
   providers: [],
   bootstrap: [
