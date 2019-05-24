@@ -1,7 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {BugStatus} from "../../user/models/bugStatus.model";
 import {BugService} from "../../user/service/bug.service";
-import {FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {Food} from "../models/Food";
 
 @Component({
   selector: 'app-bug-status',
@@ -10,12 +11,12 @@ import {FormGroup} from "@angular/forms";
 })
 export class BugStatusComponent implements OnInit {
 
+
+
   private bugStatusList: BugStatus[];
-
-
-  selected: String= BugStatus.IN_PROGRESS;
-
   private bugStatusActual: BugStatus = BugStatus.IN_PROGRESS;
+  private statusControl = new FormControl(this.bugStatusActual,[Validators.required]);
+  private selectValue : BugStatus=this.bugStatusActual;
 
   @Output()
   public outputBugsStatus = new EventEmitter<BugStatus>();
@@ -32,10 +33,6 @@ export class BugStatusComponent implements OnInit {
     //   this.bugStatusList=bugStatusList;
     // });
 
-
-
-
-    // this.bugStatusList=BugService.getAllAllowedStatus();
   }
 
 
