@@ -14,11 +14,11 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  log(firstName: string) {
+  logUser(firstName: string) {
     console.log(firstName)
   }
 
-  login(formElement: NgForm) {
+  loginUser(formElement: NgForm) {
     console.log(formElement)
     this.router.navigate(['/users']);
   }
