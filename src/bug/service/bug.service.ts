@@ -13,4 +13,7 @@ export class BugService {
   save(form: NgForm) {
     this.backend.post('', form);
   }
+  /*public getAllBugs(): Observable<RestBug[]> {
+   return this.backendService.get('/api/bugs');
+ }*/
 }
