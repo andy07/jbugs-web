@@ -16,8 +16,7 @@ import {FormsModule} from '@angular/forms';
   declarations: [
     UserListComponent,
     JumperDirective,
-    ButtonDisableDirective,
-    AddUserComponent
+    ButtonDisableDirective
   ],
   exports: [
     UserListComponent,
@@ -25,6 +24,8 @@ import {FormsModule} from '@angular/forms';
     ButtonDisableDirective,
   ],
   imports: [
+    CommonModule,
+    HttpClientModule,
     CommonModule,
     HttpClientModule,
     MatTableModule,
