@@ -12,7 +12,7 @@ export class BugService {
   constructor(private backendService: BackendService) {
   }
 
-  save(bug: RestBug): Observable<RestBug> {
+  public save(bug: RestBug): Observable<RestBug> {
     return this.backendService.post('/api/bugs', bug);
   }
 

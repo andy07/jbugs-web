@@ -1,7 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {BugStatus} from '../models/bugStatus.model';
 import {BugService} from '../service/bug.service';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-bug-status',
@@ -31,11 +31,11 @@ export class BugStatusComponent implements OnInit {
   }
 
   setActualStatus(bugStatus: BugStatus) {
-    this.bugActualStatus=bugStatus;
+    this.bugActualStatus = bugStatus;
   }
 
-  getSelectedStatus() : BugStatus{
-      return this.selectValue;
+  getSelectedStatus(): BugStatus {
+    return this.selectValue;
   }
 
 

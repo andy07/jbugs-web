@@ -2,11 +2,11 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from '../login/login.component';
 import {BugCreateComponent} from '../bug/bug-create/bug-create.component';
-import {UserListComponent} from '../user/user-list/user-list.component';
 import {BugListComponent} from '../bug/bug-list/bug-list.component';
-import {AddUserComponent} from "../user/add-user/add-user.component";
-import {BugStatusComponent} from "../bug/bug-status/bug-status.component";
-import {BugEditComponent} from "../bug/bug-edit/bug-edit.component";
+import {BugStatusComponent} from '../bug/bug-status/bug-status.component';
+import {BugEditComponent} from '../bug/bug-edit/bug-edit.component';
+import {AddUserComponent} from '../user/add-user/add-user.component';
+import {UserListComponent} from '../user/user-list/user-list.component';
 
 const routes: Routes = [
   {
