@@ -5,7 +5,14 @@ import {JumperDirective} from './directives/jumper.directive';
 import {ButtonDisableDirective} from './directives/button-disable.directive';
 import {HttpClientModule} from '@angular/common/http';
 import {BackendService} from '../assets/backend.service';
-import {MatButtonModule, MatCardModule, MatInputModule, MatSelectModule, MatTableModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatCardModule, MatCheckboxModule,
+  MatInputModule,
+  MatRadioModule,
+  MatSelectModule,
+  MatTableModule
+} from '@angular/material';
 import {AddUserComponent} from './add-user/add-user.component';
 import {FormsModule} from '@angular/forms';
 
@@ -34,7 +41,9 @@ import {FormsModule} from '@angular/forms';
     MatCardModule,
     MatSelectModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatRadioModule,
+    MatCheckboxModule
   ],
   providers: [
     BackendService

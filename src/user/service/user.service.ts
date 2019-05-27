@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {RestUser} from '../models/restUser';
 import {BackendService} from '../../assets/backend.service';
 import {Observable} from 'rxjs';
+import {RestBug} from "../../bug/models/restBug";
 
 @Injectable({
   providedIn: 'root'
@@ -12,5 +13,9 @@ export class UserService {
 
   public getAllUsers(): Observable<RestUser[]> {
     return this.backendService.get('/api/users');
+  }
+
+  public save(user: RestUser): Observable<RestUser> {
+    return this.backendService.post('/api/users', user);
   }
 }

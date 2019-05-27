@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {User} from '../models/user.model';
+import {RestUser, Role} from "../models/restUser";
+import {UserService} from "../service/user.service";
 
 @Component({
   selector: 'app-add-user',
@@ -9,12 +10,23 @@ import {User} from '../models/user.model';
 })
 export class AddUserComponent implements OnInit {
 
-  public user: User;
+  rolesList: string[] = ['Administrator', 'Project manager', 'Test manager', 'Developer', 'Tester'];
+  roleString: string;
+
+  public user: RestUser = {
+    firstName:'',
+    lastName:'',
+    email:'',
+    mobileNumber:'',
+    password:'',
+  roles:[]
+  };
 
   /*{firstName: '', lastName: '', email: '', mobileNumber: '', roles:null};*/
 
 
-  constructor(private router: Router) { }
+
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -27,6 +39,12 @@ export class AddUserComponent implements OnInit {
     console.log('ngForm', form);
   }
 
+  public onSubmit() {
+    //this.userService.save(this.user).subscribe((user) => this.user = user);
+  }
 
 
+  add() {
+
+  }
 }

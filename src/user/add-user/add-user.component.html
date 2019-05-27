@@ -1,13 +1,16 @@
 <mat-card>
-  <form #form="ngForm" (ngSubmit)="submit(form)">
+  <h4>Create a new user</h4>
+  <mat-card-content>
+  <form #form="ngForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
       <input matInput
              [(ngModel)]="user.firstName"
              id="firstName"
+             #firstName="ngModel"
              name="firstName"
-             placeholder="First Name"
-             #firstName>
-      <mat-error></mat-error>
+             required
+             placeholder="First Name">
+      <mat-error *ngIf="firstName.touched && firstName.invalid">Required</mat-error>
     </mat-form-field>
 
     <mat-form-field>
@@ -15,35 +18,58 @@
              [(ngModel)]="user.lastName"
              id="lastName"
              name="lastName"
+             required
              placeholder="Last Name"
-             #lastName>
+             #lastName="ngModel">
+      <mat-error *ngIf="lastName.touched && lastName.invalid">Required</mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <input matInput
              [(ngModel)]="user.mobileNumber"
+             required
              id="mobileNumber"
              name="mobileNumber"
              placeholder="Mobile Number"
-             #mobileNumber>
+             pattern="[+]4[0|9]{1}[0-9]{9}"
+             #mobileNumber="ngModel">
+      <mat-error *ngIf="mobileNumber.touched && mobileNumber.invalid">Required</mat-error>
+      <mat-error *ngIf="mobileNumber.errors?.pattern">Mobile number doesn't belong to Romania/Germany</mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <input matInput
              [(ngModel)]="user.email"
+             required
              id="email"
              name="email"
+             pattern="^[a-z0-9._%+-]+@msggroup.com"
              placeholder="Email"
-             #email>
+             #email="ngModel">
+      <mat-error *ngIf="email.touched && email.invalid">Required</mat-error>
+      <mat-error *ngIf="email.errors?.pattern">Invalid email</mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <input matInput
-             [(ngModel)]="user.roles"
-             id="roles"
-             name="roles"
-             placeholder="Roles"
-             #roles>
+             [(ngModel)]="user.password"
+             required
+             id="password"
+             name="password"
+             placeholder="Password"
+             #password="ngModel">
+      <mat-error *ngIf="password.touched && password.invalid">Required</mat-error>
     </mat-form-field>
+
+    <h5>Users roles:</h5>
+
+      <div>
+        <mat-checkbox class="checkbox" *ngFor="let role of rolesList" [value]="role">{{role}}</mat-checkbox>
+      </div>
+
+    <button (click)="add()" mat-raised-button color="primary">Save</button>
+
   </form>
+    </mat-card-content>
 </mat-card>
+
