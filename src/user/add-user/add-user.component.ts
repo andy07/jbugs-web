@@ -9,8 +9,7 @@ import {User} from "../models/user.model";
 })
 export class AddUserComponent implements OnInit {
 
-  public user:User;
-/*{firstName: '', lastName: '', email: '', mobileNumber: '', roles:null};*/
+  public user:User = {firstname: '', lastname: '', age: 12, roles:null};
 
 
   constructor(private router: Router) { }

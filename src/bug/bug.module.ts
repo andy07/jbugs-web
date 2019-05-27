@@ -9,13 +9,16 @@ import {
   MatInputModule,
   MatNativeDateModule
 } from '@angular/material';
+import {BugListComponent} from "./bug-list/bug-list.component";
 
 @NgModule({
   declarations: [
-    BugCreateComponent
+    BugCreateComponent,
+    BugListComponent
   ],
   exports: [
-    BugCreateComponent
+    BugCreateComponent,
+    BugListComponent
   ],
   imports: [
     CommonModule,

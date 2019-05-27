@@ -5,6 +5,7 @@ import {BugCreateComponent} from '../bug/bug-create/bug-create.component';
 import {BugListComponent} from '../bug/bug-list/bug-list.component';
 import {UserListComponent} from '../user/user-list/user-list.component';
 import {AddUserComponent} from '../user/add-user/add-user.component';
+import {HomeComponent} from "../home/home.component";
 
 const routes: Routes = [
   {
@@ -13,11 +14,15 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'users/:id',
-    component: LoginComponent
-  },
-  {
     path: 'login',
+    component: LoginComponent,
+    children: [
+      {path: 'home', component: HomeComponent}
+    ]
+  },
+  {path: 'home', component: HomeComponent},
+  {
+    path: 'users/:id',
     component: LoginComponent
   },
   {
@@ -46,4 +51,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

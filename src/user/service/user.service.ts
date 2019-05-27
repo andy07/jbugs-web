@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {RestUser} from "../models/restUser";
 import {BackendService} from "../../assets/backend.service";
 import {Observable} from "rxjs";
+import {User} from "../models/user.model";
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +26,9 @@ export class UserService {
   //         mobileNumber:"0987643"
   //       }]).pipe(delay(3000));
   //
+  }
+
+  public loginUser(username:String, password:String) : Observable<RestUser> {
+    return   this.backendServie.post('/api/users/login',{username,password});
   }
 }

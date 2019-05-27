@@ -5,21 +5,30 @@ import {JumperDirective} from './directives/jumper.directive';
 import {ButtonDisableDirective} from './directives/button-disable.directive';
 import {HttpClientModule} from '@angular/common/http';
 import {BackendService} from '../assets/backend.service';
+import {MatCardModule, MatFormFieldModule, MatTableModule} from "@angular/material";
+import {AddUserComponent} from "./add-user/add-user.component";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     UserListComponent,
     JumperDirective,
-    ButtonDisableDirective
+    ButtonDisableDirective,
+    AddUserComponent
   ],
   exports: [
     UserListComponent,
     JumperDirective,
     ButtonDisableDirective,
+    AddUserComponent
   ],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule,
+    MatCardModule,
+    MatFormFieldModule,
+    FormsModule
   ],
   providers: [
     BackendService
