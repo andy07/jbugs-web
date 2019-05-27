@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BugService} from '../service/bug.service';
 import {RestBug} from '../models/restBug';
-import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-bug-edit',
@@ -9,7 +8,7 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./bug-edit.component.scss']
 })
 export class BugEditComponent implements OnInit {
-  private bug: RestBug = {
+  public bug: RestBug = {
     title: '',
     description: '',
     version: '',
@@ -22,15 +21,15 @@ export class BugEditComponent implements OnInit {
   };
   private bugStatus = ['IN_PROGRESS', 'FIXED'];
 
-  constructor(private service: BugService) {
+  constructor(private bugService: BugService) {
   }
 
   ngOnInit() {
   }
 
-  public edit(form: NgForm) {
+  public edit() {
     console.log('You sucessfuly edited this bug!');
-    this.service.save(form);
+    this.bugService.save(this.bug);
   }
 
   getErrorMessage() {

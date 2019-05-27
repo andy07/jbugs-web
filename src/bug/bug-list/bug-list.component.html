@@ -36,9 +36,12 @@
   <ng-container matColumnDef="AssignedTo">
     <th mat-header-cell *matHeaderCellDef> Assigned To</th>
     <td mat-cell *matCellDef="let element"> {{element.assignedTo}}
-      <a [routerLink]="['/edit-bug']"> Edit </a>
+      <div>
+        <a [routerLink]="['/edit-bug/']"> Edit </a>
       <a [routerLink]="['/elem.assignedTo']"> Delete </a>
-      <a [routerLink]="['/elem.assignedTo']"> View Details</a></td>
+        <a [routerLink]="['/elem.assignedTo']"> View Details</a>
+      </div>
+    </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
