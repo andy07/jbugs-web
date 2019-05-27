@@ -22,9 +22,28 @@ const routes: Routes = [
     component: BugCreateComponent
   },
   {
+    path: 'user-list',
+    component: UserListComponent
+  },
+  {
+    path: 'bug-list',
+    component: BugListComponent
+  },
+  {
     path: 'users',
     component: LoginComponent,
-  }
+  },
+  {
+    path: 'add-user',
+    component: AddUserComponent
+  },
+},
+{
+  path: 'status-bug',
+    component
+:
+  BugStatusComponent
+}
 ];
 
 @NgModule({

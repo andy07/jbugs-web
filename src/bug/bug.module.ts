@@ -7,17 +7,21 @@ import {
   MatCardModule,
   MatDatepickerModule,
   MatInputModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatSelectModule
 } from '@angular/material';
-import {FormsModule} from '@angular/forms';
+import {BugStatusComponent} from './bug-status/bug-status.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     BugCreateComponent,
+    BugStatusComponent,
     BugListComponent
   ],
   exports: [
     BugCreateComponent,
+    BugStatusComponent,
     BugListComponent
   ],
   imports: [
@@ -27,6 +31,10 @@ import {FormsModule} from '@angular/forms';
     MatDatepickerModule,
     MatNativeDateModule,
     MatCardModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatCardModule,
+    ReactiveFormsModule,
     MatButtonModule,
   ]
 })

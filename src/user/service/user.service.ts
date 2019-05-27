@@ -8,9 +8,10 @@ import {Observable} from 'rxjs';
 })
 export class UserService {
 
-  constructor(private backendServie: BackendService) { }
+  constructor(private backendService: BackendService) {
+  }
 
   public getAllUsers(): Observable<RestUser[]> {
-    return   this.backendServie.get('/api/users');
+    return this.backendService.get('/api/users');
   }
 }
