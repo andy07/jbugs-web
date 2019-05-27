@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {BugService} from '../service/bug.service';
-import {RestBug} from '../models/restBug';
 
 @Component({
   selector: 'app-bug-create',
@@ -9,16 +8,16 @@ import {RestBug} from '../models/restBug';
 })
 export class BugCreateComponent implements OnInit {
 
-  private bug: RestBug = {
-    title: 'Doesn\'t work',
-    description: 'Pretty reasonable',
-    version: '1.2.3.x',
-    targetDate: '11.12.2019',
-    status: 'new',
-    fixedVersion: '1.2.4.x',
-    severity: 'MUCH',
-    createdBy: 'javaMaster',
-    assignedTo: 'andy07'
+  private bug = {
+    title: '',
+    description: '',
+    version: '',
+    targetDate: '',
+    status: '',
+    fixedVersion: '',
+    severity: '',
+    createdBy: '',
+    assignedTo: ''
   };
   constructor(private service: BugService) {
   }

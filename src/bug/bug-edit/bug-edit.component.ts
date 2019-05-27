@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BugService} from '../service/bug.service';
 import {RestBug} from '../models/restBug';
-import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-bug-edit',
@@ -28,9 +27,8 @@ export class BugEditComponent implements OnInit {
   ngOnInit() {
   }
 
-  public edit(form: NgForm) {
-    console.log('You sucessfuly edited this bug!');
-    this.service.save(form);
+  public edit() {
+    this.service.save(this.bug);
   }
 
   getErrorMessage() {
