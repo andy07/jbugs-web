@@ -30,7 +30,7 @@ export class BugEditComponent implements OnInit {
 
   public edit(form: NgForm) {
     console.log('You sucessfuly edited this bug!');
-    this.service.save(form);
+    // this.service.save(form);
   }
 
   getErrorMessage() {
