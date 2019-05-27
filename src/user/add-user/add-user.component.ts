@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
-import {User} from "../models/user.model";
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {User} from '../models/user.model';
 
 @Component({
   selector: 'app-add-user',
@@ -9,23 +9,24 @@ import {User} from "../models/user.model";
 })
 export class AddUserComponent implements OnInit {
 
-  public user:User;
-/*{firstName: '', lastName: '', email: '', mobileNumber: '', roles:null};*/
+  public user: User;
+
+  /*{firstName: '', lastName: '', email: '', mobileNumber: '', roles:null};*/
 
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+  }
 
   ngOnInit() {
   }
 
-  log(x){
-    console.log("ngModel", x);
+  log(x) {
+    console.log('ngModel', x);
   }
 
-  submit(form){
-    console.log("ngForm", form);
+  submit(form) {
+    console.log('ngForm', form);
   }
-
 
 
 }
