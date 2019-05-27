@@ -9,18 +9,19 @@ import {BugStatus} from '../models/bugStatus.model';
 })
 export class BugService {
 
-  constructor(private backend: BackendService) {
+  constructor(private backendService: BackendService) {
   }
 
   public save(bug: RestBug): Observable<RestBug> {
-    return this.backend.post('/api/bugs', bug);
+    return this.backendService.post('/api/bugs', bug);
   }
-  /*public getAllBugs(): Observable<RestBug[]> {
+
+  public getAllBugs(): Observable<RestBug[]> {
    return this.backendService.get('/api/bugs');
- }*/
+  }
 
   public getPostAllAllowedStatus(bugStatus: string): Observable<BugStatus[]> {
-    return this.backend.post('/api/bugs/status', bugStatus);
+    return this.backendService.post('/api/bugs/status', bugStatus);
   }
 
 }

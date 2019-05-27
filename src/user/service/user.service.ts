@@ -8,8 +8,7 @@ import {Observable} from 'rxjs';
 })
 export class UserService {
 
-  constructor(private backendService: BackendService) {
-  }
+  constructor(private backendService: BackendService) { }
 
   public getAllUsers(): Observable<RestUser[]> {
     return this.backendService.get('/api/users');

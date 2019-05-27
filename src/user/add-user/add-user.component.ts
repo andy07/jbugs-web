@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
-import {User} from "../models/user.model";
+import {Router} from '@angular/router';
+import {User} from '../models/user.model';
 
 @Component({
   selector: 'app-add-user',
@@ -14,19 +14,19 @@ export class AddUserComponent implements OnInit {
   /*{firstName: '', lastName: '', email: '', mobileNumber: '', roles:null};*/
 
 
-  constructor(private router: Router) {
-  }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
   log(x) {
-    console.log("ngModel", x);
+    console.log('ngModel', x);
   }
 
   submit(form) {
-    console.log("ngForm", form);
+    console.log('ngForm', form);
   }
+
 
 
 }
