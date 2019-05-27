@@ -6,6 +6,7 @@ import {UserListComponent} from '../user/user-list/user-list.component';
 import {BugListComponent} from '../bug/bug-list/bug-list.component';
 import {AddUserComponent} from "../user/add-user/add-user.component";
 import {BugStatusComponent} from "../bug/bug-status/bug-status.component";
+import {BugEditComponent} from "../bug/bug-edit/bug-edit.component";
 
 const routes: Routes = [
   {
@@ -22,16 +23,8 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'create-bug',
-    component: BugCreateComponent
-  },
-  {
     path: 'user-list',
     component: UserListComponent
-  },
-  {
-    path: 'bug-list',
-    component: BugListComponent
   },
   {
     path: 'users',
@@ -40,6 +33,18 @@ const routes: Routes = [
   {
     path: 'add-user',
     component: AddUserComponent
+  },
+  {
+    path: 'create-bug',
+    component: BugCreateComponent
+  },
+  {
+    path: 'edit-bug',
+    component: BugEditComponent
+  },
+  {
+    path: 'bug-list',
+    component: BugListComponent
   },
   {
     path: 'status-bug',

@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {BackendService} from '../../assets/backend.service';
-import {Observable} from "rxjs";
-import {BugStatus} from "../models/bugStatus.model";
+import {Observable} from 'rxjs';
+import {BugStatus} from '../models/bugStatus.model';
+import {RestBug} from '../models/restBug';
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +16,13 @@ export class BugService {
   save(form: NgForm) {
     this.backendService.post('', form);
   }
-  /*public getAllBugs(): Observable<RestBug[]> {
-   return this.backendService.get('/api/bugs');
- }*/
 
-  public getPostAllAllowedStatus(bugStatus: String) : Observable<BugStatus[]> {
-    return   this.backendService.post('/api/bugs/status',bugStatus);
+  public getAllBugs(): Observable<RestBug[]> {
+   return this.backendService.get('/api/bugs');
+  }
+
+  public getPostAllAllowedStatus(bugStatus: String): Observable<BugStatus[]> {
+    return this.backendService.post('/api/bugs/status', bugStatus);
   }
 
 }
