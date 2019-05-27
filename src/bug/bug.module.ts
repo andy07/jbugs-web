@@ -12,15 +12,18 @@ import {
 } from '@angular/material';
 import { BugStatusComponent } from './bug-status/bug-status.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {BugListComponent} from "./bug-list/bug-list.component";
 
 @NgModule({
   declarations: [
     BugCreateComponent,
-    BugStatusComponent
+    BugStatusComponent,
+    BugListComponent
   ],
   exports: [
     BugCreateComponent,
-    BugStatusComponent
+    BugStatusComponent,
+    BugListComponent
   ],
   imports: [
     CommonModule,

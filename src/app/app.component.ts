@@ -13,39 +13,39 @@ export class AppComponent {
 
   @ViewChild('userComponent')
   public userComponent;
-
-  public users: User[]= [
-    {
-      firstname : "Perry",
-      lastname : "Cox",
-      age : 48,
-      roles : [Role.create_bug]
-    },
-    {
-      firstname : "John",
-      lastname : "Dorian",
-      age : 29,
-      roles : [Role.create_bug]
-    },
-    {
-      firstname : "Carla",
-      lastname : "Espinosa",
-      age : 32,
-      roles : [Role.create_bug]
-    },
-    {
-      firstname : "Elliot",
-      lastname : "Reid",
-      age : 25,
-      roles : [Role.create_bug]
-    }
-  ]
-  public newUser : User ={
-    firstname : "Zsombor",
-    lastname : "Reid",
-    age : 25,
-    roles : [Role.create_bug, Role.edit_bug]
-  }
+  //
+  // public users: User[]= [
+  //   {
+  //     firstname : "Perry",
+  //     lastname : "Cox",
+  //     age : 48,
+  //     roles : [Role.create_bug]
+  //   },
+  //   {
+  //     firstname : "John",
+  //     lastname : "Dorian",
+  //     age : 29,
+  //     roles : [Role.create_bug]
+  //   },
+  //   {
+  //     firstname : "Carla",
+  //     lastname : "Espinosa",
+  //     age : 32,
+  //     roles : [Role.create_bug]
+  //   },
+  //   {
+  //     firstname : "Elliot",
+  //     lastname : "Reid",
+  //     age : 25,
+  //     roles : [Role.create_bug]
+  //   }
+  // ]
+  // public newUser : User ={
+  //   firstname : "Zsombor",
+  //   lastname : "Reid",
+  //   age : 25,
+  //   roles : [Role.create_bug, Role.edit_bug]
+  // }
 
   alertUserFromList(user:RestUser){
     alert(user.firstName);
