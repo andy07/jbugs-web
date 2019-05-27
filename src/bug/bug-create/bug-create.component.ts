@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {NgForm} from '@angular/forms';
 import {BugService} from '../service/bug.service';
 import {RestBug} from '../models/restBug';
 
@@ -16,7 +15,7 @@ export class BugCreateComponent implements OnInit {
     version: '1.2.3.x',
     targetDate: '11.12.2019',
     status: 'new',
-    fixedVersion: '',
+    fixedVersion: '1.2.4.x',
     severity: 'MUCH',
     createdBy: 'javaMaster',
     assignedTo: 'andy07'
@@ -27,12 +26,8 @@ export class BugCreateComponent implements OnInit {
   ngOnInit() {
   }
 
-  public create(form: NgForm) {
-    console.log('hero');
-    this.service.save(form);
+  public onSubmit() {
+    this.service.save(this.bug).subscribe((bug) => this.bug = bug);
   }
 
-  public getErrorMessage() {
-    return 'You must enter a value';
-  }
 }

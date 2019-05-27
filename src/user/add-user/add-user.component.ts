@@ -14,8 +14,7 @@ export class AddUserComponent implements OnInit {
   /*{firstName: '', lastName: '', email: '', mobileNumber: '', roles:null};*/
 
 
-  constructor(private router: Router) {
-  }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -27,6 +26,7 @@ export class AddUserComponent implements OnInit {
   submit(form) {
     console.log('ngForm', form);
   }
+
 
 
 }

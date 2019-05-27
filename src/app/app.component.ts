@@ -1,6 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
-import {Role, User} from "../user/models/user.model";
-import {RestUser} from "../user/models/restUser";
+import {User} from '../user/models/user.model';
+import {RestUser} from '../user/models/restUser';
 
 @Component({
   selector: 'app-root',
