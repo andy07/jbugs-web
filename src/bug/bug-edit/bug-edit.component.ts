@@ -23,10 +23,10 @@ export class BugEditComponent implements OnInit {
     createdBy: '',
     assignedTo: ''
   };
-
   constructor(private bugService: BugService,
               private route: ActivatedRoute) {
   }
+
   ngOnInit() {
     const title = this.route.snapshot.paramMap.get('title');
     console.log('title is ' + title);

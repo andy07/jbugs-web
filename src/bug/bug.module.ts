@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BugCreateComponent} from './bug-create/bug-create.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {
   MatButtonModule,
   MatCardModule,
@@ -13,7 +13,8 @@ import {
   MatSelectModule,
   MatTableModule
 } from '@angular/material';
-import {BugStatusComponent} from './bug-status/bug-status.component';
+import { BugStatusComponent } from './bug-status/bug-status.component';
+import {ReactiveFormsModule} from '@angular/forms';
 import {BugListComponent} from './bug-list/bug-list.component';
 import {BugEditComponent} from './bug-edit/bug-edit.component';
 import {RouterModule} from '@angular/router';
@@ -34,7 +35,7 @@ import {DialogOverviewComponent} from './bug-list/dialog-overview/dialog-overvie
     BugCreateComponent,
     BugListComponent,
     BugStatusComponent,
-    BugEditComponent,
+    BugEditComponent
   ],
   imports: [
     CommonModule,
@@ -60,5 +61,4 @@ import {DialogOverviewComponent} from './bug-list/dialog-overview/dialog-overvie
   ]
 })
 export class BugModule {
-
 }
