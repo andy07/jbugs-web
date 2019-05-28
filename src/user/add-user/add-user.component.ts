@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
-import {RestUser} from "../models/restUser";
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {RestUser} from '../models/restUser';
 
 @Component({
   selector: 'app-add-user',
@@ -13,12 +13,12 @@ export class AddUserComponent implements OnInit {
   roleString: string;
 
   public user: RestUser = {
-    firstName:'',
-    lastName:'',
-    email:'',
-    mobileNumber:'',
-    password:'',
-  roles:[]
+    firstName: '',
+    lastName: '',
+    email: '',
+    mobileNumber: '',
+    password: '',
+    roles: []
   };
 
   /*{firstName: '', lastName: '', email: '', mobileNumber: '', roles:null};*/
@@ -29,12 +29,8 @@ export class AddUserComponent implements OnInit {
   ngOnInit() {
   }
 
-  log(x){
-    console.log("ngModel", x);
-  }
-
-  submit(form){
-    console.log("ngForm", form);
+  submit(form) {
+    console.log('ngForm', form);
   }
 
 
