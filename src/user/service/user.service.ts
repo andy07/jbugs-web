@@ -3,6 +3,9 @@ import {RestUser} from '../models/restUser';
 import {BackendService} from '../../assets/backend.service';
 import {Observable} from 'rxjs';
 import {RestBug} from "../../bug/models/restBug";
+import {RestUser} from "../models/restUser";
+import {BackendService} from "../../assets/backend.service";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'

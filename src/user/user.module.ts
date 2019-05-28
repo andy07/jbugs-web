@@ -30,6 +30,7 @@ import {FormsModule} from '@angular/forms';
     UserListComponent,
     JumperDirective,
     ButtonDisableDirective,
+    AddUserComponent
   ],
   imports: [
     CommonModule,
