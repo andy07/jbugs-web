@@ -1,34 +1,25 @@
 import {Injectable} from '@angular/core';
-import {RestUser} from "../models/restUser";
-import {BackendService} from "../../assets/backend.service";
-import {Observable} from "rxjs";
-import {User} from "../models/user.model";
+import {RestUser} from '../models/restUser';
+import {BackendService} from '../../assets/backend.service';
+import {Observable} from 'rxjs';
+import {RestBug} from "../../bug/models/restBug";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private backendServie: BackendService) { }
+  constructor(private backendService: BackendService) { }
 
-  public getAllUsers() : Observable<RestUser[]> {
-    return   this.backendServie.get('/api/users');
-  //     return of([{
-  //       firstName:"Viorica",
-  //       lastName:"FAdministrator",
-  //       email:"admin@admin.com",
-  //       mobileNumber:"08343423"
-  //     },
-  //       {
-  //         firstName:"Gelu",
-  //         lastName:"Manager",
-  //         email:"gelu.simon@admin.com",
-  //         mobileNumber:"0987643"
-  //       }]).pipe(delay(3000));
-  //
+  public getAllUsers(): Observable<RestUser[]> {
+    return this.backendService.get('/api/users');
+  }
+
+  public save(user: RestUser): Observable<RestUser> {
+    return this.backendService.post('/api/users', user);
   }
 
   public loginUser(username:String, password:String) : Observable<RestUser> {
-    return   this.backendServie.post('/api/users/login',{username,password});
+    return   this.backendService.post('/api/users/login',{username,password});
   }
 }

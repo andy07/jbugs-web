@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -9,9 +10,13 @@ import {NgForm} from "@angular/forms";
 export class HomeComponent implements OnInit {
 
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
   }
 
+  logoutUser() {
+    this.router.navigate(['/login']);
+
+  }
 }
