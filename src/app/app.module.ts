@@ -11,7 +11,9 @@ import {LoginComponent, PopUpMessageComponent} from '../login/login.component';
 import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HomeComponent } from '../home/home.component';
 import {MatCardModule} from '@angular/material/card';
-import {MatSidenavModule, MatTableModule, MatToolbarModule} from '@angular/material';
+import {MatTableModule} from '@angular/material';
+import { MatListModule, MatSelectModule, MatButtonModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import {MatSidenavModule, MatToolbarModule} from '@angular/material';
 
 
 @NgModule({
@@ -27,6 +29,9 @@ import {MatSidenavModule, MatTableModule, MatToolbarModule} from '@angular/mater
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    MatSelectModule,
+    MatListModule,
+    MatButtonModule,
     BugModule,
     UserModule,
     MatCardModule,
@@ -34,6 +39,8 @@ import {MatSidenavModule, MatTableModule, MatToolbarModule} from '@angular/mater
     MatTableModule,
     MatToolbarModule,
     MatSidenavModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   entryComponents:[PopUpMessageComponent],
   providers: [],
