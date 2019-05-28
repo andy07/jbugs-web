@@ -1,34 +1,6 @@
-<div class="header" >Header
-  <div align="right">
-    <button type="button" class="btn btn-primary btn-lg"
-            (click)="logoutUser()">
-      Logout</button>
-  </div>
-
-</div>
-<div class="left-menu" align="center" layout-padding="">
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item active">
-      <button type="button" class="btn btn-light">
-        <a class="nav-link"  routerLink="/home">Home</a>
-      </button>
-    </li>
-    <li class="nav-item active">
-      <button type="button" class="btn btn-light">
-        <a class="nav-link" routerLink="/bug-list">Bugs</a>
-      </button>
-
-    </li>
-    <li class="nav-item active">
-      <button type="button" class="btn btn-light">
-      <a class="nav-link" routerLink="/notifications">Notifications</a>
-        </button>
-    </li>
-  </ul>
-</div>
-
-<div class="change-menu">
-  <app-user-list></app-user-list>
-</div>
-
-
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened>Drawer content</mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
