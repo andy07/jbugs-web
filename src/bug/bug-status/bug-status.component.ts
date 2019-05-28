@@ -10,7 +10,7 @@ import {FormControl, Validators} from '@angular/forms';
 })
 export class BugStatusComponent implements OnInit {
 
-  private bugActualStatus: BugStatus = BugStatus.FIXED;
+  private bugActualStatus: BugStatus = BugStatus.NEW;
   private bugStatusList: BugStatus[];
 
   private statusControl = new FormControl(this.bugActualStatus, [Validators.required]);
