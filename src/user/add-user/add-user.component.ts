@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {User} from '../models/user.model';
 
 @Component({
   selector: 'app-add-user',
@@ -9,7 +8,7 @@ import {User} from '../models/user.model';
 })
 export class AddUserComponent implements OnInit {
 
-  public user: User;
+  public user = {};
 
   /*{firstName: '', lastName: '', email: '', mobileNumber: '', roles:null};*/
 
