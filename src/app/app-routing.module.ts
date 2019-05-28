@@ -39,7 +39,7 @@ const routes: Routes = [
     component: BugCreateComponent
   },
   {
-    path: 'edit-bug',
+    path: 'edit-bug/:title',
     component: BugEditComponent
   },
   {

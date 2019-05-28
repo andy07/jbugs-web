@@ -9,22 +9,10 @@ form {
   width: 450px;
 }
 
-mat-cell, .mat-cell {
-  min-width: 500px !important;
-  padding: 40px;
-  margin: 40px;
-  display: inline-block;
-}
-
 td {
   min-width: 500px !important;
-  padding: 40px;
-  display: inline-block;
+  display: inline;
   margin-left: 20px;
 }
 
-a:before {
-  width: 20px;
-  margin-left: 20px;
 
-}

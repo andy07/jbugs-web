@@ -9,6 +9,7 @@ import {BugService} from '../service/bug.service';
 export class BugCreateComponent implements OnInit {
 
   private bug = {
+    id: -1,
     title: '',
     description: '',
     version: '',
