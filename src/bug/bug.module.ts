@@ -38,17 +38,11 @@ import {RouterModule} from '@angular/router';
     MatNativeDateModule,
     MatCardModule,
     MatButtonModule,
-    MatTableModule,
-    FormsModule,
-    MatCardModule,
-    MatSelectModule,
-    MatInputModule,
-    MatButtonModule,
     MatSelectModule,
     MatCardModule,
     ReactiveFormsModule,
-    MatButtonModule,
-    RouterModule
+    RouterModule,
+    MatTableModule
   ]
 })
 export class BugModule {

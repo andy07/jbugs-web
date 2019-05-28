@@ -4,7 +4,7 @@
   <form #form="ngForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
       <input matInput
-             [(ngModel)]="user.firstName"
+             [(ngModel)]="user.firstname"
              id="firstName"
              #firstName="ngModel"
              name="firstName"
@@ -15,7 +15,7 @@
 
     <mat-form-field>
       <input matInput
-             [(ngModel)]="user.lastName"
+             [(ngModel)]="user.lastname"
              id="lastName"
              name="lastName"
              required

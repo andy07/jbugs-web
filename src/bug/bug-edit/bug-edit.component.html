@@ -1,7 +1,7 @@
 <mat-card>
   <p>Edit the current bug</p>
   <mat-card-content>
-    <form #form="ngForm" (ngSubmit)="edit(form)">
+    <form #form="ngForm" (ngSubmit)="edit()">
       <mat-form-field>
         <input matInput
                [(ngModel)]="bug.title"
