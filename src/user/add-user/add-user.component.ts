@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {RestUser} from '../models/restUser';
 
 @Component({
   selector: 'app-add-user',
@@ -8,7 +9,17 @@ import {Router} from '@angular/router';
 })
 export class AddUserComponent implements OnInit {
 
-  public user = {};
+  rolesList: string[] = ['Administrator', 'Project manager', 'Test manager', 'Developer', 'Tester'];
+  roleString: string;
+
+  public user: RestUser = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    mobileNumber: '',
+    password: '',
+    roles: []
+  };
 
   /*{firstName: '', lastName: '', email: '', mobileNumber: '', roles:null};*/
 
@@ -16,10 +27,6 @@ export class AddUserComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-  }
-
-  log(x) {
-    console.log('ngModel', x);
   }
 
   submit(form) {

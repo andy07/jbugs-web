@@ -37,4 +37,7 @@ export class UserListComponent implements OnInit {
   }
 
 
+  edit() {
+    //this.router.navigate(['/edit-user']);
+  }
 }

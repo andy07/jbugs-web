@@ -1,42 +1,39 @@
+<div class="full">
 <form #formElement='ngForm'>
 
   <div class="form-group">
-    <label for="firstName"> FirstName </label>
+    <label for="usernameField" class="font-weight-bolder"> Username </label>
     <input class="form-control"
+           [(ngModel)]="username"
            type="text"
-           id="firstName"
-           name="firstName"
+           id="usernameField"
+           name="username"
            required
-           #firstName="ngModel"
+           #usernameField="ngModel"
            ngModel
            style="max-width: 400px">
-    <div class="alert alert-danger" *ngIf="firstName.touched && firstName.invalid" style="max-width: 200px">
-      <div *ngIf="firstName.errors?.required">The field is required!</div>
-      <div *ngIf="firstName.errors?.pattern">The pattern is invalid</div>
+    <div class="alert alert-danger" *ngIf="usernameField.touched && usernameField.invalid" style="max-width: 200px">
+      <div *ngIf="usernameField.errors?.required">Username is required!</div>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="lastName"> Last Name </label>
+    <label for="passwordField" class="font-weight-bolder"> Password </label>
     <input class="form-control"
-           type="text"
-           id="lastName"
-           name="lastName"
+           [(ngModel)]="password"
+           type="password"
+           id="passwordField"
+           name="password"
            required
-           #lastName="ngModel"
+           #passwordField="ngModel"
            ngModel
            style="max-width: 400px">
-    <div class="alert alert-danger" *ngIf="lastName.touched && lastName.invalid" style="max-width: 200px">Last name is required</div>
+    <div class="alert alert-danger" *ngIf="passwordField.touched && passwordField.invalid" style="max-width: 200px">Password is required</div>
   </div>
 
-  <p>
-    {{formElement.value|json}}
-  </p>
-
-  <button class="btn btn-success"
+  <button class="btn-primary btn-lg"
           [disabled]="formElement.invalid"
-          (click)="login(formElement)"
+          (click)="loginUser(formElement)"
   >Submit</button>
-
-
 </form>
+</div>
