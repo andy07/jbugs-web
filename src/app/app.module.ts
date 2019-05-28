@@ -12,6 +12,7 @@ import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HomeComponent } from '../home/home.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material';
+import { MatListModule, MatSelectModule, MatButtonModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 
 
 @NgModule({
@@ -27,11 +28,16 @@ import {MatTableModule} from '@angular/material';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    MatSelectModule,
+    MatListModule,
+    MatButtonModule,
     BugModule,
     UserModule,
     MatCardModule,
     BrowserAnimationsModule,
     MatTableModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   entryComponents:[PopUpMessageComponent],
   providers: [],

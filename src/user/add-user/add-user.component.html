@@ -4,24 +4,28 @@
   <form #form="ngForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
       <input matInput
-             [(ngModel)]="user.firstname"
+             [(ngModel)]="user.firstName"
              id="firstName"
              #firstName="ngModel"
              name="firstName"
+             pattern="^[A-Z][a-z]+$"
              required
              placeholder="First Name">
       <mat-error *ngIf="firstName.touched && firstName.invalid">Required</mat-error>
+      <mat-error *ngIf="firstName.errors?.pattern">Incorrect First Name</mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <input matInput
-             [(ngModel)]="user.lastname"
+             [(ngModel)]="user.lastName"
              id="lastName"
              name="lastName"
+             pattern="^[A-Z][a-z]+$"
              required
              placeholder="Last Name"
              #lastName="ngModel">
       <mat-error *ngIf="lastName.touched && lastName.invalid">Required</mat-error>
+      <mat-error *ngIf="lastName.errors?.pattern">Incorrect Last Name</mat-error>
     </mat-form-field>
 
     <mat-form-field>
@@ -61,15 +65,46 @@
       <mat-error *ngIf="password.touched && password.invalid">Required</mat-error>
     </mat-form-field>
 
-    <h5>Users roles:</h5>
 
-      <div>
-        <mat-checkbox class="checkbox" *ngFor="let role of rolesList" [value]="role">{{role}}</mat-checkbox>
-      </div>
+      <!--<div>
+        <mat-checkbox
+          [(ngModel)]="user.roles"
+          id="roles"
+          name="roles"
+          class="checkbox"
+          *ngFor="let role of user.roles"
+          [value]="role">{{role}}</mat-checkbox>
+      </div>-->
+
+
+    <mat-list-item class="primary-imenu-item" role="listitem">
+      <mat-form-field class="select-form">
+        <mat-select
+          placeholder="Roles"
+          id="roles"
+          name="roles"
+          class="filter-select"
+          [(ngModel)]="user.roles"
+          [compareWith]="equals"
+          multiple
+          #roles="ngModel">
+          <mat-option disabled="disabled" class="filter-option">
+            <input type="checkbox"(click)="selectAll(checkAll.checked, roles, rolesList)" #checkAll>
+          </mat-option>
+          <mat-option *ngFor="let role of rolesList" [value]="role">
+            {{role}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-list-item>
+
+    <p>{{form.value | json}}</p>
 
     <button (click)="add()" mat-raised-button color="primary">Save</button>
 
   </form>
     </mat-card-content>
 </mat-card>
+
+
 

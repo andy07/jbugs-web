@@ -8,6 +8,7 @@ import {BugEditComponent} from '../bug/bug-edit/bug-edit.component';
 import {AddUserComponent} from '../user/add-user/add-user.component';
 import {HomeComponent} from "../home/home.component";
 import {UserListComponent} from '../user/user-list/user-list.component';
+import {EditUserComponent} from "../user/edit-user/edit-user.component";
 
 const routes: Routes = [
   {
@@ -38,6 +39,10 @@ const routes: Routes = [
   {
     path: 'add-user',
     component: AddUserComponent
+  },
+  {
+    path: 'edit-user',
+    component: EditUserComponent
   },
   {
     path: 'create-bug',
