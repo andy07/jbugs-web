@@ -11,7 +11,7 @@ import {LoginComponent, PopUpMessageComponent} from '../login/login.component';
 import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HomeComponent } from '../home/home.component';
 import {MatCardModule} from '@angular/material/card';
-import {MatTableModule} from '@angular/material';
+import {MatSidenavModule, MatTableModule, MatToolbarModule} from '@angular/material';
 
 
 @NgModule({
@@ -32,6 +32,8 @@ import {MatTableModule} from '@angular/material';
     MatCardModule,
     BrowserAnimationsModule,
     MatTableModule,
+    MatToolbarModule,
+    MatSidenavModule,
   ],
   entryComponents:[PopUpMessageComponent],
   providers: [],
