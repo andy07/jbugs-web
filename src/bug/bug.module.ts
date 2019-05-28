@@ -40,7 +40,9 @@ import {RouterModule} from '@angular/router';
     MatButtonModule,
     MatSelectModule,
     MatCardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule,
+    MatTableModule
   ]
 })
 export class BugModule {
