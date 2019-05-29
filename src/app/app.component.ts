@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {RestUser} from '../user/models/restUser';
 
 @Component({
@@ -8,18 +8,9 @@ import {RestUser} from '../user/models/restUser';
 })
 export class AppComponent {
   title = 'Andrei';
-  titleApp = 'Title 2';
 
-  @ViewChild('userComponent')
-  public userComponent;
-
-  public users: RestUser[] = [];
-
-  alertUserFromList(user: RestUser) {
-    alert(user.firstName);
-  }
-
-  alertUserChildComponent() {
-    alert(this.userComponent.user.firstname);
-  }
+  user: RestUser = {
+    firstName: 'Silviu',
+    lastName: 'Cucuiet',
+  };
 }

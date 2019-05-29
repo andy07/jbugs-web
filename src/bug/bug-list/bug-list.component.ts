@@ -1,7 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {RestBug} from '../models/restBug';
 import {BugService} from '../service/bug.service';
-import {Router} from '@angular/router';
 import {MatTableDataSource} from '@angular/material';
 
 @Component({
@@ -21,14 +20,19 @@ export class BugListComponent implements OnInit {
   }*/
   dataSource = new MatTableDataSource<RestBug>();
 
-  constructor(private bugService: BugService,
-              private router: Router) {
+  constructor(private bugService: BugService) {
   }
 
-  /*declaram o lista de bug-uri care sa provina din backend*/
   public bugList: RestBug[];
-  public selectedBug: RestBug;
-  displayedColumns: string[] = ['Title', 'Description', 'Version', 'FixedVersion', 'Severity', 'AssignedTo', 'star'];
+  displayedColumns: string[] = [
+    'Title',
+    'Version',
+    'FixedVersion',
+    'Severity',
+    'Status',
+    'AssignedTo',
+    'star'
+  ];
 
 
   @Output()
@@ -40,7 +44,6 @@ export class BugListComponent implements OnInit {
 
 
   ngOnInit() {
-    /*ia userList-ul emis prin observable si il pune in lista userList*/
     this.bugService.getAllBugs().subscribe((bugList) => {
       this.bugList = bugList;
       this.bugList.forEach(bug => {
