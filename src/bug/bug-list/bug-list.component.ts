@@ -43,6 +43,9 @@ export class BugListComponent implements OnInit {
     /*ia userList-ul emis prin observable si il pune in lista userList*/
     this.bugService.getAllBugs().subscribe((bugList) => {
       this.bugList = bugList;
+      this.bugList.forEach(bug => {
+        console.log(bug);
+      });
       this.dataSource = new MatTableDataSource<RestBug>(this.bugList);
     });
   }
