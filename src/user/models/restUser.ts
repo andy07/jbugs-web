@@ -1,11 +1,10 @@
-
 export interface RestUser {
   firstName: string;
-  lastName : string;
+  lastName: string;
   email: string;
   mobileNumber: string;
   password: string;
-  roles: Role[];
+  roles: string[];
 }
 
 export enum Role {

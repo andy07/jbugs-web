@@ -1,4 +1,5 @@
 export interface RestBug {
+  id: number;
   title: string;
   description: string;
   version: string;

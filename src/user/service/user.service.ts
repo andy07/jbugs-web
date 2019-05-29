@@ -1,7 +1,9 @@
 import {Injectable} from '@angular/core';
-import {RestUser} from "../models/restUser";
-import {BackendService} from "../../assets/backend.service";
-import {Observable} from "rxjs";
+import {BackendService} from '../../assets/backend.service';
+import {Observable} from 'rxjs';
+import {RestBug} from "../../bug/models/restBug";
+
+import {RestUser} from '../models/restUser';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +20,7 @@ export class UserService {
     return this.backendService.post('/api/users', user);
   }
 
-  public loginUser(username:String, password:String) : Observable<RestUser> {
-    return   this.backendService.post('/api/users/login',{username,password});
+  public loginUser(username: string, password: string): Observable<RestUser> {
+    return this.backendService.post('/api/users/login', {username, password});
   }
 }
