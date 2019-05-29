@@ -28,7 +28,7 @@ export class BugListComponent implements OnInit {
   /*declaram o lista de bug-uri care sa provina din backend*/
   public bugList: RestBug[];
   public selectedBug: RestBug;
-  displayedColumns: string[] = ['Title', 'Description', 'Version', 'FixedVersion', 'Severity', 'AssignedTo', 'star'];
+  displayedColumns: string[] = ['Title', 'Description', 'Version', 'FixedVersion', 'Severity', 'Status','AssignedTo', 'star'];
 
 
   @Output()
