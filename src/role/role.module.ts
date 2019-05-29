@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RolePermissionComponent } from './role-permission/role-permission.component';
-import {MatOptionModule, MatTableModule} from "@angular/material";
+import {MatIconModule, MatMenuModule, MatOptionModule, MatTableModule} from "@angular/material";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [RolePermissionComponent],
@@ -9,7 +10,10 @@ import {MatOptionModule, MatTableModule} from "@angular/material";
   imports: [
     CommonModule,
     MatTableModule,
-    MatOptionModule
+    MatOptionModule,
+    MatIconModule,
+    MatMenuModule,
+    RouterModule
   ]
 })
 export class RoleModule {
