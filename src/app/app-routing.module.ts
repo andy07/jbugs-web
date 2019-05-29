@@ -9,6 +9,8 @@ import {HomeComponent} from '../pages/home/home.component';
 import {UserListComponent} from '../user/user-list/user-list.component';
 import {MainComponent} from '../pages/main/main.component';
 import {RolePermissionComponent} from "../role/role-permission/role-permission.component";
+import {AddPermissionRoleComponent} from "../role/add-permission-role/add-permission-role.component";
+import {DeletePermissionRoleComponent} from "../role/delete-permission-role/delete-permission-role.component";
 
 const routes: Routes = [
   {
@@ -88,6 +90,14 @@ const routes: Routes = [
           {
             path: 'role-list',
             component: RolePermissionComponent
+          },
+          {
+            path: 'add-permission-role/:type',
+            component: AddPermissionRoleComponent
+          },
+          {
+            path: 'delete-permission-role/:type',
+            component: DeletePermissionRoleComponent
           }
 
         ]
