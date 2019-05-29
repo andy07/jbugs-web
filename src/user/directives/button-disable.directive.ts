@@ -1,5 +1,6 @@
 import {AfterViewInit, Directive, ElementRef, Input} from '@angular/core';
-import {Role} from "../models/user.model";
+import {Role} from "../models/restUser";
+
 
 @Directive({
   selector: '[appButtonDisable]'

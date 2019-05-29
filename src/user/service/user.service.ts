@@ -1,7 +1,9 @@
 import {Injectable} from '@angular/core';
-import {RestUser} from "../models/restUser";
-import {BackendService} from "../../assets/backend.service";
-import {Observable} from "rxjs";
+import {BackendService} from '../../assets/backend.service';
+import {Observable} from 'rxjs';
+import {RestBug} from "../../bug/models/restBug";
+
+import {RestUser} from '../models/restUser';
 
 @Injectable({
   providedIn: 'root'
@@ -10,20 +12,15 @@ export class UserService {
 
   constructor(private backendService: BackendService) { }
 
-  public getAllUsers() : Observable<RestUser[]> {
-    return   this.backendService.get('/api/users');
-  //     return of([{
-  //       firstName:"Viorica",
-  //       lastName:"FAdministrator",
-  //       email:"admin@admin.com",
-  //       mobileNumber:"08343423"
-  //     },
-  //       {
-  //         firstName:"Gelu",
-  //         lastName:"Manager",
-  //         email:"gelu.simon@admin.com",
-  //         mobileNumber:"0987643"
-  //       }]).pipe(delay(3000));
-  //
+  public getAllUsers(): Observable<RestUser[]> {
+    return this.backendService.get('/api/users');
+  }
+
+  public save(user: RestUser): Observable<RestUser> {
+    return this.backendService.post('/api/users', user);
+  }
+
+  public loginUser(username: string, password: string): Observable<RestUser> {
+    return this.backendService.post('/api/users/login', {username, password});
   }
 }

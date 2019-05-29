@@ -7,13 +7,17 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {BugModule} from '../bug/bug.module';
 import {UserModule} from '../user/user.module';
-import {LoginComponent} from '../login/login.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {PopUpMessageComponent} from '../pages/login/login.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatCardModule} from '@angular/material/card';
+import {MatIconModule, MatTableModule, MatToolbarModule} from '@angular/material';
+import {PagesModule} from '../pages/pages.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    PopUpMessageComponent
   ],
 
   imports: [
@@ -23,7 +27,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     BugModule,
     UserModule,
+    MatCardModule,
     BrowserAnimationsModule,
+    MatTableModule,
+    MatToolbarModule,
+    PagesModule,
+    MatIconModule
+  ],
+  entryComponents: [
+    PopUpMessageComponent
   ],
   providers: [],
   bootstrap: [

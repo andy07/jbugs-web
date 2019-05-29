@@ -1,16 +1,16 @@
 <mat-card>
   <p>Create a new bug</p>
   <mat-card-content>
-    <form #form="ngForm" (ngSubmit)="create(form)">
+    <form #form="ngForm" (ngSubmit)="onSubmit()">
       <mat-form-field>
         <input matInput
                [(ngModel)]="bug.title"
                #title="ngModel"
+               placeholder="Title"
                id="title"
                name="title"
-               required
-               placeholder="Title">
-        <mat-error *ngIf="title.invalid">{{getErrorMessage()}}</mat-error>
+               required>
+        <mat-error *ngIf="title.touched && title.invalid">Required</mat-error>
       </mat-form-field>
       <mat-form-field>
         <input matInput
@@ -19,16 +19,10 @@
                id="version"
                name="version"
                required
+               pattern="[0-9a-z\.]*"
                placeholder="Version">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput
-               [(ngModel)]="bug.fixedVersion"
-               #revision="ngModel"
-               id="revision"
-               name="revision"
-               required
-               placeholder="Revision">
+        <mat-error *ngIf="version.errors?.required">Required</mat-error>
+        <mat-error *ngIf="version.errors?.pattern">Alphanumerical characters divided by dots</mat-error>
       </mat-form-field>
       <mat-form-field>
         <input matInput
@@ -38,6 +32,8 @@
                name="severity"
                required
                placeholder="Severity">
+        <mat-error *ngIf="version.errors?.required">Required</mat-error>
+        <mat-error *ngIf="version.errors?.pattern">Alphanumerical characters divided by dots</mat-error>
       </mat-form-field>
       <mat-form-field>
         <input matInput
@@ -47,6 +43,17 @@
                name="created_by"
                required
                placeholder="Created By">
+        <mat-error *ngIf="version.errors?.required">Required</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput
+               [(ngModel)]="bug.assignedTo"
+               #createdBy="ngModel"
+               id="assigned_to"
+               name="assigned_to"
+               required
+               placeholder="Assigned to">
+        <mat-error *ngIf="version.errors?.required">Required</mat-error>
       </mat-form-field>
       <mat-form-field>
         <input matInput
@@ -56,25 +63,26 @@
                name="date"
                required
                [matDatepicker]="picker"
-               placeholder="Target date">
+               placeholder="Target date" [value]="bug.targetDate">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="version.errors?.required">Required</mat-error>
       </mat-form-field>
       <mat-form-field>
       <textarea matInput
                 [(ngModel)]="bug.description"
-                #title="ngModel"
+                #description="ngModel"
                 id="description"
                 name="description"
                 cols="10"
                 rows="10"
                 placeholder="Description"></textarea>
+        <mat-error *ngIf="version.errors?.required">Required</mat-error>
       </mat-form-field>
       <button mat-raised-button class="save" color="primary" type="submit">Save</button>
     </form>
   </mat-card-content>
 </mat-card>
 
-<p>
-  {{form.value|json}}
-</p>
+<p>{{bug.targetDate | date: 'dd/MM/yyyy'}}</p>
+
