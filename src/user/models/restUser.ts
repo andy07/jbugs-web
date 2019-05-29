@@ -1,7 +1,6 @@
-
 export interface RestUser {
   firstName: string;
-  lastName : string;
+  lastName: string;
   email: string;
   mobileNumber: string;
   password: string;

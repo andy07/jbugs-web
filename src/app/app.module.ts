@@ -7,20 +7,16 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {BugModule} from '../bug/bug.module';
 import {UserModule} from '../user/user.module';
-import {LoginComponent, PopUpMessageComponent} from '../login/login.component';
-import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {HomeComponent } from '../home/home.component';
+import {PopUpMessageComponent} from '../pages/login/login.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
-import {MatTableModule} from '@angular/material';
-import { MatListModule, MatSelectModule, MatButtonModule, MatFormFieldModule, MatInputModule } from '@angular/material';
-import {MatSidenavModule, MatToolbarModule} from '@angular/material';
+import {MatIconModule, MatTableModule, MatToolbarModule} from '@angular/material';
+import {PagesModule} from '../pages/pages.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    HomeComponent,
     PopUpMessageComponent
   ],
 
@@ -29,20 +25,18 @@ import {MatSidenavModule, MatToolbarModule} from '@angular/material';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    MatSelectModule,
-    MatListModule,
-    MatButtonModule,
     BugModule,
     UserModule,
     MatCardModule,
     BrowserAnimationsModule,
     MatTableModule,
     MatToolbarModule,
-    MatSidenavModule,
-    MatFormFieldModule,
-    MatInputModule
+    PagesModule,
+    MatIconModule
   ],
-  entryComponents:[PopUpMessageComponent],
+  entryComponents: [
+    PopUpMessageComponent
+  ],
   providers: [],
   bootstrap: [
     AppComponent
