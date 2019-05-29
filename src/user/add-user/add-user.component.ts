@@ -1,8 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 import {RestUser} from "../models/restUser";
-import {UserService} from "../service/user.service";
-import {NgModel} from "@angular/forms";
 
 @Component({
   selector: 'app-add-user',
@@ -11,7 +9,8 @@ import {NgModel} from "@angular/forms";
 })
 export class AddUserComponent implements OnInit {
 
-  rolesList = ['Administrator', 'Project manager', 'Test manager', 'Developer', 'Tester'];
+  rolesList: string[] = ['Administrator', 'Project manager', 'Test manager', 'Developer', 'Tester'];
+  roleString: string;
 
   public user: RestUser = {
     firstName:'',
@@ -25,40 +24,19 @@ export class AddUserComponent implements OnInit {
   /*{firstName: '', lastName: '', email: '', mobileNumber: '', roles:null};*/
 
 
-
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
-
-
   }
 
-  public onSubmit() {
-    //this.userService.save(this.user).subscribe((user) => this.user = user);
+  log(x){
+    console.log("ngModel", x);
+  }
+
+  submit(form){
+    console.log("ngForm", form);
   }
 
 
-  add() {
 
-  }
-
-  selectAll(checkAll, select: NgModel, values) {
-    //this.toCheck = !this.toCheck;
-    if(checkAll){
-      select.update.emit(values);
-    }
-    else{
-      select.update.emit([]);
-    }
-  }
-
-  selectAll2( select: NgModel, values) {
-      select.update.emit([]);
-  }
-
-  equals(objOne, objTwo) {
-    if (typeof objOne !== 'undefined' && typeof objTwo !== 'undefined') {
-      return objOne.id === objTwo.id;
-    }
-  }
 }

@@ -8,14 +8,13 @@ import {BackendService} from '../assets/backend.service';
 import {
   MatButtonModule,
   MatCardModule, MatCheckboxModule,
-  MatInputModule, MatListModule,
+  MatInputModule,
   MatRadioModule,
   MatSelectModule,
   MatTableModule
 } from '@angular/material';
 import {AddUserComponent} from './add-user/add-user.component';
 import {FormsModule} from '@angular/forms';
-import { EditUserComponent } from './edit-user/edit-user.component';
 
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations' ;
 
@@ -25,8 +24,7 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     UserListComponent,
     JumperDirective,
     ButtonDisableDirective,
-    AddUserComponent,
-    EditUserComponent
+    AddUserComponent
   ],
   exports: [
     UserListComponent,
@@ -46,8 +44,7 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     MatInputModule,
     MatButtonModule,
     MatRadioModule,
-    MatCheckboxModule,
-    MatListModule
+    MatCheckboxModule
   ],
   providers: [
     BackendService
