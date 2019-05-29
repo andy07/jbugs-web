@@ -12,6 +12,7 @@ import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HomeComponent } from '../home/home.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material';
+import {RoleModule} from "../role/role.module";
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import {MatTableModule} from '@angular/material';
     MatCardModule,
     BrowserAnimationsModule,
     MatTableModule,
+    RoleModule
   ],
   entryComponents:[PopUpMessageComponent],
   providers: [],

@@ -8,6 +8,7 @@ import {BugEditComponent} from '../bug/bug-edit/bug-edit.component';
 import {AddUserComponent} from '../user/add-user/add-user.component';
 import {HomeComponent} from "../home/home.component";
 import {UserListComponent} from '../user/user-list/user-list.component';
+import {RolePermissionComponent} from "../role/role-permission/role-permission.component";
 
 const routes: Routes = [
   {
@@ -54,6 +55,10 @@ const routes: Routes = [
   {
     path: 'status-bug',
     component: BugStatusComponent
+  },
+  {
+    path: 'roles',
+    component: RolePermissionComponent
   }
 ];
 
