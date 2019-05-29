@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {UserListComponent} from './user-list/user-list.component';
 import {JumperDirective} from './directives/jumper.directive';
-import {ButtonDisableDirective} from './directives/button-disable.directive';
+// import {ButtonDisableDirective} from './directives/button-disable.directive';
 import {HttpClientModule} from '@angular/common/http';
 import {BackendService} from '../assets/backend.service';
 import {
@@ -28,14 +28,14 @@ import {RouterModule} from "@angular/router";
   declarations: [
     UserListComponent,
     JumperDirective,
-    ButtonDisableDirective,
+    // ButtonDisableDirective,
     AddUserComponent,
     EditUserComponent
   ],
   exports: [
     UserListComponent,
     JumperDirective,
-    ButtonDisableDirective,
+    // ButtonDisableDirective,
     AddUserComponent
   ],
   imports: [
