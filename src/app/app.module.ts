@@ -12,6 +12,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule, MatTableModule, MatToolbarModule} from '@angular/material';
 import {PagesModule} from '../pages/pages.module';
+import {RoleModule} from "../role/role.module";
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import {PagesModule} from '../pages/pages.module';
     MatTableModule,
     MatToolbarModule,
     PagesModule,
-    MatIconModule
+    MatIconModule,
+    RoleModule
   ],
   entryComponents: [
     PopUpMessageComponent

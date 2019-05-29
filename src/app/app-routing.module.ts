@@ -8,7 +8,8 @@ import {AddUserComponent} from '../user/add-user/add-user.component';
 import {HomeComponent} from '../pages/home/home.component';
 import {UserListComponent} from '../user/user-list/user-list.component';
 import {MainComponent} from '../pages/main/main.component';
-import {EditUserComponent} from "../user/edit-user/edit-user.component";
+import {EditUserComponent} from '../user/edit-user/edit-user.component';
+import {RolePermissionComponent} from "../role/role-permission/role-permission.component";
 
 const routes: Routes = [
   {
@@ -76,7 +77,22 @@ const routes: Routes = [
             component: BugEditComponent
           }
         ]
-      }
+      },
+      {
+        path: 'roles',
+        children: [
+          {
+            path: '',
+            redirectTo: 'role-list',
+            pathMatch: 'full'
+          },
+          {
+            path: 'role-list',
+            component: RolePermissionComponent
+          }
+
+        ]
+      },
     ]
   }
 ];
