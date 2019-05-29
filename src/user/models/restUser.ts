@@ -5,7 +5,7 @@ export interface RestUser {
   email: string;
   mobileNumber: string;
   password: string;
-  roles: Role[];
+  roles: string[];
 }
 
 export enum Role {
