@@ -8,6 +8,7 @@ import {AddUserComponent} from '../user/add-user/add-user.component';
 import {HomeComponent} from '../pages/home/home.component';
 import {UserListComponent} from '../user/user-list/user-list.component';
 import {MainComponent} from '../pages/main/main.component';
+import {EditUserComponent} from "../user/edit-user/edit-user.component";
 
 const routes: Routes = [
   {
@@ -45,12 +46,12 @@ const routes: Routes = [
             component: UserListComponent
           },
           {
-            path: 'user-create',
+            path: 'user-add',
             component: AddUserComponent
           },
           {
             path: 'user-edit',
-            component: AddUserComponent
+            component: EditUserComponent
           }
         ]
       },
