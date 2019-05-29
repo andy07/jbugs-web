@@ -9,7 +9,15 @@
 
     <ng-container matColumnDef="permission">
       <th mat-header-cell *matHeaderCellDef> Permission</th>
-      <td mat-cell *matCellDef="let element"> {{element.permissions}}</td>
+      <td mat-cell *matCellDef="let element"
+      >
+<!--        {{element.permissions.type}}-->
+
+      <span *ngFor="let perm of element.permissions">{{
+        perm.type
+        }} &nbsp;</span>
+
+      </td>
     </ng-container>
 
 
@@ -23,16 +31,13 @@
         <mat-menu #menu="matMenu">
           <button mat-menu-item [routerLink]="['../role-edit/', element.type]">
             <mat-icon>edit</mat-icon>
-            <span>Edit</span>
+            <span>Add Permissions</span>
           </button>
-          <button mat-menu-item [routerLink]="['/']">
-            <mat-icon>deleteForever</mat-icon>
-            <span>Delete</span>
+          <button mat-menu-item [routerLink]="['../role-edit/', element.type]">
+            <mat-icon>edit</mat-icon>
+            <span>Delete Permissions</span>
           </button>
-          <button mat-menu-item [routerLink]="['/']">
-            <mat-icon>details</mat-icon>
-            <span>View details</span>
-          </button>
+
         </mat-menu>
       </td>
     </ng-container>

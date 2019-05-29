@@ -2,11 +2,11 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Router} from "@angular/router";
 import {RoleService} from "../service/role.service";
 import {RestBug} from "../../bug/models/restBug";
-import {restPermission} from "../models/permission.model";
+import {restPermission} from "../models/restPermission";
 import {Observable} from "rxjs";
 import {BugStatus} from "../../bug/models/bugStatus.model";
 import {BugService} from "../../bug/service/bug.service";
-import {EnumRoles, RestRole, Roles} from "../models/role.model";
+import {EnumRoles, RestRole, RoleConverter, Roles} from "../models/restRole";
 
 @Component({
   selector: 'app-role-permission',
@@ -20,10 +20,8 @@ export class RolePermissionComponent implements OnInit {
   displayedColumns: string[] = ['type', 'permission','star'];
 
 
-
   @Output()
   public outputFromBackend = new EventEmitter<RestRole>();
-
 
 
   constructor(private roleService : RoleService){
@@ -33,11 +31,14 @@ export class RolePermissionComponent implements OnInit {
   ngOnInit(): void {
 
     this.roleService.getAllRoles().subscribe((roleList) => {
+      roleList.forEach(s => {
+        s.type = RoleConverter.backEndToFrontEnd(s.type);
+      });
       this.roleList = roleList;
     });
-
-    console.log((<EnumRoles>Roles['ADM']).display);
-    console.log((<EnumRoles>Roles['ADM']).variable);
-
+    // console.log((<EnumRoles>Roles['ADM']).display);
+    // console.log((<EnumRoles>Roles['ADM']).variable);
   }
+
+
 }
