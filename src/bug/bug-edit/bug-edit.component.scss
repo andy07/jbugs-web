@@ -8,3 +8,11 @@ form {
   flex-direction: column;
   width: 450px;
 }
+
+td {
+  min-width: 500px !important;
+  display: inline;
+  margin-left: 20px;
+}
+
+

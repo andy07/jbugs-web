@@ -8,7 +8,6 @@
                #title="ngModel"
                id="title"
                name="title"
-               required
                placeholder="Title">
         <mat-error *ngIf="title.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
@@ -18,7 +17,6 @@
                #version="ngModel"
                id="version"
                name="version"
-               required
                placeholder="Version">
       </mat-form-field>
       <mat-form-field>
@@ -27,7 +25,6 @@
                #revision="ngModel"
                id="revision"
                name="revision"
-               required
                placeholder="Revision">
       </mat-form-field>
       <mat-form-field>
@@ -36,7 +33,6 @@
                #severity="ngModel"
                id="severity"
                name="severity"
-               required
                placeholder="Severity">
       </mat-form-field>
       <mat-form-field>
@@ -45,18 +41,18 @@
                #createdBy="ngModel"
                id="assigned_to"
                name="assigned_to"
-               required
                placeholder="Assigned To">
       </mat-form-field>
-      <h4>Status</h4>
+      <!--<h4>Status</h4>
       <mat-form-field>
-        <mat-label>Bug Status</mat-label>   <!--place holder-ul-->
-        <mat-select>
+        <mat-label>Bug Status</mat-label>-->   <!--place holder-ul-->
+      <!--  <mat-select>
           <mat-option *ngFor="let status of bugStatus" [value]="status">
             {{status}}
           </mat-option>
         </mat-select>
-      </mat-form-field>
+      </mat-form-field> -->
+      <app-bug-status [currentStatus]="bug.status"></app-bug-status>
 
       <mat-form-field>
       <textarea matInput

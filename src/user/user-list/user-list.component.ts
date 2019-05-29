@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {RestUser} from '../models/restUser';
 import {UserService} from '../service/user.service';
 import {Router} from '@angular/router';
+import {NgModel} from "@angular/forms";
 
 
 @Component({
@@ -40,4 +41,6 @@ export class UserListComponent implements OnInit {
   edit() {
     //this.router.navigate(['/edit-user']);
   }
+
+
 }

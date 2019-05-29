@@ -1,15 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import {RestUser} from "../models/restUser";
-import {UserService} from "../service/user.service";
 import {NgModel} from "@angular/forms";
 
 @Component({
-  selector: 'app-add-user',
-  templateUrl: './add-user.component.html',
-  styleUrls: ['./add-user.component.scss']
+  selector: 'app-edit-user',
+  templateUrl: './edit-user.component.html',
+  styleUrls: ['./edit-user.component.scss']
 })
-export class AddUserComponent implements OnInit {
+export class EditUserComponent implements OnInit {
 
   rolesList = ['Administrator', 'Project manager', 'Test manager', 'Developer', 'Tester'];
 
@@ -19,28 +17,22 @@ export class AddUserComponent implements OnInit {
     email:'',
     mobileNumber:'',
     password:'',
-  roles:[]
+    roles:[]
   };
 
-  /*{firstName: '', lastName: '', email: '', mobileNumber: '', roles:null};*/
-
-
-
-  constructor(private userService: UserService, private router: Router) { }
+  constructor() { }
 
   ngOnInit() {
-
-
   }
 
   public onSubmit() {
     //this.userService.save(this.user).subscribe((user) => this.user = user);
   }
 
-
-  add() {
+  edit() {
 
   }
+
 
   selectAll(checkAll, select: NgModel, values) {
     //this.toCheck = !this.toCheck;
@@ -53,7 +45,7 @@ export class AddUserComponent implements OnInit {
   }
 
   selectAll2( select: NgModel, values) {
-      select.update.emit([]);
+    select.update.emit([]);
   }
 
   equals(objOne, objTwo) {
@@ -61,4 +53,6 @@ export class AddUserComponent implements OnInit {
       return objOne.id === objTwo.id;
     }
   }
+
+
 }
