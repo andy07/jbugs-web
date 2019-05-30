@@ -12,33 +12,35 @@ import {RoleService} from "../service/role.service";
   styleUrls: ['./add-permission-role.component.scss']
 })
 export class AddPermissionRoleComponent implements OnInit {
-
-  @Input()
-  private role: RestRole = {
-    type:'',
-    permissions: []
-  };
-  constructor(private roleService: RoleService,
-              private route: ActivatedRoute) {
+  ngOnInit(): void {
   }
-
-  ngOnInit() {
-    const type = this.route.snapshot.paramMap.get('type');
-    console.log('Type is ' + type);
-    this.roleService.getRoleByType(RoleConverter.frontEndToBackEnd(type)).subscribe((role) => {
-      this.role = role;
-      console.log(this.role);
-    });
-
-  }
-
-  public edit() {
-    console.log('Succes!');
-    this.roleService.update(this.role);
-  }
-
-  getErrorMessage() {
-    return 'You must enter a value';
-  }
+  //
+  // @Input()
+  // private role: RestRole = {
+  //   type:'',
+  //   permissions: []
+  // };
+  // constructor(private roleService: RoleService,
+  //             private route: ActivatedRoute) {
+  // }
+  //
+  // ngOnInit() {
+  //   const type = this.route.snapshot.paramMap.get('type');
+  //   console.log('Type is ' + type);
+  //   this.roleService.getRoleByType(RoleConverter.frontEndToBackEnd(type)).subscribe((role) => {
+  //     this.role = role;
+  //     console.log(this.role);
+  //   });
+  //
+  // }
+  //
+  // public edit() {
+  //   console.log('Succes!');
+  //   this.roleService.update(this.role);
+  // }
+  //
+  // getErrorMessage() {
+  //   return 'You must enter a value';
+  // }
 
 }

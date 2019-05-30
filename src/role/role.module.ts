@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RolePermissionComponent } from './role-permission/role-permission.component';
 import {
   MatButtonModule,
-  MatCardModule, MatFormFieldModule,
-  MatIconModule,
+  MatCardModule, MatExpansionModule, MatFormFieldModule,
+  MatIconModule, MatInputModule,
   MatMenuModule,
   MatOptionModule,
   MatTableModule
@@ -27,7 +27,10 @@ import {FormsModule} from "@angular/forms";
     MatButtonModule,
     MatCardModule,
     FormsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatExpansionModule,
+    MatInputModule,
+
   ]
 })
 export class RoleModule {

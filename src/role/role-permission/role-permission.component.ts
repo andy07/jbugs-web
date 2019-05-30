@@ -17,11 +17,13 @@ export class RolePermissionComponent implements OnInit {
 
 
   public roleList: RestRole[];
-  displayedColumns: string[] = ['type', 'permission','star'];
+  displayedColumns: string[] = ['type', 'permission'];
 
 
   @Output()
   public outputFromBackend = new EventEmitter<RestRole>();
+
+  panelOpenState = false;
 
 
   constructor(private roleService : RoleService){
