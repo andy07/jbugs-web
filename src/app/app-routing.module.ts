@@ -6,8 +6,10 @@ import {BugListComponent} from '../bug/bug-list/bug-list.component';
 import {BugStatusComponent} from '../bug/bug-status/bug-status.component';
 import {BugEditComponent} from '../bug/bug-edit/bug-edit.component';
 import {AddUserComponent} from '../user/add-user/add-user.component';
-import {HomeComponent} from "../home/home.component";
+import {HomeComponent} from '../home/home.component';
 import {UserListComponent} from '../user/user-list/user-list.component';
+import {BugViewDetailsComponent} from "../bug/bug-view-details/bug-view-details.component";
+
 
 const routes: Routes = [
   {
@@ -54,6 +56,10 @@ const routes: Routes = [
   {
     path: 'status-bug',
     component: BugStatusComponent
+  },
+  {
+    path: 'bug-view-details/:title',
+    component: BugViewDetailsComponent
   }
 ];
 

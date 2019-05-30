@@ -1,8 +1,9 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {RestBug} from '../models/restBug';
 import {BugService} from '../service/bug.service';
-import {Router} from '@angular/router';
-import {MatTableDataSource} from '@angular/material';
+import {ActivatedRoute, Router} from '@angular/router';
+import {MatDialog, MatTableDataSource} from '@angular/material';
+
 
 @Component({
   selector: 'app-bug-list',
@@ -19,10 +20,25 @@ export class BugListComponent implements OnInit {
     this.paginator = mp;
     this.setDataSourceAttributes();
   }*/
+  @Input()
+  private bug: RestBug = {
+    id: -1,
+    title: '',
+    description: '',
+    version: '',
+    targetDate: '',
+    status: '',
+    fixedVersion: '',
+    severity: '',
+    createdBy: '',
+    assignedTo: ''
+  };
   dataSource = new MatTableDataSource<RestBug>();
 
   constructor(private bugService: BugService,
-              private router: Router) {
+              private router: Router,
+              private route: ActivatedRoute,
+              private dialog: MatDialog) {
   }
 
   /*declaram o lista de bug-uri care sa provina din backend*/
@@ -45,21 +61,11 @@ export class BugListComponent implements OnInit {
       this.bugList = bugList;
       this.dataSource = new MatTableDataSource<RestBug>(this.bugList);
     });
-  }
-
-  /*this.dataSource.filterPredicate = (data: any, filtersJson: string) => {
-    const matchFilter = [];
-    const filters = JSON.parse(filtersJson);
-
-    filters.forEach(filter => {
-      // check for null values!
-      const val = data[filter.id] === null ? '' : data[filter.id];
-      matchFilter.push(val.toLowerCase().includes(filter.value.toLowerCase()));
+    const title = this.route.snapshot.paramMap.get('title');
+    console.log('title is ' + title);
+    this.bugService.getBugByTitle(title).subscribe((bug) => {
+      this.bug = bug;
     });
-
-    // Choose one
-    return matchFilter.every(Boolean); // AND condition
-    // return matchFilter.some(Boolean); // OR condition
-  };*/
+  }
 }
 

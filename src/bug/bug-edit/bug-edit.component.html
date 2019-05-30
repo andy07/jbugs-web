@@ -43,29 +43,10 @@
                name="assigned_to"
                placeholder="Assigned To">
       </mat-form-field>
-      <!--<h4>Status</h4>
-      <mat-form-field>
-        <mat-label>Bug Status</mat-label>-->   <!--place holder-ul-->
-      <!--  <mat-select>
-          <mat-option *ngFor="let status of bugStatus" [value]="status">
-            {{status}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field> -->
+
       <app-bug-status [currentStatus]="bug.status"></app-bug-status>
 
-      <mat-form-field>
-      <textarea matInput
-                [(ngModel)]="bug.description"
-                #title="ngModel"
-                id="description"
-                name="description"
-                cols="10"
-                rows="10"
-                placeholder="Description"></textarea>
-      </mat-form-field>
-
-      <button mat-raised-button class="save" color="primary" type="submit">Edit</button>
+      <button mat-raised-button class="save" color="primary" type="submit" (click)="redirectToBugList()">Edit</button>
     </form>
   </mat-card-content>
 </mat-card>

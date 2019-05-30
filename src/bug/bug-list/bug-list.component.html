@@ -53,11 +53,7 @@
           <mat-icon>edit</mat-icon>
           <span>Edit</span>
         </button>
-        <button mat-menu-item [routerLink]="['/']">
-          <mat-icon>deleteForever</mat-icon>
-          <span>Delete</span>
-        </button>
-        <button mat-menu-item [routerLink]="['/']">
+        <button mat-menu-item [routerLink]="['/bug-view-details/', element.title]">
           <mat-icon>details</mat-icon>
           <span>View details</span>
         </button>

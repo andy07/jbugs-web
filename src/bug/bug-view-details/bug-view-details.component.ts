@@ -1,15 +1,15 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {BugService} from '../service/bug.service';
 import {RestBug} from '../models/restBug';
-import {ActivatedRoute, Router} from '@angular/router';
-
 
 @Component({
-  selector: 'app-bug-edit',
-  templateUrl: './bug-edit.component.html',
-  styleUrls: ['./bug-edit.component.scss']
+  selector: 'app-bug-view-details',
+  templateUrl: './bug-view-details.component.html',
+  styleUrls: ['./bug-view-details.component.scss']
 })
-export class BugEditComponent implements OnInit {
+export class BugViewDetailsComponent implements OnInit {
+
   @Input()
   private bug: RestBug = {
     id: -1,
@@ -23,9 +23,14 @@ export class BugEditComponent implements OnInit {
     createdBy: '',
     assignedTo: ''
   };
+
   constructor(private bugService: BugService,
-              private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private route: ActivatedRoute) {
+  }
+
+  redirectToBugList() {
+    this.router.navigate(['/bug-list']);
   }
 
   ngOnInit() {
@@ -36,17 +41,5 @@ export class BugEditComponent implements OnInit {
     });
   }
 
-  public edit() {
-    console.log('You sucessfuly edited this bug!');
-    this.bugService.update(this.bug);
-  }
 
-  getErrorMessage() {
-    return 'You must enter a value';
-  }
-
-  redirectToBugList() {
-    this.router.navigate(['/bug-list']);
-  }
 }
-

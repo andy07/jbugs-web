@@ -8,8 +8,8 @@ import {FormsModule} from '@angular/forms';
 import {BugModule} from '../bug/bug.module';
 import {UserModule} from '../user/user.module';
 import {LoginComponent, PopUpMessageComponent} from '../login/login.component';
-import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {HomeComponent } from '../home/home.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HomeComponent} from '../home/home.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatSidenavModule, MatTableModule, MatToolbarModule} from '@angular/material';
 
@@ -35,7 +35,7 @@ import {MatSidenavModule, MatTableModule, MatToolbarModule} from '@angular/mater
     MatToolbarModule,
     MatSidenavModule,
   ],
-  entryComponents:[PopUpMessageComponent],
+  entryComponents: [PopUpMessageComponent],
   providers: [],
   bootstrap: [
     AppComponent
