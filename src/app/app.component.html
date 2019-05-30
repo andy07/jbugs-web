@@ -1,8 +1,12 @@
-<mat-toolbar>My App</mat-toolbar>
-<mat-drawer-container class="example-container">
-  <mat-drawer mode="side" opened>Drawer content</mat-drawer>
-  <mat-drawer-content>
-    <router-outlet></router-outlet>
-  </mat-drawer-content>
-</mat-drawer-container>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <mat-icon>bug_report</mat-icon>
+    <h1>Welcome to JBugs</h1>
+    <span flex></span>
+    <app-user [user]="user"></app-user>
+  </mat-toolbar-row>
+</mat-toolbar>
 
+<div class="content">
+  <router-outlet></router-outlet>
+</div>

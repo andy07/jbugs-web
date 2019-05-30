@@ -1,8 +1,8 @@
 import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
-import {UserService} from '../user/service/user.service';
-import {RestUser} from '../user/models/restUser';
+import {UserService} from '../../user/service/user.service';
+import {RestUser} from '../../user/models/restUser';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 
 
@@ -63,8 +63,6 @@ export class PopUpMessageComponent {
     this.dialogRef.close();
   }
 }
-
-
 
 
 

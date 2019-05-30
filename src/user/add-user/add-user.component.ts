@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {RestUser} from "../models/restUser";
+import {UserService} from "../service/user.service";
+import {NgModel} from "@angular/forms";
+import {RestRole, Role, RoleConverter} from "../../role/models/restRole";
+import {RoleService} from "../../role/service/role.service";
 
 @Component({
   selector: 'app-add-user',
@@ -9,8 +13,7 @@ import {RestUser} from "../models/restUser";
 })
 export class AddUserComponent implements OnInit {
 
-  rolesList: string[] = ['Administrator', 'Project manager', 'Test manager', 'Developer', 'Tester'];
-  roleString: string;
+  public roleList: RestRole[];
 
   public user: RestUser = {
     firstName:'',
@@ -18,25 +21,35 @@ export class AddUserComponent implements OnInit {
     email:'',
     mobileNumber:'',
     password:'',
-  roles:[]
+    roles:[]
   };
 
   /*{firstName: '', lastName: '', email: '', mobileNumber: '', roles:null};*/
 
 
-  constructor(private router: Router) { }
+
+  constructor(private roleService : RoleService, private userService: UserService, private router: Router) { }
 
   ngOnInit() {
+
+    this.roleService.getAllRoles().subscribe((roleList) => {
+      roleList.forEach(s => {
+        s.type = RoleConverter.backEndToFrontEnd(s.type);
+      });
+      this.roleList = roleList;
+    });
   }
 
-  log(x){
-    console.log("ngModel", x);
+  public onSubmit() {
+
+    //todo convert RoleList to string of type for user.roles
+
+    this.userService.save(this.user).subscribe((user) => this.user = user);
   }
 
-  submit(form){
-    console.log("ngForm", form);
-  }
+  add() {
 
+  }
 
 
 }

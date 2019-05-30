@@ -4,24 +4,28 @@
   <form #form="ngForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
       <input matInput
-             [(ngModel)]="user.firstname"
+             [(ngModel)]="user.firstName"
              id="firstName"
              #firstName="ngModel"
              name="firstName"
+             pattern="^[A-Z][a-z]+$"
              required
              placeholder="First Name">
       <mat-error *ngIf="firstName.touched && firstName.invalid">Required</mat-error>
+      <mat-error *ngIf="firstName.errors?.pattern">Incorrect First Name</mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <input matInput
-             [(ngModel)]="user.lastname"
+             [(ngModel)]="user.lastName"
              id="lastName"
              name="lastName"
+             pattern="^[A-Z][a-z]+$"
              required
              placeholder="Last Name"
              #lastName="ngModel">
       <mat-error *ngIf="lastName.touched && lastName.invalid">Required</mat-error>
+      <mat-error *ngIf="lastName.errors?.pattern">Incorrect Last Name</mat-error>
     </mat-form-field>
 
     <mat-form-field>
@@ -61,15 +65,25 @@
       <mat-error *ngIf="password.touched && password.invalid">Required</mat-error>
     </mat-form-field>
 
-    <h5>Users roles:</h5>
+    <mat-form-field >
+      <mat-label>Roles</mat-label>
+      <mat-select
+        id="roles"
+        name="roles"
+        required
+        [(ngModel)]="user.roles"
+        multiple>
+        <mat-option  *ngFor="let role of roleList" [value]="role">{{role.type}}</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-      <div>
-        <mat-checkbox class="checkbox" *ngFor="let role of rolesList" [value]="role">{{role}}</mat-checkbox>
-      </div>
+    <p>{{form.value | json}}</p>
 
-    <button (click)="add()" mat-raised-button color="primary">Save</button>
+    <button  mat-raised-button color="primary" type="submit" class="save">Save</button>
 
   </form>
     </mat-card-content>
 </mat-card>
+
+
 

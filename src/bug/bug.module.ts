@@ -17,9 +17,6 @@ import {BugStatusComponent} from './bug-status/bug-status.component';
 import {BugListComponent} from './bug-list/bug-list.component';
 import {BugEditComponent} from './bug-edit/bug-edit.component';
 import {RouterModule} from '@angular/router';
-import {DialogComponent} from './bug-list/dialog/dialog.component';
-import {DialogOverviewComponent} from './bug-list/dialog-overview/dialog-overview.component';
-import {BugViewDetailsComponent} from './bug-view-details/bug-view-details.component';
 
 
 @NgModule({
@@ -28,20 +25,13 @@ import {BugViewDetailsComponent} from './bug-view-details/bug-view-details.compo
     BugStatusComponent,
     BugListComponent,
     BugEditComponent,
-    DialogComponent,
-    DialogOverviewComponent,
-    BugViewDetailsComponent
-
   ],
   exports: [
     BugCreateComponent,
     BugListComponent,
     BugStatusComponent,
-    BugEditComponent,
-    BugViewDetailsComponent
-
+    BugEditComponent
   ],
-
   imports: [
     CommonModule,
     FormsModule,
