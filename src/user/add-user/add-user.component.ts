@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {RestUser} from "../models/restUser";
 import {UserService} from "../service/user.service";
 import {NgModel} from "@angular/forms";
-import {RestRole, Role} from "../../role/models/restRole";
+import {RestRole, Role, RoleConverter} from "../../role/models/restRole";
 import {RoleService} from "../../role/service/role.service";
 
 @Component({
@@ -34,7 +34,7 @@ export class AddUserComponent implements OnInit {
 
     this.roleService.getAllRoles().subscribe((roleList) => {
       roleList.forEach(s => {
-        s.type = Role[s.type];
+        s.type = RoleConverter.backEndToFrontEnd(s.type);
       });
       this.roleList = roleList;
     });

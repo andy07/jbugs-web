@@ -6,7 +6,7 @@ import {restPermission} from "../models/restPermission";
 import {Observable} from "rxjs";
 import {BugStatus} from "../../bug/models/bugStatus.model";
 import {BugService} from "../../bug/service/bug.service";
-import {RestRole, Role} from "../models/restRole";
+import {EnumRoles, RestRole, RoleConverter, Roles} from "../models/restRole";
 
 @Component({
   selector: 'app-role-permission',
@@ -18,7 +18,6 @@ export class RolePermissionComponent implements OnInit {
 
   public roleList: RestRole[];
   displayedColumns: string[] = ['type', 'permission','star'];
-   // string = 'ADM';
 
 
   @Output()
@@ -33,16 +32,12 @@ export class RolePermissionComponent implements OnInit {
 
     this.roleService.getAllRoles().subscribe((roleList) => {
       roleList.forEach(s => {
-        s.type = Role[s.type];
-        console.log("sdfghjk   "+s.type);
-        s.type = Role[s.type];
-
-        console.log("sdfghjk   "+s.type);
-
+        s.type = RoleConverter.backEndToFrontEnd(s.type);
       });
       this.roleList = roleList;
     });
-
+    // console.log((<EnumRoles>Roles['ADM']).display);
+    // console.log((<EnumRoles>Roles['ADM']).variable);
   }
 
 
