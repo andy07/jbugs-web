@@ -2,9 +2,9 @@ import {Component, Input, OnInit} from '@angular/core';
 import {RestBug} from "../../bug/models/restBug";
 import {BugService} from "../../bug/service/bug.service";
 import {ActivatedRoute} from "@angular/router";
-import {RestRole, RoleConverter} from "../models/restRole";
 import {restPermission} from "../models/restPermission";
 import {RoleService} from "../service/role.service";
+import {RestRole, Role} from "../models/restRole";
 
 @Component({
   selector: 'app-add-permission-role',
@@ -25,7 +25,7 @@ export class AddPermissionRoleComponent implements OnInit {
   ngOnInit() {
     const type = this.route.snapshot.paramMap.get('type');
     console.log('Type is ' + type);
-    this.roleService.getRoleByType(RoleConverter.frontEndToBackEnd(type)).subscribe((role) => {
+    this.roleService.getRoleByType(Role[type]).subscribe((role) => {
       this.role = role;
       console.log(this.role);
     });
