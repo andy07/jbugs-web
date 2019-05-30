@@ -1,22 +1,28 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RolePermissionComponent } from './role-permission/role-permission.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {RolePermissionComponent} from './role-permission/role-permission.component';
 import {
   MatButtonModule,
-  MatCardModule, MatFormFieldModule,
+  MatCardModule,
+  MatFormFieldModule,
   MatIconModule,
   MatMenuModule,
   MatOptionModule,
   MatTableModule
-} from "@angular/material";
-import {RouterModule} from "@angular/router";
-import { DeletePermissionRoleComponent } from './delete-permission-role/delete-permission-role.component';
-import { AddPermissionRoleComponent } from './add-permission-role/add-permission-role.component';
-import {FormsModule} from "@angular/forms";
+} from '@angular/material';
+import {RouterModule} from '@angular/router';
+import {DeletePermissionRoleComponent} from './delete-permission-role/delete-permission-role.component';
+import {AddPermissionRoleComponent} from './add-permission-role/add-permission-role.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
-  declarations: [RolePermissionComponent, DeletePermissionRoleComponent, AddPermissionRoleComponent],
-  exports:[RolePermissionComponent],
+  declarations: [
+    RolePermissionComponent,
+    DeletePermissionRoleComponent,
+    AddPermissionRoleComponent],
+  exports: [
+    RolePermissionComponent
+  ],
   imports: [
     CommonModule,
     MatTableModule,
