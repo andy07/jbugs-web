@@ -16,5 +16,9 @@ export class AppComponent {
     roles: [],
     firstName: 'Silviu',
     lastName: 'Cucuiet',
+    email: '',
+    mobileNumber: '',
+    password: '',
+    roles:[]
   };
 }

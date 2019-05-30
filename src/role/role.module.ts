@@ -15,6 +15,7 @@ import {DeletePermissionRoleComponent} from './delete-permission-role/delete-per
 import {AddPermissionRoleComponent} from './add-permission-role/add-permission-role.component';
 import {FormsModule} from '@angular/forms';
 
+
 @NgModule({
   declarations: [
     RolePermissionComponent,
