@@ -43,15 +43,25 @@
                name="assigned_to"
                placeholder="Assigned To">
       </mat-form-field>
+      <mat-form-field>
+        <mat-label>Status</mat-label>
+        <mat-select [(ngModel)]="bug.status"
+                    name="status"
+                    id="status"
+                    #status="ngModel"
+                    required>
+          <mat-option *ngIf="bug" [value]="bug.status" selected>{{bug.status}}</mat-option>
+          <mat-option *ngFor="let status of bugStatusList" [value]="status">{{status}}</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-      <app-bug-status [currentStatus]="bug.status"></app-bug-status>
 
-      <button mat-raised-button class="save" color="primary" type="submit" (click)="redirectToBugList()">Edit</button>
+      <button mat-raised-button class="save" color="primary" type="submit">Edit</button>
     </form>
   </mat-card-content>
+  <p>
+    {{form.value|json}}
+  </p>
 </mat-card>
 
-<p>
-  {{form.value|json}}
-</p>
 

@@ -12,7 +12,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule, MatTableModule, MatToolbarModule} from '@angular/material';
 import {PagesModule} from '../pages/pages.module';
-import {RoleModule} from "../role/role.module";
+import {RoleModule} from '../role/role.module';
 
 
 @NgModule({

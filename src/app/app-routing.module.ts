@@ -9,9 +9,10 @@ import {HomeComponent} from '../pages/home/home.component';
 import {UserListComponent} from '../user/user-list/user-list.component';
 import {MainComponent} from '../pages/main/main.component';
 import {EditUserComponent} from '../user/edit-user/edit-user.component';
-import {RolePermissionComponent} from "../role/role-permission/role-permission.component";
-import {AddPermissionRoleComponent} from "../role/add-permission-role/add-permission-role.component";
-import {DeletePermissionRoleComponent} from "../role/delete-permission-role/delete-permission-role.component";
+import {RolePermissionComponent} from '../role/role-permission/role-permission.component';
+import {AddPermissionRoleComponent} from '../role/add-permission-role/add-permission-role.component';
+import {DeletePermissionRoleComponent} from '../role/delete-permission-role/delete-permission-role.component';
+import {BugViewDetailsComponent} from '../bug/bug-view-details/bug-view-details.component';
 
 const routes: Routes = [
   {
@@ -77,6 +78,10 @@ const routes: Routes = [
           {
             path: 'bug-edit/:title',
             component: BugEditComponent
+          },
+          {
+            path: 'bug-view-details/:title',
+            component: BugViewDetailsComponent
           }
         ]
       },
