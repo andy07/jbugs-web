@@ -73,13 +73,13 @@
         required
         [(ngModel)]="user.roles"
         multiple>
-        <mat-option  *ngFor="let role of rolesList" [value]="role">{{role}}</mat-option>
+        <mat-option  *ngFor="let role of roleList" [value]="role">{{role.type}}</mat-option>
       </mat-select>
     </mat-form-field>
 
     <p>{{form.value | json}}</p>
 
-    <button (click)="add()" mat-raised-button color="primary">Save</button>
+    <button  mat-raised-button color="primary" type="submit" class="save">Save</button>
 
   </form>
     </mat-card-content>

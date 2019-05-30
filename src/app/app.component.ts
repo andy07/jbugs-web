@@ -15,7 +15,6 @@ export class AppComponent {
     password: '',
     roles: [],
     firstName: 'Silviu',
-    lastName: 'Cucuiet'
-
+    lastName: 'Cucuiet',
   };
 }
