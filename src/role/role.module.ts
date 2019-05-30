@@ -4,6 +4,7 @@ import { RolePermissionComponent } from './role-permission/role-permission.compo
 import {MatButtonModule, MatIconModule, MatMenuModule, MatOptionModule, MatTableModule} from "@angular/material";
 import {RouterModule} from "@angular/router";
 
+
 @NgModule({
   declarations: [RolePermissionComponent],
   exports:[RolePermissionComponent],

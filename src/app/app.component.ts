@@ -12,5 +12,9 @@ export class AppComponent {
   user: RestUser = {
     firstName: 'Silviu',
     lastName: 'Cucuiet',
+    email: '',
+    mobileNumber: '',
+    password: '',
+    roles:[]
   };
 }
