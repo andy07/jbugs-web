@@ -37,7 +37,9 @@ export class BugEditComponent implements OnInit {
 
   public edit() {
     console.log('You sucessfuly edited this bug!');
-    this.bugService.update(this.bug);
+    this.bugService.update(this.bug).subscribe(data => {
+      console.log(data);
+    });
   }
 
   getErrorMessage() {

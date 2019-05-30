@@ -3,6 +3,9 @@ import {Router} from '@angular/router';
 import {RestUser} from "../models/restUser";
 import {UserService} from "../service/user.service";
 import {NgModel} from "@angular/forms";
+import {RestRole, RoleConverter} from "../../role/models/restRole";
+import {RoleService} from "../../role/service/role.service";
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-add-user',
@@ -11,7 +14,8 @@ import {NgModel} from "@angular/forms";
 })
 export class AddUserComponent implements OnInit {
 
-  rolesList = ['Administrator', 'Project manager', 'Test manager', 'Developer', 'Tester'];
+  public roleList: RestRole[];
+
 
   public user: RestUser = {
     firstName:'',
@@ -19,46 +23,46 @@ export class AddUserComponent implements OnInit {
     email:'',
     mobileNumber:'',
     password:'',
-  roles:[]
+    roles:[]
   };
 
   /*{firstName: '', lastName: '', email: '', mobileNumber: '', roles:null};*/
 
 
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private roleService : RoleService, private userService: UserService, private router: Router) { }
 
   ngOnInit() {
 
-
+    this.roleService.getAllRoles().subscribe((roleList) => {
+      roleList.forEach(s => {
+        s.type = RoleConverter.backEndToFrontEnd(s.type);
+      });
+      this.roleList = roleList;
+    });
   }
 
   public onSubmit() {
-    //this.userService.save(this.user).subscribe((user) => this.user = user);
-  }
 
 
-  add() {
+    console.log(this.user.roles);
 
-  }
-
-  selectAll(checkAll, select: NgModel, values) {
-    //this.toCheck = !this.toCheck;
-    if(checkAll){
-      select.update.emit(values);
+    for(let i=0;i<this.user.roles.length;i++){
+        this.user.roles[i]=RoleConverter.frontEndToBackEnd(this.user.roles[i]);
     }
-    else{
-      select.update.emit([]);
-    }
+    console.log(this.user.roles);
+
+     this.userService.save(this.user).subscribe((user) => this.user = user);
+
   }
 
-  selectAll2( select: NgModel, values) {
-      select.update.emit([]);
+  reload(){
+    this.user.firstName='';
   }
 
-  equals(objOne, objTwo) {
-    if (typeof objOne !== 'undefined' && typeof objTwo !== 'undefined') {
-      return objOne.id === objTwo.id;
-    }
-  }
+
+
+
+
+
 }

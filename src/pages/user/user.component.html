@@ -1,3 +1,15 @@
-<p>
-  user works!
-</p>
+<button mat-button [matMenuTriggerFor]="userMenu">{{user.firstName}}</button>
+<mat-menu #userMenu="matMenu" xPosition="before">
+  <button mat-menu-item>
+    <mat-icon>info</mat-icon>
+    Info
+  </button>
+  <button mat-menu-item>
+    <mat-icon>notification</mat-icon>
+    Notifications
+  </button>
+  <mat-divider></mat-divider>
+  <button mat-menu-item>
+
+  </button>
+</mat-menu>

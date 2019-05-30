@@ -2,20 +2,24 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {UserListComponent} from './user-list/user-list.component';
 import {JumperDirective} from './directives/jumper.directive';
-import {ButtonDisableDirective} from './directives/button-disable.directive';
+// import {ButtonDisableDirective} from './directives/button-disable.directive';
 import {HttpClientModule} from '@angular/common/http';
 import {BackendService} from '../assets/backend.service';
 import {
   MatButtonModule,
-  MatCardModule, MatCheckboxModule,
-  MatInputModule, MatListModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
   MatRadioModule,
   MatSelectModule,
   MatTableModule
 } from '@angular/material';
 import {AddUserComponent} from './add-user/add-user.component';
 import {FormsModule} from '@angular/forms';
-import { EditUserComponent } from './edit-user/edit-user.component';
+import {EditUserComponent} from './edit-user/edit-user.component';
+import {RouterModule} from "@angular/router";
 
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations' ;
 
@@ -24,14 +28,14 @@ import { EditUserComponent } from './edit-user/edit-user.component';
   declarations: [
     UserListComponent,
     JumperDirective,
-    ButtonDisableDirective,
+    // ButtonDisableDirective,
     AddUserComponent,
     EditUserComponent
   ],
   exports: [
     UserListComponent,
     JumperDirective,
-    ButtonDisableDirective,
+    // ButtonDisableDirective,
     AddUserComponent
   ],
   imports: [
@@ -47,7 +51,9 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     MatButtonModule,
     MatRadioModule,
     MatCheckboxModule,
-    MatListModule
+    MatListModule,
+    RouterModule,
+    MatIconModule
   ],
   providers: [
     BackendService

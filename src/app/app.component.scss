@@ -5,3 +5,12 @@
   z-index: 1000;
   height: 8vh;
 }
+
+.content {
+  top: 8vh;
+  height: calc(100% - 8vh);
+}
+
+span {
+  flex: 1 1 auto;
+}
