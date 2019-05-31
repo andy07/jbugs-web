@@ -3,10 +3,11 @@ import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
 import {UserService} from '../../user/service/user.service';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
-import {infoTokenDecoded, Token} from "./token";
+import {infoTokenDecoded} from './token';
 
 
-export var infoToken:infoTokenDecoded;
+export var infoToken: infoTokenDecoded;
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -30,7 +31,7 @@ export class LoginComponent implements OnInit {
 
     this.userService.loginUser(this.username, this.password).subscribe(
       (token) => {
-        localStorage.setItem('token',token.token);
+        localStorage.setItem('token', token.token);
         this.initializeInfoToken(token.token);
       },
       (error) => {
@@ -42,10 +43,10 @@ export class LoginComponent implements OnInit {
 
   }
 
-  private initializeInfoToken( tokenEncoded: string) {
-    let x = tokenEncoded.split(".");
-    //decodific din baza 64 (atob)
-    infoToken=JSON.parse(atob(x[1]));
+  private initializeInfoToken(tokenEncoded: string) {
+    const x = tokenEncoded.split('.');
+    // decodific din baza 64 (atob)
+    infoToken = JSON.parse(atob(x[1]));
     console.log(infoToken);
   }
 }

@@ -9,7 +9,7 @@ import {RestBug} from "../models/restBug";
 })
 export class BugCreateComponent implements OnInit {
 
-  private bug:RestBug = new class implements RestBug {
+  private bug: RestBug = new class implements RestBug {
     assignedTo: string;
     createdBy: string;
     description: string;

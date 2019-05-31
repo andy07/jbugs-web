@@ -19,7 +19,10 @@ export class BugListComponent implements OnInit {
     this.setDataSourceAttributes();
   }*/
 
-  @ViewChild(MatSort) sortForDataSource: MatSort;
+  @ViewChild(MatSort)
+  set sort(value: MatSort) {
+    this.dataSource.sort = value;
+  }
 
   @ViewChild(MatPaginator)
   set paginator(value: MatPaginator) {
@@ -49,10 +52,7 @@ export class BugListComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sortForDataSource;
-  }
+
   ngOnInit() {
     this.bugService.getAllBugs().subscribe((bugList) => {
       this.bugList = bugList;
