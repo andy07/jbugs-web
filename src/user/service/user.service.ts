@@ -9,7 +9,8 @@ import {Token} from "../../pages/login/token";
 })
 export class UserService {
 
-  constructor(private backendService: BackendService) { }
+  constructor(private backendService: BackendService) {
+  }
 
   public getAllUsers(): Observable<RestUser[]> {
     return this.backendService.get('/api/users');
@@ -23,11 +24,10 @@ export class UserService {
     return this.backendService.post('/api/users/login', {username, password});
   }
 
-  public loggedIn():boolean{
-    if(localStorage.getItem('token') === null){
+  public loggedIn(): boolean {
+    if (localStorage.getItem('token') === null) {
       return false;
-    }
-    else
+    } else
       return true;
   }
 
