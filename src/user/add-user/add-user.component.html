@@ -11,8 +11,8 @@
              pattern="^[A-Z][a-z]+$"
              required
              placeholder="First Name">
-      <mat-error *ngIf="firstName.touched && firstName.invalid">Required</mat-error>
-      <mat-error *ngIf="firstName.errors?.pattern">Incorrect First Name</mat-error>
+      <mat-error *ngIf="firstName?.touched && firstName?.invalid">Required</mat-error>
+      <mat-error *ngIf="firstName?.errors?.pattern">Incorrect First Name</mat-error>
     </mat-form-field>
 
     <mat-form-field>
@@ -24,8 +24,8 @@
              required
              placeholder="Last Name"
              #lastName="ngModel">
-      <mat-error *ngIf="lastName.touched && lastName.invalid">Required</mat-error>
-      <mat-error *ngIf="lastName.errors?.pattern">Incorrect Last Name</mat-error>
+      <mat-error *ngIf="lastName?.touched && lastName?.invalid">Required</mat-error>
+      <mat-error *ngIf="lastName?.errors?.pattern">Incorrect Last Name</mat-error>
     </mat-form-field>
 
     <mat-form-field>
@@ -73,13 +73,13 @@
         required
         [(ngModel)]="user.roles"
         multiple>
-        <mat-option  *ngFor="let role of roleList" [value]="role">{{role.type}}</mat-option>
+        <mat-option  *ngFor="let role of roleList" [value]="role.type">{{role.type}}</mat-option>
       </mat-select>
     </mat-form-field>
 
     <p>{{form.value | json}}</p>
 
-    <button  mat-raised-button color="primary" type="submit" class="save">Save</button>
+    <button  mat-raised-button color="primary" type="submit" class="save" [disabled]="!form.valid">Save</button>
 
   </form>
     </mat-card-content>
