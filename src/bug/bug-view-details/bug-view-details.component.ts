@@ -16,7 +16,7 @@ export class BugViewDetailsComponent implements OnInit {
     title: '',
     description: '',
     version: '',
-    targetDate: '',
+    targetDate: new Date(),
     status: '',
     fixedVersion: '',
     severity: '',

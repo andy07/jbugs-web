@@ -6,6 +6,8 @@ import {NgModel} from "@angular/forms";
 import {RestRole, RoleConverter} from "../../role/models/restRole";
 import {RoleService} from "../../role/service/role.service";
 import { Observable } from 'rxjs';
+import {PopUpMessageComponent} from "../../pages/login/login.component";
+import {MatDialog} from "@angular/material";
 
 @Component({
   selector: 'app-add-user',
@@ -30,7 +32,7 @@ export class AddUserComponent implements OnInit {
 
 
 
-  constructor(private roleService : RoleService, private userService: UserService, private router: Router) { }
+  constructor(private roleService : RoleService, private userService: UserService, private router: Router, public dialog: MatDialog) { }
 
   ngOnInit() {
 
@@ -52,13 +54,25 @@ export class AddUserComponent implements OnInit {
     }
     console.log(this.user.roles);
 
-     this.userService.save(this.user).subscribe((user) => this.user = user);
+     this.userService.save(this.user).subscribe(
+       (user) => {this.user = user
+         this.redirectToUserList()},
+    (error) => {
+         console.log(error);
+         this.dialog.open(PopUpMessageComponent, {width: '500px', height: '100px', data: {data: error.error.message}});},
+       ()=>{
+         this.redirectToUserList();
+       }
+
+     );
 
   }
 
-  reload(){
-    this.user.firstName='';
+  private redirectToUserList() {
+    this.router.navigate(['/user-list']);
   }
+
+
 
 
 
