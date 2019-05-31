@@ -11,17 +11,17 @@ import {RestBug} from '../models/restBug';
 export class BugViewDetailsComponent implements OnInit {
 
   @Input()
-  private bug: RestBug = new class implements RestBug {
-    assignedTo: string;
-    createdBy: string;
-    description: string;
-    fixedVersion: string;
-    id: number;
-    severity: string;
-    status: string;
-    targetDate: Date;
-    title: string;
-    version: string;
+  private bug: RestBug = {
+    id: -1,
+    title: '',
+    description: '',
+    version: '',
+    targetDate: new Date(),
+    status: '',
+    fixedVersion: '',
+    severity: '',
+    createdBy: '',
+    assignedTo: ''
   };
 
   constructor(private bugService: BugService,

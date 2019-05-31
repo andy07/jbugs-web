@@ -12,6 +12,7 @@ import {
   MatNativeDateModule,
   MatPaginatorModule,
   MatSelectModule,
+  MatSortModule,
   MatTableModule
 } from '@angular/material';
 import {BugStatusComponent} from './bug-status/bug-status.component';
@@ -57,7 +58,8 @@ import {BugViewDetailsComponent} from './bug-view-details/bug-view-details.compo
     RouterModule,
     MatIconModule,
     MatMenuModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSortModule
   ]
 })
 export class BugModule {
