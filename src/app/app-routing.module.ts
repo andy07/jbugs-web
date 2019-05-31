@@ -13,6 +13,7 @@ import {RolePermissionComponent} from '../role/role-permission/role-permission.c
 import {AddPermissionRoleComponent} from '../role/add-permission-role/add-permission-role.component';
 import {DeletePermissionRoleComponent} from '../role/delete-permission-role/delete-permission-role.component';
 import {BugViewDetailsComponent} from '../bug/bug-view-details/bug-view-details.component';
+import {AuthGuard} from '../interceptors/auth.guard';
 
 const routes: Routes = [
   {
@@ -27,6 +28,7 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -35,10 +37,12 @@ const routes: Routes = [
       },
       {
         path: 'main',
+        canActivate:[AuthGuard],
         component: MainComponent
       },
       {
         path: 'users',
+        canActivate: [AuthGuard],
         children: [
           {
             path: '',
@@ -61,6 +65,7 @@ const routes: Routes = [
       },
       {
         path: 'bugs',
+        canActivate: [AuthGuard],
         children: [
           {
             path: '',
@@ -87,6 +92,7 @@ const routes: Routes = [
       },
       {
         path: 'roles',
+        canActivate: [AuthGuard],
         children: [
           {
             path: '',
@@ -109,7 +115,8 @@ const routes: Routes = [
         ]
       },
     ]
-  }
+  },
+  { path: '**', redirectTo: '/login' }
 ];
 
 @NgModule({

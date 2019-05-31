@@ -10,7 +10,8 @@ import {
   MatIconModule,
   MatListModule,
   MatMenuModule,
-  MatSidenavModule
+  MatSidenavModule,
+  MatTableModule
 } from '@angular/material';
 import {MainComponent} from './main/main.component';
 import {MenuComponent} from './menu/menu.component';
@@ -39,7 +40,8 @@ import {UserComponent} from './user/user.component';
     MatButtonModule,
     MatListModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTableModule
   ]
 })
 export class PagesModule { }

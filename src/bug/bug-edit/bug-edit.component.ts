@@ -11,20 +11,19 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class BugEditComponent implements OnInit {
   @Input()
-  private bug: RestBug = {
-    id: -1,
-    title: '',
-    description: '',
-    version: '',
-    targetDate: '',
-    status: '',
-    fixedVersion: '',
-    severity: '',
-    createdBy: '',
-    assignedTo: ''
-  };
+  private bug: RestBug = new class implements RestBug {
+    assignedTo: string;
+    createdBy: string;
+    description: string;
+    fixedVersion: string;
+    id: number;
+    severity: string;
+    status: string;
+    targetDate: Date;
+    title: string;
+    version: string;
+  }
   public bugStatusList: string[];
-
   constructor(private bugService: BugService,
               private route: ActivatedRoute,
               private router: Router) {
@@ -32,6 +31,7 @@ export class BugEditComponent implements OnInit {
 
   ngOnInit() {
     const title = this.route.snapshot.paramMap.get('title');
+    console.log('title is ' + title);
     this.bugService.getBugByTitle(title).subscribe((bug) => {
       this.bug = bug;
       this.bugService.getPostAllAllowedStatus(this.bug.status).subscribe((bugStatusList) => {
@@ -53,6 +53,5 @@ export class BugEditComponent implements OnInit {
   redirectToBugList() {
     this.router.navigate(['home/bugs/bug-list']);
   }
-
 }
 

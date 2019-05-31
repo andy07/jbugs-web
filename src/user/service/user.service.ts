@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
 import {BackendService} from '../../assets/backend.service';
 import {Observable} from 'rxjs';
-import {RestBug} from "../../bug/models/restBug";
-
 import {RestUser} from '../models/restUser';
+import {Token} from "../../pages/login/token";
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +19,16 @@ export class UserService {
     return this.backendService.post('/api/users', user);
   }
 
-  public loginUser(username: string, password: string): Observable<RestUser> {
+  public loginUser(username: string, password: string): Observable<Token> {
     return this.backendService.post('/api/users/login', {username, password});
   }
+
+  public loggedIn():boolean{
+    if(localStorage.getItem('token') === null){
+      return false;
+    }
+    else
+      return true;
+  }
+
 }

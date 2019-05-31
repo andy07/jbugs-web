@@ -10,11 +10,11 @@ export class AppComponent {
   title = 'Andrei';
 
   user: RestUser = {
-    firstName: 'Silviu',
-    lastName: 'Cucuiet',
     email: '',
     mobileNumber: '',
     password: '',
-    roles: []
+    roles: [],
+    firstName: 'Silviu',
+    lastName: 'Cucuiet',
   };
 }
