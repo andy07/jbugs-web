@@ -1,9 +1,55 @@
+<!--<div class="basic-container">-->
+
+
+<!--  <mat-accordion>-->
+<!--    <mat-expansion-panel *ngFor="let panel of roleList">-->
+<!--      <mat-expansion-panel-header  [collapsedHeight]="panel.permissions.length*80 +'px' " [expandedHeight]="panel.permissions.length*80+'px'">-->
+<!--        <mat-panel-title>{{panel.type}}</mat-panel-title>-->
+<!--        <mat-panel-description>-->
+<!--&lt;!&ndash;              <p *ngFor="let perm of panel.permissions">{{&ndash;&gt;-->
+<!--&lt;!&ndash;                perm.type&ndash;&gt;-->
+<!--&lt;!&ndash;                }} &nbsp;</p>&ndash;&gt;-->
+
+<!--          <mat-list>-->
+
+<!--            <mat-list-item *ngFor="let folder of panel.permissions">-->
+<!--              <mat-icon mat-list-icon>whatshot</mat-icon>-->
+<!--              <h3 mat-line>{{folder.type}}</h3>-->
+<!--              <p mat-line> {{folder.description }} </p>-->
+<!--            </mat-list-item>-->
+
+<!--          </mat-list>-->
+
+<!--&lt;!&ndash;          <mat-grid-list cols="2" rowHeight="2:1">&ndash;&gt;-->
+<!--&lt;!&ndash;            <mat-grid-tile>1sxdfcghj</mat-grid-tile>&ndash;&gt;-->
+<!--&lt;!&ndash;            <mat-grid-tile>2drftgyuhio</mat-grid-tile>&ndash;&gt;-->
+<!--&lt;!&ndash;            <mat-grid-tile>3</mat-grid-tile>&ndash;&gt;-->
+<!--&lt;!&ndash;            <mat-grid-tile>4</mat-grid-tile>&ndash;&gt;-->
+<!--&lt;!&ndash;          </mat-grid-list>&ndash;&gt;-->
+
+
+
+<!--        </mat-panel-description>-->
+
+<!--      </mat-expansion-panel-header>-->
+<!--      {{panel.permissions}}-->
+<!--    </mat-expansion-panel>-->
+
+<!--  </mat-accordion>-->
+<!--</div>-->
+
+
+
+
+
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="roleList" class="mat-elevation-z8">
 
     <ng-container matColumnDef="type">
       <th mat-header-cell *matHeaderCellDef> Type</th>
-      <td mat-cell *matCellDef="let element"> {{element.type}}</td>
+      <td mat-cell *matCellDef="let element">
+        {{element.type}}
+      </td>
     </ng-container>
 
 
@@ -11,34 +57,68 @@
       <th mat-header-cell *matHeaderCellDef> Permission</th>
       <td mat-cell *matCellDef="let element"
       >
-<!--        {{element.permissions.type}}-->
+<!--&lt;!&ndash;        {{element.permissions.type}}&ndash;&gt;-->
 
-      <span *ngFor="let perm of element.permissions">{{
-        perm.type
-        }} &nbsp;</span>
+<!--      <span *ngFor="let perm of element.permissions">{{-->
+<!--        perm.type-->
+<!--        }} &nbsp;</span>-->
+
+
+        <mat-form-field class="example-chip-list">
+          <mat-chip-list #chipList aria-label="Fruit selection">
+            <mat-chip
+              *ngFor="let fruit of element.permissions"
+              [selectable]="selectable"
+              [removable]="removable"
+              (removed)="remove(fruit,element)">
+              {{fruit.type}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+            <input
+              placeholder=""
+              #fruitInput
+              [formControl]="fruitCtrl"
+              [matAutocomplete]="auto"
+              [matChipInputFor]="chipList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              [matChipInputAddOnBlur]="addOnBlur">
+          </mat-chip-list>
+          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event.option.value)">
+            <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+              {{fruit}}
+            </mat-option>
+          </mat-autocomplete>
+
+
+
+
+        </mat-form-field>
+
+
+
 
       </td>
     </ng-container>
 
 
-    <!-- Star Column -->
+<!--    &lt;!&ndash; Star Column &ndash;&gt;-->
     <ng-container matColumnDef="star" stickyEnd>
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element">
-        <button mat-icon-button [matMenuTriggerFor]="menu">
-          <mat-icon>more_vert</mat-icon>
-        </button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item [routerLink]="['../add-permission-role/', element.type]">
-            <mat-icon>edit</mat-icon>
-            <span>Add Permissions</span>
-          </button>
-          <button mat-menu-item [routerLink]="['../delete-permission-role/', element.type]">
-            <mat-icon>edit</mat-icon>
-            <span>Delete Permissions</span>
-          </button>
+<!--        <button mat-icon-button [matMenuTriggerFor]="menu">-->
+<!--          <mat-icon>more_vert</mat-icon>-->
+<!--        </button>-->
+<!--        <mat-menu #menu="matMenu">-->
+<!--          <button mat-menu-item [routerLink]="['../add-permission-role/', element.type]">-->
+<!--            <mat-icon>edit</mat-icon>-->
+<!--            <span>Add Permissions</span>-->
+<!--          </button>-->
+<!--          <button mat-menu-item [routerLink]="['../delete-permission-role/', element.type]">-->
+<!--            <mat-icon>edit</mat-icon>-->
+<!--            <span>Delete Permissions</span>-->
+<!--          </button>-->
 
-        </mat-menu>
+<!--        </mat-menu>-->
       </td>
     </ng-container>
 
