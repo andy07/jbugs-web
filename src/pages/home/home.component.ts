@@ -6,7 +6,9 @@ import {Router} from "@angular/router";
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
+
 export class HomeComponent implements OnInit {
+token:any;
 
 
   constructor(private router:Router) { }
@@ -14,8 +16,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  logoutUser() {
-    this.router.navigate(['/login']);
-
-  }
 }
+
+

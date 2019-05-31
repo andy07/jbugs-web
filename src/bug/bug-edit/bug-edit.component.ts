@@ -11,18 +11,18 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class BugEditComponent implements OnInit {
   @Input()
-  private bug: RestBug = {
-    id: -1,
-    title: '',
-    description: '',
-    version: '',
-    targetDate: '',
-    status: '',
-    fixedVersion: '',
-    severity: '',
-    createdBy: '',
-    assignedTo: ''
-  };
+  private bug: RestBug = new class implements RestBug {
+    assignedTo: string;
+    createdBy: string;
+    description: string;
+    fixedVersion: string;
+    id: number;
+    severity: string;
+    status: string;
+    targetDate: Date;
+    title: string;
+    version: string;
+  }
   constructor(private bugService: BugService,
               private route: ActivatedRoute,
               private router: Router) {
@@ -38,7 +38,9 @@ export class BugEditComponent implements OnInit {
 
   public edit() {
     console.log('You sucessfuly edited this bug!');
-    this.bugService.update(this.bug);
+    this.bugService.update(this.bug).subscribe(data => {
+      console.log(data);
+    });
   }
 
   getErrorMessage() {
