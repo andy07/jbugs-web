@@ -1,14 +1,13 @@
-.mat-drawer-content {
+.mat-drawer-container {
   top: 64px;
   position: relative;
   height: calc(100% - 64px);
+  background: green;
 }
 
 .mat-drawer {
-  top: 64px;
   width: 15%;
+  top: 64px;
   position: fixed;
+  background: blue;
 }
-
-
-
