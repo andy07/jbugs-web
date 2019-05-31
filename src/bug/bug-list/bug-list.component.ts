@@ -1,7 +1,7 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {RestBug} from '../models/restBug';
 import {BugService} from '../service/bug.service';
-import {MatTableDataSource} from '@angular/material';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-bug-list',
@@ -18,6 +18,13 @@ export class BugListComponent implements OnInit {
     this.paginator = mp;
     this.setDataSourceAttributes();
   }*/
+
+  @ViewChild(MatSort) sortForDataSource: MatSort;
+
+  @ViewChild(MatPaginator)
+  set paginator(value: MatPaginator) {
+    this.dataSource.paginator = value;
+  }
   dataSource = new MatTableDataSource<RestBug>();
 
   constructor(private bugService: BugService) {
@@ -42,7 +49,10 @@ export class BugListComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sortForDataSource;
+  }
   ngOnInit() {
     this.bugService.getAllBugs().subscribe((bugList) => {
       this.bugList = bugList;
@@ -52,20 +62,5 @@ export class BugListComponent implements OnInit {
       this.dataSource = new MatTableDataSource<RestBug>(this.bugList);
     });
   }
-
-  /*this.dataSource.filterPredicate = (data: any, filtersJson: string) => {
-    const matchFilter = [];
-    const filters = JSON.parse(filtersJson);
-
-    filters.forEach(filter => {
-      // check for null values!
-      const val = data[filter.id] === null ? '' : data[filter.id];
-      matchFilter.push(val.toLowerCase().includes(filter.value.toLowerCase()));
-    });
-
-    // Choose one
-    return matchFilter.every(Boolean); // AND condition
-    // return matchFilter.some(Boolean); // OR condition
-  };*/
 }
 

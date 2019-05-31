@@ -10,6 +10,7 @@ import {
   MatInputModule,
   MatMenuModule,
   MatNativeDateModule,
+  MatPaginatorModule,
   MatSelectModule,
   MatTableModule
 } from '@angular/material';
@@ -55,7 +56,8 @@ import {BugViewDetailsComponent} from './bug-view-details/bug-view-details.compo
     MatButtonModule,
     RouterModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatPaginatorModule
   ]
 })
 export class BugModule {
