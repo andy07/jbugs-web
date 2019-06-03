@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {infoToken} from "../login/login.component";
 
 @Component({
   selector: 'app-menu',
@@ -10,7 +9,6 @@ export class MenuComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
   }
 
 }

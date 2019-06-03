@@ -8,8 +8,9 @@
              id="firstName"
              #firstName="ngModel"
              name="firstName"
-             pattern="^[A-Z][a-z]+$"
+             pattern="^[A-Z][a-z ]+([A-Z][a-z]+)?$"
              required
+             maxlength="20"
              placeholder="First Name">
       <mat-error *ngIf="firstName?.touched && firstName?.invalid">Required</mat-error>
       <mat-error *ngIf="firstName?.errors?.pattern">Incorrect First Name</mat-error>
@@ -22,6 +23,7 @@
              name="lastName"
              pattern="^[A-Z][a-z]+$"
              required
+             maxlength="20"
              placeholder="Last Name"
              #lastName="ngModel">
       <mat-error *ngIf="lastName?.touched && lastName?.invalid">Required</mat-error>
@@ -47,6 +49,7 @@
              required
              id="email"
              name="email"
+             maxlength="20"
              pattern="^[a-z0-9._%+-]+@msggroup.com"
              placeholder="Email"
              #email="ngModel">
@@ -73,7 +76,7 @@
         required
         [(ngModel)]="user.roles"
         multiple>
-        <mat-option  *ngFor="let role of roleList" [value]="role.type">{{role.type}}</mat-option>
+        <mat-option  *ngFor="let role of roleList" [value]="role.type">{{getEnumName(role.type)}}</mat-option>
       </mat-select>
     </mat-form-field>
 

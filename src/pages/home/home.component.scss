@@ -2,12 +2,13 @@
   top: 64px;
   position: relative;
   height: calc(100% - 64px);
-  background: green;
+  background: #eeeeee;
+  width: 100%;
 }
 
 .mat-drawer {
   width: 15%;
   top: 64px;
   position: fixed;
-  background: blue;
+  background: #7a2cff;
 }
