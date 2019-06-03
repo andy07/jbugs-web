@@ -22,7 +22,6 @@ export class RolePermissionComponent implements OnInit {
   displayedColumns: string[] = ['type', 'permission'];
   public roleList: RestRole[];
   public permissionList: RestPermission[];
-  allValues = Role;
 
   @Output()
   public outputFromBackend = new EventEmitter<RestRole>();
