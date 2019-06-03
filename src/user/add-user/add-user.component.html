@@ -1,7 +1,7 @@
 <mat-card>
   <h4>Create a new user</h4>
   <mat-card-content>
-  <form #form="ngForm" (ngSubmit)="onSubmit()">
+  <form #form="ngForm" >
     <mat-form-field>
       <input matInput
              [(ngModel)]="user.firstName"
@@ -79,7 +79,7 @@
 
     <p>{{form.value | json}}</p>
 
-    <button  mat-raised-button color="primary" type="submit" class="save" [disabled]="!form.valid">Save</button>
+    <button (click)="onSubmit()"  mat-raised-button color="primary" type="submit" class="save" [disabled]="!form.valid">Save</button>
 
   </form>
     </mat-card-content>

@@ -10,6 +10,8 @@ import {UserListComponent} from '../user/user-list/user-list.component';
 import {MainComponent} from '../pages/main/main.component';
 import {EditUserComponent} from '../user/edit-user/edit-user.component';
 import {RolePermissionComponent} from "../role/role-permission/role-permission.component";
+import {BugViewDetailsComponent} from '../bug/bug-view-details/bug-view-details.component';
+import {AuthGuard} from '../interceptors/auth.guard';
 
 const routes: Routes = [
   {
@@ -24,6 +26,7 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -32,10 +35,12 @@ const routes: Routes = [
       },
       {
         path: 'main',
+        canActivate:[AuthGuard],
         component: MainComponent
       },
       {
         path: 'users',
+        canActivate: [AuthGuard],
         children: [
           {
             path: '',
@@ -58,6 +63,7 @@ const routes: Routes = [
       },
       {
         path: 'bugs',
+        canActivate: [AuthGuard],
         children: [
           {
             path: '',
@@ -75,11 +81,16 @@ const routes: Routes = [
           {
             path: 'bug-edit/:title',
             component: BugEditComponent
+          },
+          {
+            path: 'bug-view-details/:title',
+            component: BugViewDetailsComponent
           }
         ]
       },
       {
         path: 'roles',
+        canActivate: [AuthGuard],
         children: [
           {
             path: '',
@@ -94,7 +105,8 @@ const routes: Routes = [
         ]
       },
     ]
-  }
+  },
+  { path: '**', redirectTo: '/login' }
 ];
 
 @NgModule({

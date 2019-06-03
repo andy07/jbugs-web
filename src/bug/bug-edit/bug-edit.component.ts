@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {BugService} from '../service/bug.service';
 import {RestBug} from '../models/restBug';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {UserService} from "../../user/service/user.service";
 
 
 @Component({
@@ -23,8 +24,19 @@ export class BugEditComponent implements OnInit {
     createdBy: '',
     assignedTo: ''
   };
+  severity: string[] = [
+    'CRITICAL',
+    'HIGH',
+    'MEDIUM',
+    'LOW'
+  ];
+  public assignedTo: string[];
+  public bugStatusList: string[];
+
   constructor(private bugService: BugService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private router: Router,
+              private userService: UserService) {
   }
 
   ngOnInit() {
@@ -32,17 +44,24 @@ export class BugEditComponent implements OnInit {
     console.log('title is ' + title);
     this.bugService.getBugByTitle(title).subscribe((bug) => {
       this.bug = bug;
+      this.bugService.getPostAllAllowedStatus(this.bug.status).subscribe((bugStatusList) => {
+        this.bugStatusList = bugStatusList;
+      });
     });
   }
 
   public edit() {
-    console.log('You sucessfuly edited this bug!');
     this.bugService.update(this.bug).subscribe(data => {
-      console.log(data);
+      this.redirectToBugList();
     });
   }
 
   getErrorMessage() {
     return 'You must enter a value';
   }
+
+  redirectToBugList() {
+    this.router.navigate(['home/bugs/bug-list']);
+  }
 }
+

@@ -10,13 +10,16 @@ import {
   MatInputModule,
   MatMenuModule,
   MatNativeDateModule,
+  MatPaginatorModule,
   MatSelectModule,
+  MatSortModule,
   MatTableModule
 } from '@angular/material';
 import {BugStatusComponent} from './bug-status/bug-status.component';
 import {BugListComponent} from './bug-list/bug-list.component';
 import {BugEditComponent} from './bug-edit/bug-edit.component';
 import {RouterModule} from '@angular/router';
+import {BugViewDetailsComponent} from './bug-view-details/bug-view-details.component';
 
 
 @NgModule({
@@ -25,12 +28,14 @@ import {RouterModule} from '@angular/router';
     BugStatusComponent,
     BugListComponent,
     BugEditComponent,
+    BugViewDetailsComponent
   ],
   exports: [
     BugCreateComponent,
     BugListComponent,
     BugStatusComponent,
-    BugEditComponent
+    BugEditComponent,
+    BugViewDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -52,7 +57,9 @@ import {RouterModule} from '@angular/router';
     MatButtonModule,
     RouterModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatPaginatorModule,
+    MatSortModule
   ]
 })
 export class BugModule {

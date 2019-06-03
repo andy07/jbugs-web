@@ -2,9 +2,11 @@ import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
 import {UserService} from '../../user/service/user.service';
-import {RestUser} from '../../user/models/restUser';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
+import {infoTokenDecoded} from './token';
 
+
+export var infoToken: infoTokenDecoded;
 
 @Component({
   selector: 'app-login',
@@ -12,10 +14,8 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  public username: string;
-  public password: string;
-  private user: RestUser;
-  private errorMessage: string;
+  private username: string;
+  private password: string;
   @ViewChild('frm') public userFrm: NgForm;
 
 
@@ -26,24 +26,28 @@ export class LoginComponent implements OnInit {
   }
 
 
-  loginUser(formElement: NgForm) {
-    console.log(this.username);
-    console.log(this.password);
+  loginUser() {
+
+
     this.userService.loginUser(this.username, this.password).subscribe(
-      (restUser) => {
-        console.log(restUser);
+      (token) => {
+        localStorage.setItem('token', token.token);
+        this.initializeInfoToken(token.token);
       },
       (error) => {
-        this.errorMessage = error.error.message;
-        this.dialog.open(PopUpMessageComponent, {width: '500px', height: '100px', data: {data: this.errorMessage}});
-        console.log(error.error.message);
+        this.dialog.open(PopUpMessageComponent, {width: '500px', height: '100px', data: {data: error.error.message}});
       },
 
       () => this.router.navigate(['/home'])
     );
-    console.log(this.user);
 
+  }
 
+  private initializeInfoToken(tokenEncoded: string) {
+    const x = tokenEncoded.split('.');
+    // decodific din baza 64 (atob)
+    infoToken = JSON.parse(atob(x[1]));
+    console.log(infoToken);
   }
 }
 
@@ -56,13 +60,14 @@ export class PopUpMessageComponent {
 
   constructor(public dialogRef: MatDialogRef<LoginComponent>, @Inject(MAT_DIALOG_DATA) data: string) {
     this.data = data;
-    console.log(data);
   }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 }
+
+
 
 
 
