@@ -17,6 +17,7 @@ export class UserService {
   }
 
   public save(user: RestUser): Observable<RestUser> {
+    console.log(user);
     return this.backendService.post('/api/users', user);
   }
 
