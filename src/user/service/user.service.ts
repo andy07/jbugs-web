@@ -3,6 +3,7 @@ import {BackendService} from '../../assets/backend.service';
 import {Observable} from 'rxjs';
 import {RestUser} from '../models/restUser';
 import {Token} from "../../pages/login/token";
+import {RestBug} from "../../bug/models/restBug";
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,14 @@ export class UserService {
 
   public loginUser(username: string, password: string): Observable<Token> {
     return this.backendService.post('/api/users/login', {username, password});
+  }
+
+  public update(user: RestUser): Observable<RestBug> {
+    return this.backendService.put(`/api/users/${user.username}`, user);
+  }
+
+  public getUserByUsername(username: string): Observable<RestUser> {
+    return this.backendService.get(`/api/users/${username}`);
   }
 
   public loggedIn(): boolean {

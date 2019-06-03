@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {RestUser} from "../models/restUser";
 import {NgModel} from "@angular/forms";
+import {EnumRole, RestRole} from "../../role/models/restRole";
+import {RoleService} from "../../role/service/role.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {UserService} from "../service/user.service";
 
 @Component({
   selector: 'app-edit-user',
@@ -9,9 +13,10 @@ import {NgModel} from "@angular/forms";
 })
 export class EditUserComponent implements OnInit {
 
-  rolesList = ['Administrator', 'Project manager', 'Test manager', 'Developer', 'Tester'];
+  public roleList: RestRole[];
 
   public user: RestUser = {
+    username:'',
     firstName:'',
     lastName:'',
     email:'',
@@ -20,9 +25,18 @@ export class EditUserComponent implements OnInit {
     roles:[]
   };
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private userService: UserService,
+              private roleService : RoleService, private router: Router) { }
 
   ngOnInit() {
+    const username = this.route.snapshot.paramMap.get('username');
+    this.userService.getUserByUsername(username).subscribe((user) => {
+      this.user = user;
+    });
+
+    this.roleService.getAllRoles().subscribe((roleList) => {
+      this.roleList = roleList;
+    });
   }
 
   public onSubmit() {
@@ -32,26 +46,12 @@ export class EditUserComponent implements OnInit {
   edit() {
 
   }
-
-
-  selectAll(checkAll, select: NgModel, values) {
-    //this.toCheck = !this.toCheck;
-    if(checkAll){
-      select.update.emit(values);
-    }
-    else{
-      select.update.emit([]);
-    }
+  private redirectToUserList() {
+    this.router.navigate(['home/users/user-list']);
   }
 
-  selectAll2( select: NgModel, values) {
-    select.update.emit([]);
-  }
-
-  equals(objOne, objTwo) {
-    if (typeof objOne !== 'undefined' && typeof objTwo !== 'undefined') {
-      return objOne.id === objTwo.id;
-    }
+  getEnumName(type: string): string {
+    return EnumRole[type];
   }
 
 

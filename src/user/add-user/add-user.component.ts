@@ -20,6 +20,7 @@ export class AddUserComponent implements OnInit {
 
 
   public user: RestUser = {
+    username:'',
     firstName:'',
     lastName:'',
     email:'',
