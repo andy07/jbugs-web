@@ -1,11 +1,10 @@
-<!--<mat-form-field>
+<mat-form-field>
   <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-</mat-form-field> -->
+</mat-form-field>
 
-<!--
 <mat-card *ngIf="dataSource?.filteredData.length <= 0" style="margin-bottom: 5px">
   <div><span>ZERO RESULT</span></div>
-</mat-card> -->
+</mat-card>
 
 <div class="mat-elevation-z8">
   <table mat-table *ngIf='true' [dataSource]="dataSource" matSort (matSortChange)="sortData()">
