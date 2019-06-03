@@ -8,7 +8,6 @@ import {Router} from '@angular/router';
 })
 
 export class HomeComponent implements OnInit {
-  token: any;
 
   constructor(private router: Router) {
   }
