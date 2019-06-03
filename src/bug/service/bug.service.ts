@@ -28,7 +28,7 @@ export class BugService {
     return this.backendService.get(`/api/bugs/${title}`);
   }
   public getPostAllAllowedStatus(bugStatus: string): Observable<BugStatus[]> {
-    return this.backendService.post('/api/bugs/status', bugStatus);
+    return this.backendService.get(`/api/bugs/status/${bugStatus}`);
   }
 
 }
