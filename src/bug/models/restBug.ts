@@ -10,3 +10,8 @@ export interface RestBug {
   createdBy: string;
   assignedTo: string;
 }
+
+export interface Attachment {
+  id: number;
+  file: string;
+}
