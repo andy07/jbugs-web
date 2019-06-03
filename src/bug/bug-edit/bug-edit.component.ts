@@ -29,7 +29,6 @@ export class BugEditComponent implements OnInit {
     'MEDIUM',
     'LOW'
   ];
-  public assignedTo: string[];
   public bugStatusList: string[];
 
   constructor(private bugService: BugService,
