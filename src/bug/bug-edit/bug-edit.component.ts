@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {BugService} from '../service/bug.service';
 import {RestBug} from '../models/restBug';
 import {ActivatedRoute, Router} from '@angular/router';
-import {UserService} from "../../user/service/user.service";
 
 
 @Component({
@@ -35,8 +34,7 @@ export class BugEditComponent implements OnInit {
 
   constructor(private bugService: BugService,
               private route: ActivatedRoute,
-              private router: Router,
-              private userService: UserService) {
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -51,6 +49,7 @@ export class BugEditComponent implements OnInit {
   }
 
   public edit() {
+    console.log('You sucessfuly edited this bug!');
     this.bugService.update(this.bug).subscribe(data => {
       this.redirectToBugList();
     });

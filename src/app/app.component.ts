@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {RestUser} from '../user/models/restUser';
 
 @Component({
   selector: 'app-root',
@@ -7,14 +6,4 @@ import {RestUser} from '../user/models/restUser';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Andrei';
-
-  user: RestUser = {
-    email: '',
-    mobileNumber: '',
-    password: '',
-    roles: [],
-    firstName: 'Silviu',
-    lastName: 'Cucuiet',
-  };
 }

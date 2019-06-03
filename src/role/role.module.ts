@@ -4,23 +4,22 @@ import {RolePermissionComponent} from './role-permission/role-permission.compone
 import {
   MatButtonModule,
   MatCardModule,
+  MatExpansionModule,
   MatFormFieldModule,
   MatIconModule,
+  MatInputModule,
   MatMenuModule,
   MatOptionModule,
+  MatSelectModule,
   MatTableModule
 } from '@angular/material';
 import {RouterModule} from '@angular/router';
-import {DeletePermissionRoleComponent} from './delete-permission-role/delete-permission-role.component';
-import {AddPermissionRoleComponent} from './add-permission-role/add-permission-role.component';
-import {FormsModule} from '@angular/forms';
-
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
-    RolePermissionComponent,
-    DeletePermissionRoleComponent,
-    AddPermissionRoleComponent],
+    RolePermissionComponent
+  ],
   exports: [
     RolePermissionComponent
   ],
@@ -34,7 +33,11 @@ import {FormsModule} from '@angular/forms';
     MatButtonModule,
     MatCardModule,
     FormsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatExpansionModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    MatInputModule
   ]
 })
 export class RoleModule {

@@ -6,8 +6,7 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 import {infoTokenDecoded} from './token';
 
 
-export var infoToken: infoTokenDecoded;
-
+export let infoToken: infoTokenDecoded;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,10 +15,13 @@ export var infoToken: infoTokenDecoded;
 export class LoginComponent implements OnInit {
   private username: string;
   private password: string;
-  @ViewChild('frm') public userFrm: NgForm;
 
+  @ViewChild('frm')
+  public userFrm: NgForm;
 
-  constructor(private userService: UserService, private router: Router, public dialog: MatDialog) {
+  constructor(private userService: UserService,
+              private router: Router,
+              public dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -27,8 +29,6 @@ export class LoginComponent implements OnInit {
 
 
   loginUser() {
-
-
     this.userService.loginUser(this.username, this.password).subscribe(
       (token) => {
         localStorage.setItem('token', token.token);
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
 
   }
 
-  private initializeInfoToken(tokenEncoded: string) {
+  private initializeInfoToken( tokenEncoded: string) {
     const x = tokenEncoded.split('.');
     // decodific din baza 64 (atob)
     infoToken = JSON.parse(atob(x[1]));

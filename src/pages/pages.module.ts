@@ -10,7 +10,9 @@ import {
   MatIconModule,
   MatListModule,
   MatMenuModule,
+  MatPaginatorModule,
   MatSidenavModule,
+  MatSortModule,
   MatTableModule
 } from '@angular/material';
 import {MainComponent} from './main/main.component';
@@ -41,7 +43,9 @@ import {UserComponent} from './user/user.component';
     MatListModule,
     MatIconModule,
     MatMenuModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ]
 })
 export class PagesModule { }
