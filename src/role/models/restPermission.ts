@@ -1,4 +1,4 @@
-export interface restPermission {
+export interface RestPermission {
   type: string;
   description: string;
 }
