@@ -20,6 +20,7 @@ export class AddUserComponent implements OnInit {
 
 
   public user: RestUser = {
+    username:'',
     firstName:'',
     lastName:'',
     email:'',
@@ -63,13 +64,12 @@ export class AddUserComponent implements OnInit {
        ()=>{
          this.redirectToUserList();
        }
-
      );
 
   }
 
   private redirectToUserList() {
-    this.router.navigate(['/user-list']);
+    this.router.navigate(['home/users/user-list']);
   }
 
   getEnumName(type: string): string {

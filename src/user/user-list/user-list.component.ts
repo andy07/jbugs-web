@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {RestUser} from '../models/restUser';
 import {UserService} from '../service/user.service';
 import {Router} from '@angular/router';
+import {infoToken} from "../../pages/login/login.component";
 
 
 @Component({
@@ -11,12 +12,13 @@ import {Router} from '@angular/router';
 })
 export class UserListComponent implements OnInit {
   public userList: RestUser[];
-  displayedColumns: string[] = ['firstname', 'lastname', 'email', 'mobileNumber', 'status', 'username'];
+  displayedColumns: string[] = ['firstname', 'lastname', 'email', 'mobileNumber', 'status', 'username','star'];
 
   constructor(private userService: UserService, private router: Router) {
   }
 
   ngOnInit() {
+    console.log(infoToken);
     this.userService.getAllUsers().subscribe((userList) => {
       this.userList = userList;
     });
