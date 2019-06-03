@@ -1,3 +1,5 @@
+<div *ngIf="verifyUserPermission()">
+
 <table mat-table [dataSource]="displayedColumns" class="mat-elevation-z8">
 
   <ng-container matColumnDef="type">
@@ -61,4 +63,4 @@
   </mat-accordion>
 </div>
 
-
+</div>
