@@ -27,14 +27,14 @@
                name="revision"
                placeholder="Revision">
       </mat-form-field>
-      <!--<mat-form-field>
-         <input matInput
-                [(ngModel)]="bug.severity"
-                #severity="ngModel"
-                id="severity"
-                name="severity"
-                placeholder="Severity">
-       </mat-form-field> -->
+      <mat-form-field>
+        <input matInput
+               [(ngModel)]="bug.severity"
+               #severity="ngModel"
+               id="severity"
+               name="severity"
+               placeholder="Severity">
+      </mat-form-field>
       <mat-form-field>
         <input matInput
                [(ngModel)]="bug.assignedTo"
@@ -54,19 +54,9 @@
           <mat-option *ngFor="let status of bugStatusList" [value]="status">{{status}}</mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field>
-        <mat-label>Severity</mat-label>
-        <mat-select [(ngModel)]="bug.severity"
-                    name="severity"
-                    id="severity"
-                    #status="ngModel"
-                    required>
-          <mat-option *ngIf="bug" [value]="bug.severity" selected>{{bug.severity}}</mat-option>
-          <mat-option *ngFor="let severity of severity" [value]="severity">{{severity}}</mat-option>
-        </mat-select>
-      </mat-form-field>
 
-      <button mat-raised-button class="save" color="primary" type="submit">Edit</button>
+
+      <button mat-raised-button class="save" color="primary" type="submit" (click)="redirectToBugList()">Edit</button>
     </form>
   </mat-card-content>
   <p>

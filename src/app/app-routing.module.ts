@@ -9,14 +9,14 @@ import {HomeComponent} from '../pages/home/home.component';
 import {UserListComponent} from '../user/user-list/user-list.component';
 import {MainComponent} from '../pages/main/main.component';
 import {EditUserComponent} from '../user/edit-user/edit-user.component';
-import {RolePermissionComponent} from "../role/role-permission/role-permission.component";
+import {RolePermissionComponent} from '../role/role-permission/role-permission.component';
 import {BugViewDetailsComponent} from '../bug/bug-view-details/bug-view-details.component';
 import {AuthGuard} from '../interceptors/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {

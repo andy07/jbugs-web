@@ -9,10 +9,32 @@ import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
   styleUrls: ['./bug-list.component.scss']
 })
 export class BugListComponent implements OnInit {
+  /*@ViewChild(MatSort) set matSort(ms: MatSort) {
+    this.sort = ms;
+    this.setDataSourceAttributes();
+  }
+
+  @ViewChild(MatPaginator) set matPaginator(mp: MatPaginator) {
+    this.paginator = mp;
+    this.setDataSourceAttributes();
+  }*/
+
+  @ViewChild(MatSort)
+  set sort(value: MatSort) {
+    this.dataSource.sort = value;
+  }
+
+  @ViewChild(MatPaginator)
+  set paginator(value: MatPaginator) {
+    this.dataSource.paginator = value;
+  }
+
+  dataSource = new MatTableDataSource<RestBug>();
 
   constructor(private bugService: BugService) {
   }
 
+  public bugList: RestBug[];
   displayedColumns: string[] = [
     'Title',
     'Version',
@@ -22,38 +44,25 @@ export class BugListComponent implements OnInit {
     'AssignedTo',
     'star'
   ];
-  public bugList: RestBug[];
-  public dataSource = new MatTableDataSource<RestBug>();
 
 
   @Output()
   public outputFromBackend = new EventEmitter<RestBug>();
 
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
 
   ngOnInit() {
     this.bugService.getAllBugs().subscribe((bugList) => {
       this.bugList = bugList;
+      this.bugList.forEach(bug => {
+        console.log(bug);
+      });
       this.dataSource = new MatTableDataSource<RestBug>(this.bugList);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
     });
+    this.dataSource.paginator = this.paginator;
   }
-
-  /*this.dataSource.filterPredicate = (data: any, filtersJson: string) => {
-    const matchFilter = [];
-    const filters = JSON.parse(filtersJson);
-
-    filters.forEach(filter => {
-      // check for null values!
-      const val = data[filter.id] === null ? '' : data[filter.id];
-      matchFilter.push(val.toLowerCase().includes(filter.value.toLowerCase()));
-    });
-
-    // Choose one
-    return matchFilter.every(Boolean); // AND condition
-    // return matchFilter.some(Boolean); // OR condition
-  };*/
 }
 
