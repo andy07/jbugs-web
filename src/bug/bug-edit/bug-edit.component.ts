@@ -23,13 +23,6 @@ export class BugEditComponent implements OnInit {
     createdBy: '',
     assignedTo: ''
   };
-  severity: string[] = [
-    'CRITICAL',
-    'HIGH',
-    'MEDIUM',
-    'LOW'
-  ];
-  public assignedTo: string[];
   public bugStatusList: string[];
 
   constructor(private bugService: BugService,
@@ -39,7 +32,6 @@ export class BugEditComponent implements OnInit {
 
   ngOnInit() {
     const title = this.route.snapshot.paramMap.get('title');
-    console.log('title is ' + title);
     this.bugService.getBugByTitle(title).subscribe((bug) => {
       this.bug = bug;
       this.bugService.getPostAllAllowedStatus(this.bug.status).subscribe((bugStatusList) => {
@@ -49,7 +41,6 @@ export class BugEditComponent implements OnInit {
   }
 
   public edit() {
-    console.log('You sucessfuly edited this bug!');
     this.bugService.update(this.bug).subscribe(data => {
       this.redirectToBugList();
     });
@@ -62,5 +53,6 @@ export class BugEditComponent implements OnInit {
   redirectToBugList() {
     this.router.navigate(['home/bugs/bug-list']);
   }
+
 }
 

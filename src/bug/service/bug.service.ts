@@ -21,7 +21,7 @@ export class BugService {
   }
 
   public getAllBugs(): Observable<RestBug[]> {
-   return this.backendService.get('/api/bugs');
+    return this.backendService.get('/api/bugs');
   }
 
   public getBugByTitle(title: string): Observable<RestBug> {
