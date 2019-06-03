@@ -56,7 +56,7 @@ const routes: Routes = [
             component: AddUserComponent
           },
           {
-            path: 'user-edit',
+            path: 'user-edit/:username',
             component: EditUserComponent
           }
         ]

@@ -36,9 +36,9 @@
     <ng-container matColumnDef="star">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element">
-          <button [routerLink]="['../user-edit/', element.username]">
+          <button mat-button [routerLink]="['../user-edit/', element.username]">
             <mat-icon>edit</mat-icon>
-            <span>Edit</span>
+            <span></span>
           </button>
       </td>
     </ng-container>
