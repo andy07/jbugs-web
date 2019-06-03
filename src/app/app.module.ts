@@ -9,10 +9,10 @@ import {UserModule} from '../user/user.module';
 import {PopUpMessageComponent} from '../pages/login/login.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
-import {MatIconModule, MatTableModule, MatToolbarModule} from '@angular/material';
+import {MatIconModule, MatSortModule, MatTableModule, MatToolbarModule} from '@angular/material';
 import {PagesModule} from '../pages/pages.module';
 import {RoleModule} from '../role/role.module';
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {TokenInterceptorService} from '../interceptors/token-interceptor.service';
 import {AuthGuard} from '../interceptors/auth.guard';
 
@@ -35,7 +35,8 @@ import {AuthGuard} from '../interceptors/auth.guard';
     MatToolbarModule,
     PagesModule,
     MatIconModule,
-    RoleModule
+    RoleModule,
+    MatSortModule
   ],
   entryComponents: [
     PopUpMessageComponent

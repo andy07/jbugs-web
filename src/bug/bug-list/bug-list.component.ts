@@ -19,7 +19,7 @@ export class BugListComponent implements OnInit {
     this.setDataSourceAttributes();
   }*/
 
-  @ViewChild(MatSort)
+  /*@ViewChild(MatSort)
   set sort(value: MatSort) {
     this.dataSource.sort = value;
   }
@@ -27,21 +27,23 @@ export class BugListComponent implements OnInit {
   @ViewChild(MatPaginator)
   set paginator(value: MatPaginator) {
     this.dataSource.paginator = value;
-  }
+  }*/
+  // @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   dataSource = new MatTableDataSource<RestBug>();
 
   constructor(private bugService: BugService) {
   }
-
   public bugList: RestBug[];
   displayedColumns: string[] = [
-    'Title',
-    'Version',
-    'FixedVersion',
-    'Severity',
-    'Status',
-    'AssignedTo',
+    'title',
+    'version',
+    'fixedVersion',
+    'severity',
+    'status',
+    'assignedTo',
     'star'
   ];
 
@@ -53,16 +55,20 @@ export class BugListComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-
+  sortData() {
+    this.dataSource.sort = this.sort;
+  }
   ngOnInit() {
+
     this.bugService.getAllBugs().subscribe((bugList) => {
       this.bugList = bugList;
       this.bugList.forEach(bug => {
         console.log(bug);
       });
-      this.dataSource = new MatTableDataSource<RestBug>(this.bugList);
+      this.dataSource = new MatTableDataSource(this.bugList);
+      this.dataSource.paginator = this.paginator;
     });
-    this.dataSource.paginator = this.paginator;
+
   }
 }
 
