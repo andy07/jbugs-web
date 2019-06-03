@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 })
 export class UserListComponent implements OnInit {
   public userList: RestUser[];
-  displayedColumns: string[] = ['firstname', 'lastname', 'email', 'mobileNumber', 'status', 'username'];
+  displayedColumns: string[] = ['firstname', 'lastname', 'email', 'mobileNumber', 'status', 'username','star'];
 
   constructor(private userService: UserService, private router: Router) {
   }

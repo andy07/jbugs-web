@@ -63,13 +63,12 @@ export class AddUserComponent implements OnInit {
        ()=>{
          this.redirectToUserList();
        }
-
      );
 
   }
 
   private redirectToUserList() {
-    this.router.navigate(['/user-list']);
+    this.router.navigate(['home/users/user-list']);
   }
 
 
