@@ -23,7 +23,7 @@ export class BugListComponent implements OnInit {
     'star'
   ];
   public bugList: RestBug[];
-  dataSource = new MatTableDataSource<RestBug>();
+  public dataSource = new MatTableDataSource<RestBug>();
 
 
   @Output()
@@ -37,8 +37,6 @@ export class BugListComponent implements OnInit {
       this.bugList = bugList;
       this.dataSource = new MatTableDataSource<RestBug>(this.bugList);
       this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-      console.log(this.dataSource.sort);
     });
   }
 
