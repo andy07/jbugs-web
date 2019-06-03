@@ -21,14 +21,14 @@ export class BugService {
   }
 
   public getAllBugs(): Observable<RestBug[]> {
-   return this.backendService.get('/api/bugs');
+    return this.backendService.get('/api/bugs');
   }
 
   public getBugByTitle(title: string): Observable<RestBug> {
     return this.backendService.get(`/api/bugs/${title}`);
   }
   public getPostAllAllowedStatus(bugStatus: string): Observable<BugStatus[]> {
-    return this.backendService.get(`/api/bugs/status/${bugStatus}`);
+    return this.backendService.post('/api/bugs/status', bugStatus);
   }
 
 }
