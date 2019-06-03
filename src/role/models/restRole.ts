@@ -1,9 +1,9 @@
-import {restPermission} from "./restPermission";
+import {RestPermission} from "./restPermission";
 
 
 export interface RestRole {
   type: string;
-  permissions: restPermission[];
+  permissions: RestPermission[];
 }
 
 export enum Role {

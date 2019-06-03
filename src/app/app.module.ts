@@ -11,16 +11,15 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule, MatTableModule, MatToolbarModule} from '@angular/material';
 import {PagesModule} from '../pages/pages.module';
-import {RoleModule} from "../role/role.module";
+import {RoleModule} from '../role/role.module';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-import {TokenInterceptorService} from "../interceptors/token-interceptor.service";
-import {AuthGuard} from "../interceptors/auth.guard";
+import {TokenInterceptorService} from '../interceptors/token-interceptor.service';
+import {AuthGuard} from '../interceptors/auth.guard';
 
 @NgModule({
   declarations: [
     AppComponent,
     PopUpMessageComponent
-
   ],
 
   imports: [
@@ -45,7 +44,7 @@ import {AuthGuard} from "../interceptors/auth.guard";
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
-      multi:true
+      multi: true
     },
     AuthGuard
 
@@ -55,7 +54,4 @@ import {AuthGuard} from "../interceptors/auth.guard";
   ]
 })
 export class AppModule {
-
 }
-
-

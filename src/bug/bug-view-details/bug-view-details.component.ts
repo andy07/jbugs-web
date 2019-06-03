@@ -30,7 +30,7 @@ export class BugViewDetailsComponent implements OnInit {
   }
 
   redirectToBugList() {
-    this.router.navigate(['/bug-list']);
+    this.router.navigate(['home/bugs/bug-list']);
   }
 
   ngOnInit() {
