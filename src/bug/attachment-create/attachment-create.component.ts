@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Attachment} from '../models/restBug';
 
 @Component({
   selector: 'app-attachment-create',
@@ -6,6 +7,9 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./attachment-create.component.scss']
 })
 export class AttachmentCreateComponent implements OnInit {
+
+  @Input()
+  public attachments: Attachment[];
 
   constructor() {
   }
