@@ -8,6 +8,7 @@ import {Router} from '@angular/router';
 })
 export class UserComponent implements OnInit {
 
+  public username: string;
   constructor(private router: Router) {
   }
 
