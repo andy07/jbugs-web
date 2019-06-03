@@ -16,14 +16,16 @@
 </table>
 
 
-<div class="basic-container">
+<div class="basic-container" >
   <mat-accordion>
     <mat-expansion-panel *ngFor="let panel of roleList">
       <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'80px'">
-        <mat-panel-title>{{panel.type}}
+        <mat-panel-title>{{getEnumName(panel.type)}}
         </mat-panel-title>
         <mat-panel-description>
-              <span *ngFor="let perm of panel.permissions"> {{perm.type}} &nbsp;</span>
+
+          <span *ngFor="let perm of panel.permissions">{{perm.type}} &nbsp;</span>
+
         </mat-panel-description>
       </mat-expansion-panel-header>
 
