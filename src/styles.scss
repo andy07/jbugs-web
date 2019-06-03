@@ -18,3 +18,12 @@ button:focus {
   outline: none;
   border-color: transparent;
 }
+
+th.mat-header-cell {
+  text-align: left;
+  font-size: 2vh;
+}
+
+.mat-header-row {
+  background: red;
+}

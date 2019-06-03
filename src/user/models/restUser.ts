@@ -1,4 +1,3 @@
-import {RestRole, Role} from "../../role/models/restRole";
 
 export interface RestUser {
   firstName: string;
@@ -8,5 +7,8 @@ export interface RestUser {
   password: string;
   roles: string[];
 }
+
+
+
 
 
