@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {RestUser} from '../models/restUser';
 import {UserService} from '../service/user.service';
 import {Router} from '@angular/router';
+import {infoToken} from "../../pages/login/login.component";
 
 
 @Component({
@@ -17,6 +18,7 @@ export class UserListComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(infoToken);
     this.userService.getAllUsers().subscribe((userList) => {
       this.userList = userList;
     });
