@@ -40,7 +40,9 @@ export class EditUserComponent implements OnInit {
   }
 
   public onSubmit() {
-    //this.userService.save(this.user).subscribe((user) => this.user = user);
+    this.userService.update(this.user).subscribe(data => {
+      this.redirectToUserList();
+    });
   }
 
   edit() {
