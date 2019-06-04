@@ -32,6 +32,7 @@ export class RolePermissionComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(infoToken);
 
 
     if(this.verifyUserPermission()) {

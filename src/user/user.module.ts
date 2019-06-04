@@ -13,7 +13,7 @@ import {
   MatInputModule,
   MatListModule,
   MatRadioModule,
-  MatSelectModule,
+  MatSelectModule, MatSlideToggleModule,
   MatTableModule
 } from '@angular/material';
 import {AddUserComponent} from './add-user/add-user.component';
@@ -53,7 +53,8 @@ import {RouterModule} from "@angular/router";
     MatCheckboxModule,
     MatListModule,
     RouterModule,
-    MatIconModule
+    MatIconModule,
+    MatSlideToggleModule
   ],
   providers: [
     BackendService
