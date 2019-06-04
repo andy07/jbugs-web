@@ -46,4 +46,11 @@ export class UserListComponent implements OnInit {
 
 
   }
+
+  getUserStatus(status: any):string {
+    if(status === true)
+      return 'Active';
+    else
+      return 'Deactivated';
+  }
 }
