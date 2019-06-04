@@ -1,13 +1,21 @@
-<!--<mat-form-field>
-  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-</mat-form-field> -->
+<div>
+  <button mat-menu-item [routerLink]="['../bug-create/']">
+    <mat-icon>add</mat-icon>
+    <span>Add</span>
+  </button>
 
-<!--
+  <mat-form-field id="filter">
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+</div>
+
+
 <mat-card *ngIf="dataSource?.filteredData.length <= 0" style="margin-bottom: 5px">
   <div><span>ZERO RESULT</span></div>
-</mat-card> -->
+</mat-card>
 
 <div class="mat-elevation-z8">
+
   <table mat-table *ngIf='true' [dataSource]="dataSource" matSort (matSortChange)="sortData()">
 
     <ng-container matColumnDef="title">
@@ -26,7 +34,7 @@
     </ng-container>
 
     <ng-container matColumnDef="severity">
-      <th mat-header-cell *matHeaderCellDef mat-sort-headers> Severity</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Severity</th>
       <td mat-cell *matCellDef="let element" [ngClass]="{'high': true}">{{element.severity}}</td>
     </ng-container>
 
@@ -42,7 +50,7 @@
 
     <!-- Star Column -->
     <ng-container matColumnDef="star" stickyEnd>
-      <th mat-header-cell *matHeaderCellDef mat-sort-headers></th>
+      <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element">
         <button mat-icon-button [matMenuTriggerFor]="menu">
           <mat-icon>more_vert</mat-icon>
