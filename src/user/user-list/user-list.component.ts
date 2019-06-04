@@ -1,9 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {RestUser} from '../models/restUser';
 import {UserService} from '../service/user.service';
-import {infoToken} from '../../pages/login/login.component';
+import {infoToken, PopUpMessageComponent} from '../../pages/login/login.component';
 import {FormControl} from '@angular/forms';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {Router} from '@angular/router';
 
 
@@ -21,19 +21,17 @@ export class UserListComponent implements OnInit {
   public userList: RestUser[];
 
   displayedColumns: string[] = ['firstName', 'lastName', 'email', 'mobileNumber', 'status', 'username'];
-  displayedColumnsFilter: string[] = ['firstNameFilter', 'lastNameFilter', 'emailFilter', 'mobileNumberFilter'
-    , 'statusFilter', 'usernameFilter'];
+  displayedColumnsFilter: string[] = ['firstNameFilter', 'lastNameFilter', 'emailFilter', 'mobileNumberFilter', 'usernameFilter'];
 
   private firstNameFilter = new FormControl();
   private lastNameFilter = new FormControl();
   private emailFilter = new FormControl();
   private mobileNumberFilter = new FormControl();
-  private statusFilter = new FormControl();
   private usernameFilter = new FormControl();
-  private filterValues = {firstName: '', lastName: '', email: '', mobileNumber: '', status: '', username: ''};
+  private filterValues = {firstName: '', lastName: '', email: '', mobileNumber: '', username: ''};
 
   private newStatus: boolean;
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService, private router: Router, public dialog: MatDialog) {
   }
 
   applyFilter(filterValue: string) {
@@ -72,11 +70,6 @@ export class UserListComponent implements OnInit {
         this.filterValues.mobileNumber = value
         this.dataSource.filter = JSON.stringify(this.filterValues);
       });
-    this.statusFilter.valueChanges
-      .subscribe(value => {
-        this.filterValues.status = value
-        this.dataSource.filter = JSON.stringify(this.filterValues);
-      });
     this.usernameFilter.valueChanges
       .subscribe(value => {
         this.filterValues.username = value
@@ -92,10 +85,31 @@ export class UserListComponent implements OnInit {
         && data.lastName.trim().toLowerCase().indexOf(searchTerms.lastName.toLowerCase()) !== -1
         && data.email.trim().toLowerCase().indexOf(searchTerms.email.toLowerCase()) !== -1
         && data.mobileNumber.trim().toLowerCase().indexOf(searchTerms.mobileNumber.toLowerCase()) !== -1
-        && data.status
         && data.username.trim().toLowerCase().indexOf(searchTerms.username.toLowerCase()) !== -1;
 
     };
     return filterFunction;
+  }
+
+  onChange(user: any) {
+    this.newStatus=!user.status;
+    this.userService.updateUserStatus(user.username,this.newStatus).subscribe(message=>{
+        this.ngOnInit();
+        this.dialog.open(PopUpMessageComponent, {width: '500px', height: '120px', data: {data: '\n' +
+              'User status has been successfully updated!'}});
+      },
+      error=>{
+        this.ngOnInit();
+        this.dialog.open(PopUpMessageComponent, {width: '500px', height: '120px', data: {data: error.error.message}});
+      })
+
+
+  }
+
+  getUserStatus(status: any):string {
+    if(status === true)
+      return 'Active';
+    else
+      return 'Deactivated';
   }
 }
