@@ -1,12 +1,17 @@
 import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
-import {NgForm} from '@angular/forms';
 import {UserService} from '../../user/service/user.service';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
-import {infoTokenDecoded} from './token';
+import {infoTokenDecoded} from "./token";
 
 
-export let infoToken: infoTokenDecoded;
+function initializeInfoToken(tokenEncoded: string) {
+  const x = tokenEncoded.split('.');
+  // decodific din baza 64 (atob)
+  return  JSON.parse(atob(x[1]));
+}
+
+export var infoToken: infoTokenDecoded = initializeInfoToken(localStorage.getItem('token'));
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,9 +21,6 @@ export class LoginComponent implements OnInit {
   private username: string;
   private password: string;
 
-  @ViewChild('frm')
-  public userFrm: NgForm;
-
   constructor(private userService: UserService,
               private router: Router,
               public dialog: MatDialog) {
@@ -27,12 +29,10 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-
   loginUser() {
     this.userService.loginUser(this.username, this.password).subscribe(
       (token) => {
         localStorage.setItem('token', token.token);
-        this.initializeInfoToken(token.token);
       },
       (error) => {
         this.dialog.open(PopUpMessageComponent, {width: '500px', height: '100px', data: {data: error.error.message}});
@@ -43,12 +43,7 @@ export class LoginComponent implements OnInit {
 
   }
 
-  private initializeInfoToken( tokenEncoded: string) {
-    const x = tokenEncoded.split('.');
-    // decodific din baza 64 (atob)
-    infoToken = JSON.parse(atob(x[1]));
-    console.log(infoToken);
-  }
+
 }
 
 @Component({

@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {RestUser} from "../models/restUser";
 import {UserService} from "../service/user.service";
 import {NgModel} from "@angular/forms";
-import {RestRole, RoleConverter} from "../../role/models/restRole";
+import {RestRole, EnumRole} from "../../role/models/restRole";
 import {RoleService} from "../../role/service/role.service";
 import { Observable } from 'rxjs';
 import {PopUpMessageComponent} from "../../pages/login/login.component";
@@ -37,9 +37,9 @@ export class AddUserComponent implements OnInit {
   ngOnInit() {
 
     this.roleService.getAllRoles().subscribe((roleList) => {
-      roleList.forEach(s => {
-        s.type = RoleConverter.backEndToFrontEnd(s.type);
-      });
+      // roleList.forEach(s => {
+      //   s.type = RoleConverter.backEndToFrontEnd(s.type);
+      // });
       this.roleList = roleList;
     });
   }
@@ -47,12 +47,12 @@ export class AddUserComponent implements OnInit {
   public onSubmit() {
 
 
-    console.log(this.user.roles);
-
-    for(let i=0;i<this.user.roles.length;i++){
-        this.user.roles[i]=RoleConverter.frontEndToBackEnd(this.user.roles[i]);
-    }
-    console.log(this.user.roles);
+    // console.log(this.user.roles);
+    //
+    // for(let i=0;i<this.user.roles.length;i++){
+    //     this.user.roles[i]=RoleConverter.frontEndToBackEnd(this.user.roles[i]);
+    // }
+    // console.log(this.user.roles);
 
      this.userService.save(this.user).subscribe(
        (user) => {this.user = user
@@ -63,15 +63,17 @@ export class AddUserComponent implements OnInit {
        ()=>{
          this.redirectToUserList();
        }
-
      );
 
   }
 
   private redirectToUserList() {
-    this.router.navigate(['/user-list']);
+    this.router.navigate(['home/users/user-list']);
   }
 
+  getEnumName(type: string): string {
+    return EnumRole[type];
+  }
 
 
 
