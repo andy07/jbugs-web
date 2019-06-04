@@ -1,32 +1,19 @@
-<div *ngIf="verifyUserPermission()">
-
-<table mat-table [dataSource]="displayedColumns" class="mat-elevation-z8">
-
-  <ng-container matColumnDef="type">
-    <th mat-header-cell *matHeaderCellDef>Role Type</th>
-    <!--    <td mat-cell *matCellDef="let element"> {{element.type}}</td>-->
-  </ng-container>
-
-  <ng-container matColumnDef="permission">
-    <th mat-header-cell *matHeaderCellDef> Permission</th>
-    <!--    <td mat-cell *matCellDef="let element"> {{element.permissions}}</td>-->
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <!--  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>-->
-
-</table>
-
-
-<div class="basic-container" >
+<div class="basic-container"  *ngIf="verifyUserPermission()">
   <mat-accordion>
+
+    <section matSort class="mat-header-row">
+      <span class="mat-header-cell" mat-sort-header="roleType">Role Type</span>
+      <span class="mat-header-cell" mat-sort-header="permissions">Permissions</span>
+    </section>
+
+
     <mat-expansion-panel *ngFor="let panel of roleList">
       <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'80px'">
         <mat-panel-title>{{getEnumName(panel.type)}}
         </mat-panel-title>
-        <mat-panel-description>
+        <mat-panel-description class="mat-body-cell">
 
-          <span *ngFor="let perm of panel.permissions">{{perm.type}} &nbsp;</span>
+          <span *ngFor="let perm of panel.permissions" >{{perm.type}} &nbsp;</span>
 
         </mat-panel-description>
       </mat-expansion-panel-header>
@@ -56,11 +43,9 @@
       </ng-template>
 
       <mat-action-row>
-        <button mat-button (click)="onSubmit(panel)">Click me</button>
+        <button mat-button (click)="onSubmit(panel)">Save</button>
       </mat-action-row>
 
     </mat-expansion-panel>
   </mat-accordion>
-</div>
-
 </div>

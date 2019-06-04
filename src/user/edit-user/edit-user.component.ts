@@ -40,12 +40,12 @@ export class EditUserComponent implements OnInit {
   }
 
   public onSubmit() {
-    //this.userService.save(this.user).subscribe((user) => this.user = user);
+    console.log(this.user);
+    this.userService.update(this.user).subscribe(data => {
+      this.redirectToUserList();
+    });
   }
 
-  edit() {
-
-  }
   private redirectToUserList() {
     this.router.navigate(['home/users/user-list']);
   }

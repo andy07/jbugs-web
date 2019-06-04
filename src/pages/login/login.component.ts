@@ -5,13 +5,17 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 import {infoTokenDecoded} from "./token";
 
 
-function initializeInfoToken(tokenEncoded: string) {
-  const x = tokenEncoded.split('.');
-  // decodific din baza 64 (atob)
-  return  JSON.parse(atob(x[1]));
+function initializeInfoToken() {
+  let tokenEncoded : string  = localStorage.getItem('token');
+  if(tokenEncoded !==null){
+    const x = tokenEncoded.split('.');
+    // decodific din baza 64 (atob)
+    return  JSON.parse(atob(x[1]));
+  }
+
 }
 
-export var infoToken: infoTokenDecoded = initializeInfoToken(localStorage.getItem('token'));
+export var infoToken: infoTokenDecoded=initializeInfoToken();
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -33,6 +37,7 @@ export class LoginComponent implements OnInit {
     this.userService.loginUser(this.username, this.password).subscribe(
       (token) => {
         localStorage.setItem('token', token.token);
+        infoToken = initializeInfoToken();
       },
       (error) => {
         this.dialog.open(PopUpMessageComponent, {width: '500px', height: '100px', data: {data: error.error.message}});

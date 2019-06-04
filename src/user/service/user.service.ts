@@ -34,6 +34,10 @@ export class UserService {
     return this.backendService.get(`/api/users/${username}`);
   }
 
+  public updateUserStatus(username: string, status: boolean): Observable<any> {
+    return this.backendService.post('/api/users/update-user-status', {username, status});
+  }
+
   public loggedIn(): boolean {
     if (localStorage.getItem('token') === null) {
       return false;

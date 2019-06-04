@@ -28,3 +28,18 @@ button:hover {
 #zeroResult {
   color: red;
 }
+
+/deep/ .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: lime;
+}
+/deep/ .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: azure;
+}
+
+/deep/ .mat-slide-toggle-bar{
+  background-color: red;
+}
+
+/deep/ .mat-slide-toggle-thumb {
+  background-color: azure;
+}
