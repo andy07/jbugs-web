@@ -13,6 +13,18 @@ table {
 }
 
 #filter {
-  right: 0;
   display: flex;
+  margin-left: 1000px;
+}
+
+#buttonAndFilter {
+  display: inline-flex;
+}
+
+button:hover {
+  color: darkgreen;
+}
+
+#zeroResult {
+  color: red;
 }

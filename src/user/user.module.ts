@@ -12,14 +12,18 @@ import {
   MatIconModule,
   MatInputModule,
   MatListModule,
+  MatMenuModule,
+  MatPaginatorModule,
   MatRadioModule,
   MatSelectModule,
+  MatSidenavModule,
+  MatSortModule,
   MatTableModule
 } from '@angular/material';
 import {AddUserComponent} from './add-user/add-user.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {EditUserComponent} from './edit-user/edit-user.component';
-import {RouterModule} from "@angular/router";
+import {RouterModule} from '@angular/router';
 
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations' ;
 
@@ -53,7 +57,12 @@ import {RouterModule} from "@angular/router";
     MatCheckboxModule,
     MatListModule,
     RouterModule,
-    MatIconModule
+    MatIconModule,
+    MatPaginatorModule,
+    ReactiveFormsModule,
+    MatSortModule,
+    MatMenuModule,  // pentru formControl in html
+    MatSidenavModule
   ],
   providers: [
     BackendService

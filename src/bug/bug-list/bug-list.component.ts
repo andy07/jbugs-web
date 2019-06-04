@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core'
 import {RestBug} from '../models/restBug';
 import {BugService} from '../service/bug.service';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-bug-list',
@@ -9,26 +10,6 @@ import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
   styleUrls: ['./bug-list.component.scss']
 })
 export class BugListComponent implements OnInit {
-  /*@ViewChild(MatSort) set matSort(ms: MatSort) {
-    this.sort = ms;
-    this.setDataSourceAttributes();
-  }
-
-  @ViewChild(MatPaginator) set matPaginator(mp: MatPaginator) {
-    this.paginator = mp;
-    this.setDataSourceAttributes();
-  }*/
-
-  /*@ViewChild(MatSort)
-  set sort(value: MatSort) {
-    this.dataSource.sort = value;
-  }
-
-  @ViewChild(MatPaginator)
-  set paginator(value: MatPaginator) {
-    this.dataSource.paginator = value;
-  }*/
-  // @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -36,6 +17,7 @@ export class BugListComponent implements OnInit {
 
   constructor(private bugService: BugService) {
   }
+
   public bugList: RestBug[];
   displayedColumns: string[] = [
     'title',
@@ -46,8 +28,24 @@ export class BugListComponent implements OnInit {
     'assignedTo',
     'star'
   ];
+  displayedColumnsFilter: string[] = [
+    'titleFilter',
+    'versionFilter',
+    'fixedVersionFilter',
+    'severityFilter',
+    'statusFilter',
+    'assignedToFilter',
+    // 'star'
+  ];
 
+  private titleFilter = new FormControl();
+  private versionFilter = new FormControl();
+  private fixedVersionFilter = new FormControl();
+  private severityFilter = new FormControl();
+  private statusFilter = new FormControl();
+  private assignedToFilter = new FormControl();
 
+  private filterValues = {title: '', version: '', fixedVersion: '', severity: '', status: '', assignedTo: ''};
   @Output()
   public outputFromBackend = new EventEmitter<RestBug>();
 
@@ -58,6 +56,7 @@ export class BugListComponent implements OnInit {
   sortData() {
     this.dataSource.sort = this.sort;
   }
+
   ngOnInit() {
 
     this.bugService.getAllBugs().subscribe((bugList) => {
@@ -67,8 +66,59 @@ export class BugListComponent implements OnInit {
       });
       this.dataSource = new MatTableDataSource(this.bugList);
       this.dataSource.paginator = this.paginator;
+      this.dataSource.filterPredicate = this.createTableFilter();
     });
 
+    // this.dataSource.filterPredicate = this.createTableFilter();
+
+    this.titleFilter.valueChanges
+      .subscribe(value => {
+        this.filterValues.title = value;
+        this.dataSource.filter = JSON.stringify(this.filterValues);
+      });
+
+    this.versionFilter.valueChanges
+      .subscribe(value => {
+        this.filterValues.version = value
+        this.dataSource.filter = JSON.stringify(this.filterValues);
+      });
+    this.fixedVersionFilter.valueChanges
+      .subscribe(value => {
+        this.filterValues.fixedVersion = value
+        this.dataSource.filter = JSON.stringify(this.filterValues);
+      });
+    this.severityFilter.valueChanges
+      .subscribe(value => {
+        this.filterValues.severity = value
+        this.dataSource.filter = JSON.stringify(this.filterValues);
+      });
+    this.statusFilter.valueChanges
+      .subscribe(value => {
+        this.filterValues.status = value
+        this.dataSource.filter = JSON.stringify(this.filterValues);
+      });
+    this.assignedToFilter.valueChanges
+      .subscribe(value => {
+        this.filterValues.assignedTo = value
+        this.dataSource.filter = JSON.stringify(this.filterValues);
+      });
   }
+
+
+  createTableFilter(): (data: any, filter: string) => boolean {
+    const filterFunction = function (data, filter): boolean {
+      console.log('!!!!!!');
+      const searchTerms = JSON.parse(filter);
+      return data.title.trim().toLowerCase().indexOf(searchTerms.title.toLowerCase()) !== -1
+        && data.version.trim().toLowerCase().indexOf(searchTerms.version.toLowerCase()) !== -1
+        && data.fixedVersion.trim().toLowerCase().indexOf(searchTerms.fixedVersion.toLowerCase()) !== -1
+        && data.severity.trim().toLowerCase().indexOf(searchTerms.severity.toLowerCase()) !== -1
+        && data.status.trim().toLowerCase().indexOf(searchTerms.status.toLowerCase()) !== -1
+        && data.assignedTo.trim().toLowerCase().indexOf(searchTerms.assignedTo.toLowerCase()) !== -1;
+
+    };
+    return filterFunction;
+  }
+
 }
 
