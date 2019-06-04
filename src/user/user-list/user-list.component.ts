@@ -1,13 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {RestUser} from '../models/restUser';
 import {UserService} from '../service/user.service';
-import {Router} from '@angular/router';
 import {infoToken} from '../../pages/login/login.component';
 import {FormControl} from '@angular/forms';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
-import {ActivatedRoute, Router} from '@angular/router';
-import {infoToken, PopUpMessageComponent} from "../../pages/login/login.component";
-import {MatDialog} from "@angular/material";
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -53,10 +50,6 @@ export class UserListComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.userList);
       this.dataSource.paginator = this.paginator;
       this.dataSource.filterPredicate = this.createTableFilter();
-    });
-    error=>{
-      console.log(error);
-      this.dialog.open(PopUpMessageComponent, {width: '500px', height: '100px', data: {data: error.error}});
     });
     this.firstNameFilter.valueChanges
       .subscribe(value => {
@@ -104,27 +97,5 @@ export class UserListComponent implements OnInit {
 
     };
     return filterFunction;
-  }
-
-  onChange(user: any) {
-    this.newStatus=!user.status;
-    this.userService.updateUserStatus(user.username,this.newStatus).subscribe(message=>{
-        this.ngOnInit();
-        this.dialog.open(PopUpMessageComponent, {width: '500px', height: '120px', data: {data: '\n' +
-              'User status has been successfully updated!'}});
-    },
-      error=>{
-      this.ngOnInit();
-        this.dialog.open(PopUpMessageComponent, {width: '500px', height: '120px', data: {data: error.error.message}});
-    })
-
-
-  }
-
-  getUserStatus(status: any):string {
-    if(status === true)
-      return 'Active';
-    else
-      return 'Deactivated';
   }
 }
