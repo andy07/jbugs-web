@@ -9,10 +9,3 @@ export interface infoTokenDecoded {
 }
 
 
-function initializeInfoToken(tokenEncoded:string ) {
-  const x = tokenEncoded.split('.');
-  // decodific din baza 64 (atob)
-  return  JSON.parse(atob(x[1]));
-
-
-}
