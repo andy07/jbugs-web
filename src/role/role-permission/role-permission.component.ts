@@ -33,6 +33,7 @@ export class RolePermissionComponent implements OnInit {
 
   ngOnInit(): void {
 
+
     if(this.verifyUserPermission()) {
       this.roleService.getAllPermissions().subscribe((permissionList) => {
         this.permissionList = permissionList;
