@@ -29,14 +29,6 @@
       </mat-form-field>
       <mat-form-field>
         <input matInput
-               [(ngModel)]="bug.severity"
-               #severity="ngModel"
-               id="severity"
-               name="severity"
-               placeholder="Severity">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput
                [(ngModel)]="bug.assignedTo"
                #createdBy="ngModel"
                id="assigned_to"
@@ -52,6 +44,17 @@
                     required>
           <mat-option *ngIf="bug" [value]="bug.status" selected>{{bug.status}}</mat-option>
           <mat-option *ngFor="let status of bugStatusList" [value]="status">{{status}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Severity</mat-label>
+        <mat-select [(ngModel)]="bug.severity"
+                    name="severity"
+                    id="severity"
+                    #status="ngModel"
+                    required>
+          <mat-option *ngFor="let status of severity" [value]="status"
+                      selected="bug.severity === status">{{status}}</mat-option>
         </mat-select>
       </mat-form-field>
 
