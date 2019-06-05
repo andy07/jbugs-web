@@ -21,17 +21,21 @@ export class UserListComponent implements OnInit {
   public userList: RestUser[];
 
   displayedColumns: string[] = ['firstName', 'lastName', 'email', 'mobileNumber', 'status', 'username'];
-  displayedColumnsFilter: string[] = ['firstNameFilter', 'lastNameFilter', 'emailFilter', 'mobileNumberFilter', 'usernameFilter'];
+  displayedColumnsFilter: string[] = ['firstNameFilter', 'lastNameFilter',
+    'emailFilter', 'mobileNumberFilter',
+    'statusFilter', 'usernameFilter'];
 
   private firstNameFilter = new FormControl();
   private lastNameFilter = new FormControl();
   private emailFilter = new FormControl();
   private mobileNumberFilter = new FormControl();
   private usernameFilter = new FormControl();
-  private filterValues = {firstName: '', lastName: '', email: '', mobileNumber: '', username: ''};
+  private globalFilter = new FormControl('');
+  private filterValues = {firstName: '', lastName: '', email: '', mobileNumber: '', username: '', data: ''};
 
   private newStatus: boolean;
-  constructor(private userService: UserService, public dialog: MatDialog) {
+
+  constructor(private userService: UserService, private router: Router, public dialog: MatDialog) {
   }
 
   applyFilter(filterValue: string) {
@@ -41,6 +45,7 @@ export class UserListComponent implements OnInit {
   sortData() {
     this.dataSource.sort = this.sort;
   }
+
   ngOnInit() {
     console.log(infoToken);
     this.userService.getAllUsers().subscribe((userList) => {
@@ -92,30 +97,18 @@ export class UserListComponent implements OnInit {
   }
 
   onChange(user: any) {
-    console.log(user.username);
-    if(user.username === infoToken.sub){
-      this.ngOnInit();
-      this.dialog.open(PopUpMessageComponent, {width: '500px', height: '120px', data: {data: '\n' +
-            'Go home! You are drunk!'}});
+    this.newStatus=!user.status;
+    this.userService.updateUserStatus(user.username,this.newStatus).subscribe(message=>{
+        this.ngOnInit();
+        this.dialog.open(PopUpMessageComponent, {width: '500px', height: '120px', data: {data: '\n' +
+              'User status has been successfully updated!'}});
+      },
+      error=>{
+        this.ngOnInit();
+        this.dialog.open(PopUpMessageComponent, {width: '500px', height: '120px', data: {data: error.error.message}});
+      })
 
-    }
-    else {
-      this.newStatus = !user.status;
-      this.userService.updateUserStatus(user.username, this.newStatus).subscribe(message => {
-          this.ngOnInit();
-          this.dialog.open(PopUpMessageComponent, {
-            width: '500px', height: '120px', data: {
-              data: '\n' +
-                'User status has been successfully updated!'
-            }
-          });
-        },
-        error => {
-          this.ngOnInit();
-          this.dialog.open(PopUpMessageComponent, {width: '500px', height: '120px', data: {data: error.error.message}});
-        })
 
-    }
   }
 
   getUserStatus(status: any):string {
