@@ -9,11 +9,6 @@
   </mat-form-field>
 </div>
 
-
-<mat-card *ngIf="dataSource?.filteredData.length <= 0" style="margin-bottom: 5px">
-  <div><span id="zeroResult">ZERO RESULT</span></div>
-</mat-card>
-
 <div class="mat-elevation-z8">
 
   <table mat-table *ngIf='true' [dataSource]="dataSource" matSort (matSortChange)="sortData()">
@@ -124,3 +119,7 @@
   </table>
   <mat-paginator [pageSize]="5" showFirstLastButtons></mat-paginator>
 </div>
+
+<mat-card *ngIf="dataSource?.filteredData.length <= 0" style="margin-bottom: 5px">
+  <div><span id="zeroResult">ZERO RESULT</span></div>
+</mat-card>

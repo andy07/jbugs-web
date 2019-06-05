@@ -41,8 +41,13 @@ export class UserService {
   public loggedIn(): boolean {
     if (localStorage.getItem('token') === null) {
       return false;
-    } else
+    } else {
       return true;
+    }
+  }
+
+  public getUsernames(): Observable<string[]> {
+    return this.backendService.get('/api/users/usernames/all');
   }
 
 }

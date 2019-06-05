@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {BugService} from '../service/bug.service';
 import {RestBug} from '../models/restBug';
 import {ActivatedRoute, Router} from '@angular/router';
+import {UserService} from '../../user/service/user.service';
 
 
 @Component({
@@ -30,9 +31,11 @@ export class BugEditComponent implements OnInit {
     'MEDIUM',
     'LOW'
   ];
+  public usernames: string[];
   constructor(private bugService: BugService,
               private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private userService: UserService) {
   }
 
   ngOnInit() {
@@ -42,6 +45,10 @@ export class BugEditComponent implements OnInit {
       this.bugService.getPostAllAllowedStatus(this.bug.status).subscribe((bugStatusList) => {
         this.bugStatusList = bugStatusList;
       });
+    });
+    this.userService.getUsernames().subscribe((usernames) => {
+      this.usernames = usernames;
+      console.log(usernames);
     });
   }
 
