@@ -31,7 +31,7 @@ export class UserListComponent implements OnInit {
   private filterValues = {firstName: '', lastName: '', email: '', mobileNumber: '', username: ''};
 
   private newStatus: boolean;
-  constructor(private userService: UserService, private router: Router, public dialog: MatDialog) {
+  constructor(private userService: UserService, public dialog: MatDialog) {
   }
 
   applyFilter(filterValue: string) {
@@ -92,18 +92,30 @@ export class UserListComponent implements OnInit {
   }
 
   onChange(user: any) {
-    this.newStatus=!user.status;
-    this.userService.updateUserStatus(user.username,this.newStatus).subscribe(message=>{
-        this.ngOnInit();
-        this.dialog.open(PopUpMessageComponent, {width: '500px', height: '120px', data: {data: '\n' +
-              'User status has been successfully updated!'}});
-      },
-      error=>{
-        this.ngOnInit();
-        this.dialog.open(PopUpMessageComponent, {width: '500px', height: '120px', data: {data: error.error.message}});
-      })
+    console.log(user.username);
+    if(user.username === infoToken.sub){
+      this.ngOnInit();
+      this.dialog.open(PopUpMessageComponent, {width: '500px', height: '120px', data: {data: '\n' +
+            'Go home! You are drunk!'}});
 
+    }
+    else {
+      this.newStatus = !user.status;
+      this.userService.updateUserStatus(user.username, this.newStatus).subscribe(message => {
+          this.ngOnInit();
+          this.dialog.open(PopUpMessageComponent, {
+            width: '500px', height: '120px', data: {
+              data: '\n' +
+                'User status has been successfully updated!'
+            }
+          });
+        },
+        error => {
+          this.ngOnInit();
+          this.dialog.open(PopUpMessageComponent, {width: '500px', height: '120px', data: {data: error.error.message}});
+        })
 
+    }
   }
 
   getUserStatus(status: any):string {
