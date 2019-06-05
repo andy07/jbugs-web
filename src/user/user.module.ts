@@ -16,7 +16,7 @@ import {
   MatPaginatorModule,
   MatRadioModule,
   MatSelectModule,
-  MatSidenavModule,
+  MatSidenavModule, MatSlideToggleModule,
   MatSortModule,
   MatTableModule
 } from '@angular/material';
@@ -62,7 +62,8 @@ import {RouterModule} from '@angular/router';
     ReactiveFormsModule,
     MatSortModule,
     MatMenuModule,  // pentru formControl in html
-    MatSidenavModule
+    MatSidenavModule,
+    MatSlideToggleModule
   ],
   providers: [
     BackendService
