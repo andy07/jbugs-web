@@ -25,16 +25,15 @@ export class UserListComponent implements OnInit {
     'emailFilter', 'mobileNumberFilter',
     'statusFilter', 'usernameFilter'];
 
+
   private firstNameFilter = new FormControl();
   private lastNameFilter = new FormControl();
   private emailFilter = new FormControl();
   private mobileNumberFilter = new FormControl();
   private usernameFilter = new FormControl();
-  private globalFilter = new FormControl('');
-  private filterValues = {firstName: '', lastName: '', email: '', mobileNumber: '', username: '', data: ''};
+  private filterValues = {firstName: '', lastName: '', email: '', mobileNumber: '', username: ''};
 
   private newStatus: boolean;
-
   constructor(private userService: UserService, private router: Router, public dialog: MatDialog) {
   }
 
@@ -45,7 +44,6 @@ export class UserListComponent implements OnInit {
   sortData() {
     this.dataSource.sort = this.sort;
   }
-
   ngOnInit() {
     console.log(infoToken);
     this.userService.getAllUsers().subscribe((userList) => {
@@ -80,21 +78,13 @@ export class UserListComponent implements OnInit {
         this.filterValues.username = value
         this.dataSource.filter = JSON.stringify(this.filterValues);
       });
-    this.globalFilter.valueChanges
-      .subscribe(
-        value => {
-          this.filterValues.data = value
-          this.dataSource.filter = JSON.stringify(this.filterValues);
-        }
-      );
   }
 
   createTableFilter(): (data: any, filter: string) => boolean {
     const filterFunction = function (data, filter): boolean {
       console.log('!!!!!!');
       const searchTerms = JSON.parse(filter);
-      return searchTerms.data !== '' ? JSON.stringify(data).toLowerCase().indexOf(searchTerms.data.toLowerCase()) !== -1 :
-        data.firstName.trim().toLowerCase().indexOf(searchTerms.firstName.toLowerCase()) !== -1
+      return data.firstName.trim().toLowerCase().indexOf(searchTerms.firstName.toLowerCase()) !== -1
         && data.lastName.trim().toLowerCase().indexOf(searchTerms.lastName.toLowerCase()) !== -1
         && data.email.trim().toLowerCase().indexOf(searchTerms.email.toLowerCase()) !== -1
         && data.mobileNumber.trim().toLowerCase().indexOf(searchTerms.mobileNumber.toLowerCase()) !== -1
@@ -105,17 +95,13 @@ export class UserListComponent implements OnInit {
   }
 
   onChange(user: any) {
-    this.newStatus = !user.status;
-    this.userService.updateUserStatus(user.username, this.newStatus).subscribe(message => {
+    this.newStatus=!user.status;
+    this.userService.updateUserStatus(user.username,this.newStatus).subscribe(message=>{
         this.ngOnInit();
-        this.dialog.open(PopUpMessageComponent, {
-          width: '500px', height: '120px', data: {
-            data: '\n' +
-              'User status has been successfully updated!'
-          }
-        });
+        this.dialog.open(PopUpMessageComponent, {width: '500px', height: '120px', data: {data: '\n' +
+              'User status has been successfully updated!'}});
       },
-      error => {
+      error=>{
         this.ngOnInit();
         this.dialog.open(PopUpMessageComponent, {width: '500px', height: '120px', data: {data: error.error.message}});
       })
@@ -123,8 +109,8 @@ export class UserListComponent implements OnInit {
 
   }
 
-  getUserStatus(status: any): string {
-    if (status === true)
+  getUserStatus(status: any):string {
+    if(status === true)
       return 'Active';
     else
       return 'Deactivated';
