@@ -7,6 +7,7 @@ import * as jsPDF from 'jspdf';
 import {infoToken} from '../../pages/login/login.component';
 import {returnUserPermissionForBugExportPDF, returnUserPermissionForBugManagement} from '../../pages/login/token';
 import {ExcelService} from '../service/excel.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-bug-list',
@@ -19,7 +20,7 @@ export class BugListComponent implements OnInit {
 
   dataSource = new MatTableDataSource<RestBug>();
 
-  constructor(private bugService: BugService, private excelService: ExcelService) {
+  constructor(private bugService: BugService, private excelService: ExcelService, private router: Router) {
   }
 
   public bugList: RestBug[];
@@ -74,7 +75,10 @@ export class BugListComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.bugList);
       this.dataSource.paginator = this.paginator;
       this.dataSource.filterPredicate = this.createTableFilter();
-    });
+    },
+      error => {
+        this.router.navigate(['/home/error'], {queryParams: {message: error.error}}); }
+      );
 
     // this.dataSource.filterPredicate = this.createTableFilter();
 
@@ -120,16 +124,16 @@ export class BugListComponent implements OnInit {
 
 
   createTableFilter(): (data: any, filter: string) => boolean {
-    const filterFunction = function (data, filter): boolean {
+    const filterFunction = function(data, filter): boolean {
       console.log('!!!!!!');
       const searchTerms = JSON.parse(filter);
       return; // searchTerms.data !== '' ? JSON.stringify(data).toLowerCase().indexOf(searchTerms.data.toLowerCase()) !== -1 :
       data.title.trim().toLowerCase().indexOf(searchTerms.title.toLowerCase()) !== -1
-        && data.version.trim().toLowerCase().indexOf(searchTerms.version.toLowerCase()) !== -1
-        && data.fixedVersion.trim().toLowerCase().indexOf(searchTerms.fixedVersion.toLowerCase()) !== -1
-        && data.severity.trim().toLowerCase().indexOf(searchTerms.severity.toLowerCase()) !== -1
-        && data.status.trim().toLowerCase().indexOf(searchTerms.status.toLowerCase()) !== -1
-        && data.assignedTo.trim().toLowerCase().indexOf(searchTerms.assignedTo.toLowerCase()) !== -1;
+      && data.version.trim().toLowerCase().indexOf(searchTerms.version.toLowerCase()) !== -1
+      && data.fixedVersion.trim().toLowerCase().indexOf(searchTerms.fixedVersion.toLowerCase()) !== -1
+      && data.severity.trim().toLowerCase().indexOf(searchTerms.severity.toLowerCase()) !== -1
+      && data.status.trim().toLowerCase().indexOf(searchTerms.status.toLowerCase()) !== -1
+      && data.assignedTo.trim().toLowerCase().indexOf(searchTerms.assignedTo.toLowerCase()) !== -1;
 
     };
     return filterFunction;
@@ -148,7 +152,6 @@ export class BugListComponent implements OnInit {
   }
 
 
-
   private createPDFFile(bugToPDF: RestBug) {
     const doc = new jsPDF();
     doc.text('\t\t\t\t' + bugToPDF.title + '\n\n' +
@@ -165,20 +168,19 @@ export class BugListComponent implements OnInit {
   }
 
 
-
   exportBugsToExcel() {
     this.bugService.getAllBugs().subscribe(value => {
-      this.excelService.exportAsExcelFile(value, 'Bug List');
-    },
+        this.excelService.exportAsExcelFile(value, 'Bug List');
+      },
       error => {
-      console.log(error);
+        console.log(error);
       });
 
   }
 
   getPermissionForBugManagement(): boolean {
     return returnUserPermissionForBugManagement();
- }
+  }
 
   returnPermissionPDFExportBug(): boolean {
     return returnUserPermissionForBugExportPDF();

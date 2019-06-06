@@ -5,7 +5,7 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 import {infoTokenDecoded} from "./token";
 
 
-function initializeInfoToken() {
+function initializeInfoToken():infoTokenDecoded {
   let tokenEncoded : string  = localStorage.getItem('token');
   if(tokenEncoded !==null){
     const x = tokenEncoded.split('.');

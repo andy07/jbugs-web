@@ -12,6 +12,7 @@ import {EditUserComponent} from '../user/edit-user/edit-user.component';
 import {RolePermissionComponent} from '../role/role-permission/role-permission.component';
 import {BugViewDetailsComponent} from '../bug/bug-view-details/bug-view-details.component';
 import {AuthGuard} from '../interceptors/auth.guard';
+import {ErrorComponent} from "../pages/error/error.component";
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
         path: '',
         redirectTo: 'main',
         pathMatch: 'full'
+      },
+      {
+        path: 'error',
+        component: ErrorComponent
       },
       {
         path: 'main',
