@@ -16,7 +16,8 @@ import {
   MatPaginatorModule,
   MatRadioModule,
   MatSelectModule,
-  MatSidenavModule, MatSlideToggleModule,
+  MatSidenavModule,
+  MatSlideToggleModule,
   MatSortModule,
   MatTableModule
 } from '@angular/material';
@@ -24,7 +25,7 @@ import {AddUserComponent} from './add-user/add-user.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {EditUserComponent} from './edit-user/edit-user.component';
 import {RouterModule} from '@angular/router';
-import { NotificationListComponent } from './notification-list/notification-list.component';
+import {NotificationListComponent} from './notification-list/notification-list.component';
 
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations' ;
 

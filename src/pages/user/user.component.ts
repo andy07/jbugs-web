@@ -21,7 +21,7 @@ export class UserComponent implements OnInit {
   logout() {
     this.notificationService.stopListener();
     localStorage.removeItem('token');
-    this.router.navigate(['/home']);
+    this.router.navigate(['/login']);
   }
 
   getUsername() {
