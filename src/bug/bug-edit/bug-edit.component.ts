@@ -2,6 +2,9 @@ import {Component, Input, OnInit} from '@angular/core';
 import {BugService} from '../service/bug.service';
 import {RestBug} from '../models/restBug';
 import {ActivatedRoute, Router} from '@angular/router';
+import {BugStatus} from "../models/bugStatus.model";
+import {infoToken} from "../../pages/login/login.component";
+import {EnumPermission} from "../../role/models/restPermission";
 
 
 @Component({
@@ -43,6 +46,17 @@ export class BugEditComponent implements OnInit {
         this.bugStatusList = bugStatusList;
       });
     });
+  }
+
+  bugClosed(status:string):boolean{
+    if(status==BugStatus.CLOSED.toString()){
+      for (let i = 0; i < infoToken.permissions.length; i++) {
+        if (infoToken.permissions[i] === EnumPermission[EnumPermission.BUG_CLOSE]) {
+          return false;
+        }
+      }
+      return true;
+    }
   }
 
   public edit() {

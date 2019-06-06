@@ -7,7 +7,7 @@
     <mat-icon matListIcon>supervised_user_circle</mat-icon>
     <button mat-button [routerLink]="['users']">Users</button>
   </mat-list-item>
-  <mat-list-item *ngIf="true">
+  <mat-list-item *ngIf="verifyUserPermission()">
     <mat-icon matListIcon>whatshot</mat-icon>
     <button mat-button [routerLink]="['roles']">Roles</button>
   </mat-list-item>

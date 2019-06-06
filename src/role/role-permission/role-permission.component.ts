@@ -35,7 +35,7 @@ export class RolePermissionComponent implements OnInit {
     console.log(infoToken);
 
 
-    if(this.verifyUserPermission()) {
+    if (this.verifyUserPermission()) {
       this.roleService.getAllPermissions().subscribe((permissionList) => {
         this.permissionList = permissionList;
       });
@@ -68,17 +68,11 @@ export class RolePermissionComponent implements OnInit {
 
   verifyUserPermission(): boolean {
 
-    for(let i=0;i<infoToken.permissions.length;i++){
-      if(infoToken.permissions[i]===EnumPermission[EnumPermission.PERMISSION_MANAGEMENT])
-        console.log(EnumPermission[EnumPermission.PERMISSION_MANAGEMENT]);
-      return true;
+    for (let i = 0; i < infoToken.permissions.length; i++) {
+      if (infoToken.permissions[i] === EnumPermission[EnumPermission.PERMISSION_MANAGEMENT]) {
+        return true;
+      }
     }
-
-    // infoToken.permissions.forEach(ss =>{
-    //    if(ss===EnumPermission[EnumPermission.PERMISSION_MANAGEMENT])
-    //      console.log(EnumPermission[EnumPermission.PERMISSION_MANAGEMENT]);
-    //      return true;
-    // });
     return false;
   }
 

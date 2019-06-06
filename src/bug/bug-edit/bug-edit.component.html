@@ -43,7 +43,7 @@
                     #status="ngModel"
                     required>
           <mat-option *ngIf="bug" [value]="bug.status" selected>{{bug.status}}</mat-option>
-          <mat-option *ngFor="let status of bugStatusList" [value]="status">{{status}}</mat-option>
+          <mat-option *ngFor="let status of bugStatusList" [value]="status"  [disabled]="bugClosed(status)">{{status}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field>
