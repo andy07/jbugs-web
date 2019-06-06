@@ -50,9 +50,9 @@ export class BugListComponent implements OnInit {
   private severityFilter = new FormControl();
   private statusFilter = new FormControl();
   private assignedToFilter = new FormControl();
-  //private globalFilter = new FormControl('');
+  private globalFilter = new FormControl('');
 
-  private filterValues = {title: '', version: '', fixedVersion: '', severity: '', status: '', assignedTo: ''}//, data: ''};
+  private filterValues = {title: '', version: '', fixedVersion: '', severity: '', status: '', assignedTo: '', data: ''};
   @Output()
   public outputFromBackend = new EventEmitter<RestBug>();
 
@@ -109,13 +109,13 @@ export class BugListComponent implements OnInit {
         this.filterValues.assignedTo = value
         this.dataSource.filter = JSON.stringify(this.filterValues);
       });
-   /* this.globalFilter.valueChanges
+    this.globalFilter.valueChanges
       .subscribe(
         value => {
           this.filterValues.data = value
           this.dataSource.filter = JSON.stringify(this.filterValues);
         }
-      );*/
+      );
   }
 
 
