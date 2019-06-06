@@ -47,10 +47,12 @@
                     id="status"
                     #status="ngModel"
                     required>
-          <mat-option *ngIf="bug" [value]="bug.status" selected>{{bug.status}}</mat-option>
+          <mat-option [value]="bugActualStatus" >{{bugActualStatus}}</mat-option>
           <mat-option *ngFor="let status of bugStatusList" [value]="status"  [disabled]="bugClosed(status)">{{status}}</mat-option>
         </mat-select>
       </mat-form-field>
+
+
       <mat-form-field>
         <mat-label>Severity</mat-label>
         <mat-select [(ngModel)]="bug.severity"
@@ -65,11 +67,11 @@
 
 
       <button mat-raised-button class="save" color="primary" type="submit">Edit</button>
+
     </form>
   </mat-card-content>
   <p>
     {{form.value|json}}
   </p>
 </mat-card>
-
 

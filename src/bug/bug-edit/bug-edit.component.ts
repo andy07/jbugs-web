@@ -6,6 +6,8 @@ import {UserService} from '../../user/service/user.service';
 import {BugStatus} from "../models/bugStatus.model";
 import {infoToken} from "../../pages/login/login.component";
 import {EnumPermission} from "../../role/models/restPermission";
+import {returnUserPermissionForBugClose} from "../../pages/login/token";
+import {FormControl, Validators} from "@angular/forms";
 
 
 @Component({
@@ -35,6 +37,9 @@ export class BugEditComponent implements OnInit {
     'LOW'
   ];
   public usernames: string[];
+
+  private bugActualStatus: string;
+
   constructor(private bugService: BugService,
               private route: ActivatedRoute,
               private router: Router,
@@ -44,6 +49,7 @@ export class BugEditComponent implements OnInit {
   ngOnInit() {
     const title = this.route.snapshot.paramMap.get('title');
     this.bugService.getBugByTitle(title).subscribe((bug) => {
+      this.bugActualStatus=bug.status;
       this.bug = bug;
       this.bugService.getPostAllAllowedStatus(this.bug.status).subscribe((bugStatusList) => {
         this.bugStatusList = bugStatusList;
@@ -51,18 +57,12 @@ export class BugEditComponent implements OnInit {
     });
     this.userService.getUsernames().subscribe((usernames) => {
       this.usernames = usernames;
-      console.log(usernames);
     });
   }
 
-  bugClosed(status:string):boolean{
-    if(status==BugStatus.CLOSED.toString()){
-      for (let i = 0; i < infoToken.permissions.length; i++) {
-        if (infoToken.permissions[i] === EnumPermission[EnumPermission.BUG_CLOSE]) {
-          return false;
-        }
-      }
-      return true;
+  bugClosed(status: string): boolean {
+    if (status == BugStatus.CLOSED.toString()) {
+      return !returnUserPermissionForBugClose();
     }
   }
 
