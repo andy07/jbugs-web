@@ -27,6 +27,10 @@ export class BugService {
   public getBugByTitle(title: string): Observable<RestBug> {
     return this.backendService.get(`/api/bugs/${title}`);
   }
+
+  public getBugByTitleToExportPDF(title: string): Observable<RestBug> {
+    return this.backendService.get(`/api/bugs/bug-pdf/${title}`);
+  }
   public getPostAllAllowedStatus(bugStatus: string): Observable<BugStatus[]> {
     return this.backendService.get(`/api/bugs/status/${bugStatus}`);
   }

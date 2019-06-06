@@ -15,6 +15,7 @@ import {RoleModule} from '../role/role.module';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {TokenInterceptorService} from '../interceptors/token-interceptor.service';
 import {AuthGuard} from '../interceptors/auth.guard';
+import {ExcelService} from "../bug/service/excel.service";
 
 @NgModule({
   declarations: [
@@ -47,12 +48,14 @@ import {AuthGuard} from '../interceptors/auth.guard';
       useClass: TokenInterceptorService,
       multi: true
     },
-    AuthGuard
+    AuthGuard,
+    [ExcelService]
 
   ],
   bootstrap: [
     AppComponent
   ]
+
 })
 export class AppModule {
 }
