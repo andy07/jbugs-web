@@ -7,6 +7,7 @@ import * as jsPDF from 'jspdf';
 import {infoToken} from "../../pages/login/login.component";
 import {returnUserPermissionForBugExportPDF, returnUserPermissionForBugManagement} from "../../pages/login/token";
 import {ExcelService} from "../service/excel.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-bug-list',
@@ -19,7 +20,7 @@ export class BugListComponent implements OnInit {
 
   dataSource = new MatTableDataSource<RestBug>();
 
-  constructor(private bugService: BugService,private excelService:ExcelService) {
+  constructor(private bugService: BugService,private excelService:ExcelService,private router:Router) {
   }
 
   public bugList: RestBug[];
@@ -74,7 +75,10 @@ export class BugListComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.bugList);
       this.dataSource.paginator = this.paginator;
       this.dataSource.filterPredicate = this.createTableFilter();
-    });
+    },
+      error =>{
+        this.router.navigate(['/home/error'],{queryParams:{message:error.error}})}
+      );
 
     // this.dataSource.filterPredicate = this.createTableFilter();
 
