@@ -23,6 +23,10 @@ import {RouterModule} from '@angular/router';
 import {BugViewDetailsComponent} from './bug-view-details/bug-view-details.component';
 import {AttachmentCreateComponent} from './attachment-create/attachment-create.component';
 import {AttachmentListComponent} from './attachment-list/attachment-list.component';
+import { BugGraphComponent } from './bug-graph/bug-graph.component';
+import { PiechartComponent } from './piechart/piechart.component';
+
+
 
 
 @NgModule({
@@ -33,14 +37,17 @@ import {AttachmentListComponent} from './attachment-list/attachment-list.compone
     BugEditComponent,
     BugViewDetailsComponent,
     AttachmentCreateComponent,
-    AttachmentListComponent
+    AttachmentListComponent,
+    BugGraphComponent,
+    PiechartComponent
   ],
   exports: [
     BugCreateComponent,
     BugListComponent,
     BugStatusComponent,
     BugEditComponent,
-    BugViewDetailsComponent
+    BugViewDetailsComponent,
+
   ],
   imports: [
     CommonModule,
@@ -65,7 +72,9 @@ import {AttachmentListComponent} from './attachment-list/attachment-list.compone
     MatMenuModule,
     MatPaginatorModule,
     MatSortModule,
-    MatSidenavModule
+    MatSidenavModule,
+
+
   ]
 })
 export class BugModule {
