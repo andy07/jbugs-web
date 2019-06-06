@@ -23,6 +23,12 @@ export class BugEditComponent implements OnInit {
     createdBy: '',
     assignedTo: ''
   };
+  severity: string[] = [
+    'CRITICAL',
+    'HIGH',
+    'MEDIUM',
+    'LOW'
+  ];
   public bugStatusList: string[];
 
   constructor(private bugService: BugService,

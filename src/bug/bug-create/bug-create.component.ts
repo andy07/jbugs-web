@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {BugService} from '../service/bug.service';
 import {RestBug} from '../models/restBug';
+import {infoToken} from '../../pages/login/login.component';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-bug-create',
@@ -15,10 +17,10 @@ export class BugCreateComponent implements OnInit {
     description: '',
     version: '',
     targetDate: new Date(),
-    status: '',
+    status: 'NEW',
     fixedVersion: '',
     severity: '',
-    createdBy: '',
+    createdBy: infoToken.sub,
     assignedTo: ''
   };
   constructor(private service: BugService) {
@@ -27,8 +29,13 @@ export class BugCreateComponent implements OnInit {
   ngOnInit() {
   }
 
-  public onSubmit() {
-    this.service.save(this.bug).subscribe((bug) => this.bug = bug);
+  public onSubmit(form: NgForm) {
+    this.bug.targetDate = form.controls.targetDate.value;
+    console.log(this.bug);
+    this.service.save(this.bug).subscribe((bug) => {
+      this.bug = bug;
+      console.log(bug);
+    });
   }
 
 }

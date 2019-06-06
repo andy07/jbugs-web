@@ -2,7 +2,7 @@
   <mat-card>
     <p>Create a new bug</p>
     <mat-card-content>
-      <form #form="ngForm" (ngSubmit)="onSubmit()">
+      <form #form="ngForm" (ngSubmit)="onSubmit(form)">
         <mat-form-field>
           <input matInput
                  [(ngModel)]="bug.title"
@@ -38,16 +38,6 @@
         </mat-form-field>
         <mat-form-field>
           <input matInput
-                 [(ngModel)]="bug.createdBy"
-                 #createdBy="ngModel"
-                 id="created_by"
-                 name="created_by"
-                 required
-                 placeholder="Created By">
-          <mat-error *ngIf="version.errors?.required">Required</mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput
                  [(ngModel)]="bug.assignedTo"
                  #createdBy="ngModel"
                  id="assigned_to"
@@ -59,12 +49,12 @@
         <mat-form-field>
           <input matInput
                  [ngModel]="bug.targetDate"
-                 #date="ngModel"
-                 id="date"
-                 name="date"
+                 #targetDate="ngModel"
+                 id="targetDate"
+                 name="targetDate"
                  required
                  [matDatepicker]="picker"
-                 placeholder="Target date" [value]="bug.targetDate">
+                 placeholder="Target date">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
           <mat-error *ngIf="version.errors?.required">Required</mat-error>
@@ -84,4 +74,7 @@
       </form>
     </mat-card-content>
   </mat-card>
+  <app-attachment-create [bugTitle]="bug.title"></app-attachment-create>
+
+  {{form.value|json}}
 </div>

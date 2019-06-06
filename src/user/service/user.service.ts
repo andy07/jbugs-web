@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {BackendService} from '../../assets/backend.service';
 import {Observable} from 'rxjs';
 import {RestUser} from '../models/restUser';
-import {Token} from "../../pages/login/token";
+import {Token} from '../../pages/login/token';
 
 @Injectable({
   providedIn: 'root'
@@ -28,8 +28,9 @@ export class UserService {
   public loggedIn(): boolean {
     if (localStorage.getItem('token') === null) {
       return false;
-    } else
+    } else {
       return true;
+    }
   }
 
 }

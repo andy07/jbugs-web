@@ -2,16 +2,18 @@ import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {UserService} from '../../user/service/user.service';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
-import {infoTokenDecoded} from "./token";
+import {infoTokenDecoded} from './token';
 
 
 function initializeInfoToken(tokenEncoded: string) {
-  const x = tokenEncoded.split('.');
-  // decodific din baza 64 (atob)
-  return  JSON.parse(atob(x[1]));
+  if (tokenEncoded !== null) {
+    const x = tokenEncoded.split('.');
+    // decodific din baza 64 (atob)
+    return JSON.parse(atob(x[1]));
+  }
 }
 
-export var infoToken: infoTokenDecoded = initializeInfoToken(localStorage.getItem('token'));
+export let infoToken: infoTokenDecoded = initializeInfoToken(localStorage.getItem('token'));
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
