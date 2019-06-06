@@ -10,7 +10,7 @@ import {
   MatInputModule,
   MatMenuModule,
   MatOptionModule,
-  MatSelectModule,
+  MatSelectModule, MatSortModule,
   MatTableModule
 } from '@angular/material';
 import {RouterModule} from '@angular/router';
@@ -37,7 +37,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatExpansionModule,
     MatSelectModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatSortModule
   ]
 })
 export class RoleModule {

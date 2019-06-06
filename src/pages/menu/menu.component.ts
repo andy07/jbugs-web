@@ -1,5 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {infoToken} from "../login/login.component";
+import {
+  returnUserPermissionForBugManagement,
+  returnUserPermissionForPermissionManagement,
+  returnUserPermissionForUserManagement
+} from '../login/token';
 
 @Component({
   selector: 'app-menu',
@@ -7,10 +11,21 @@ import {infoToken} from "../login/login.component";
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
-  permissions = infoToken.permissions;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  getPermissionForUserManagement(): boolean {
+    return returnUserPermissionForUserManagement();
+  }
+
+  getPermissionForPermissionManagement(): boolean {
+    return returnUserPermissionForPermissionManagement();
+  }
+
+  getPermissionForBugManagement(): boolean {
+    return returnUserPermissionForBugManagement();
   }
 
 }

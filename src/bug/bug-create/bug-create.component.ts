@@ -3,6 +3,7 @@ import {BugService} from '../service/bug.service';
 import {RestBug} from '../models/restBug';
 import {infoToken} from '../../pages/login/login.component';
 import {NgForm} from '@angular/forms';
+import {UserService} from '../../user/service/user.service';
 
 @Component({
   selector: 'app-bug-create',
@@ -23,10 +24,16 @@ export class BugCreateComponent implements OnInit {
     createdBy: infoToken.sub,
     assignedTo: ''
   };
-  constructor(private service: BugService) {
+  public usernames: string[] = [];
+
+  constructor(private service: BugService, private userService: UserService) {
   }
 
   ngOnInit() {
+    this.userService.getUsernames().subscribe((usernames) => {
+      this.usernames = usernames;
+      console.log(usernames);
+    });
   }
 
   public onSubmit(form: NgForm) {

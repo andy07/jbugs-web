@@ -54,7 +54,7 @@
                  name="targetDate"
                  required
                  [matDatepicker]="picker"
-                 placeholder="Target date">
+                 placeholder="Target date" [value]="bug.targetDate">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
           <mat-error *ngIf="version.errors?.required">Required</mat-error>

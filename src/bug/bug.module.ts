@@ -13,9 +13,9 @@ import {
   MatPaginatorModule,
   MatSelectModule,
   MatSidenavModule,
-  MatSortModule,
   MatTableModule, MatToolbarModule
 } from '@angular/material';
+import {MatSortModule} from '@angular/material/sort';
 import {BugStatusComponent} from './bug-status/bug-status.component';
 import {BugListComponent} from './bug-list/bug-list.component';
 import {BugEditComponent} from './bug-edit/bug-edit.component';

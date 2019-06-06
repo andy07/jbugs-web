@@ -32,9 +32,10 @@ export class RolePermissionComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(infoToken);
 
-    //if(this.verifyUserPermission()) {
 
+    if(this.verifyUserPermission()) {
       this.roleService.getAllPermissions().subscribe((permissionList) => {
         this.permissionList = permissionList;
       });
@@ -45,7 +46,7 @@ export class RolePermissionComponent implements OnInit {
       // const type  = someEnum.MARIA;
       // console.log(someEnum[type])
 
-   // }
+    }
   }
 
 
@@ -67,11 +68,17 @@ export class RolePermissionComponent implements OnInit {
 
   verifyUserPermission(): boolean {
 
-    infoToken.permissions.forEach(ss =>{
-       if(ss===EnumPermission[EnumPermission.PERMISSION_MANAGEMENT])
-         console.log(EnumPermission[EnumPermission.PERMISSION_MANAGEMENT]);
-         return true;
-    });
+    for(let i=0;i<infoToken.permissions.length;i++){
+      if(infoToken.permissions[i]===EnumPermission[EnumPermission.PERMISSION_MANAGEMENT])
+        console.log(EnumPermission[EnumPermission.PERMISSION_MANAGEMENT]);
+      return true;
+    }
+
+    // infoToken.permissions.forEach(ss =>{
+    //    if(ss===EnumPermission[EnumPermission.PERMISSION_MANAGEMENT])
+    //      console.log(EnumPermission[EnumPermission.PERMISSION_MANAGEMENT]);
+    //      return true;
+    // });
     return false;
   }
 

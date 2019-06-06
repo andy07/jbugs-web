@@ -11,3 +11,20 @@ table {
   z-index: 100;
   background: white;
 }
+
+#filter {
+  display: flex;
+  margin-left: 1000px;
+}
+
+#buttonAndFilter {
+  display: inline-flex;
+}
+
+button:hover {
+  color: darkgreen;
+}
+
+#zeroResult {
+  color: red;
+}

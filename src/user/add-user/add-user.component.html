@@ -8,7 +8,7 @@
              id="firstName"
              #firstName="ngModel"
              name="firstName"
-             pattern="^[A-Z][a-z ]+([A-Z][a-z]+)?$"
+             pattern="^[A-Z][a-z]+[ ]?([A-Z][a-z]+)?$"
              required
              maxlength="20"
              placeholder="First Name">
@@ -36,6 +36,7 @@
              required
              id="mobileNumber"
              name="mobileNumber"
+             maxlength="20"
              placeholder="Mobile Number"
              pattern="[+]4[0|9]{1}[0-9]{9}"
              #mobileNumber="ngModel">
@@ -49,7 +50,7 @@
              required
              id="email"
              name="email"
-             maxlength="20"
+             maxlength="50"
              pattern="^[a-z0-9._%+-]+@msggroup.com"
              placeholder="Email"
              #email="ngModel">
@@ -63,6 +64,7 @@
              required
              id="password"
              name="password"
+             maxlength="50"
              placeholder="Password"
              #password="ngModel">
       <mat-error *ngIf="password.touched && password.invalid">Required</mat-error>
@@ -79,11 +81,7 @@
         <mat-option  *ngFor="let role of roleList" [value]="role.type">{{getEnumName(role.type)}}</mat-option>
       </mat-select>
     </mat-form-field>
-
-    <p>{{form.value | json}}</p>
-
     <button (click)="onSubmit()"  mat-raised-button color="primary" type="submit" class="save" [disabled]="!form.valid">Save</button>
-
   </form>
     </mat-card-content>
 </mat-card>

@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {infoToken} from '../login/login.component';
 import {NotificationService} from '../../user/service/notification.service';
@@ -21,7 +21,7 @@ export class UserComponent implements OnInit {
   logout() {
     this.notificationService.stopListener();
     localStorage.removeItem('token');
-    this.router.navigate(['/login']);
+    this.router.navigate(['/home']);
   }
 
   getUsername() {
