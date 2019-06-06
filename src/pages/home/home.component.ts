@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {NotificationService} from '../../user/service/notification.service';
 
 @Component({
   selector: 'app-home',
