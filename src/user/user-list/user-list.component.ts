@@ -25,16 +25,15 @@ export class UserListComponent implements OnInit {
     'emailFilter', 'mobileNumberFilter',
     'statusFilter', 'usernameFilter'];
 
+
   private firstNameFilter = new FormControl();
   private lastNameFilter = new FormControl();
   private emailFilter = new FormControl();
   private mobileNumberFilter = new FormControl();
   private usernameFilter = new FormControl();
-  private globalFilter = new FormControl('');
-  private filterValues = {firstName: '', lastName: '', email: '', mobileNumber: '', username: '', data: ''};
+  private filterValues = {firstName: '', lastName: '', email: '', mobileNumber: '', username: ''};
 
   private newStatus: boolean;
-
   constructor(private userService: UserService, private router: Router, public dialog: MatDialog) {
   }
 
@@ -45,7 +44,6 @@ export class UserListComponent implements OnInit {
   sortData() {
     this.dataSource.sort = this.sort;
   }
-
   ngOnInit() {
     console.log(infoToken);
     this.userService.getAllUsers().subscribe((userList) => {
