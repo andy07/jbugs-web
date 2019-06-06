@@ -3,15 +3,15 @@
     <mat-icon matListIcon>home</mat-icon>
     <button mat-button [routerLink]="['main']">Home</button>
   </mat-list-item>
-  <mat-list-item *ngIf="true">
+  <mat-list-item *ngIf="getPermissionForUserManagement()">
     <mat-icon matListIcon>supervised_user_circle</mat-icon>
     <button mat-button [routerLink]="['users']">Users</button>
   </mat-list-item>
-  <mat-list-item *ngIf="verifyUserPermission()">
+  <mat-list-item *ngIf="getPermissionForPermissionManagement()">
     <mat-icon matListIcon>whatshot</mat-icon>
     <button mat-button [routerLink]="['roles']">Roles</button>
   </mat-list-item>
-  <mat-list-item *ngIf="true">
+  <mat-list-item *ngIf="getPermissionForBugManagement()">
     <mat-icon matListIcon>bug_report</mat-icon>
     <button mat-button [routerLink]="['bugs']">Bugs</button>
   </mat-list-item>

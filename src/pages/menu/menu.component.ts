@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {infoToken} from "../login/login.component";
-import {EnumPermission} from "../../role/models/restPermission";
+import {
+  returnUserPermissionForBugManagement,
+  returnUserPermissionForPermissionManagement,
+  returnUserPermissionForUserManagement
+} from "../login/token";
 
 @Component({
   selector: 'app-menu',
@@ -8,20 +11,21 @@ import {EnumPermission} from "../../role/models/restPermission";
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit() {
   }
 
-  verifyUserPermission(): boolean {
+  getPermissionForUserManagement():boolean{
+    return returnUserPermissionForUserManagement();
+  }
 
-    for (let i = 0; i < infoToken.permissions.length; i++) {
-      if (infoToken.permissions[i] === EnumPermission[EnumPermission.PERMISSION_MANAGEMENT]) {
-        return true;
-      }
-    }
-    return false;
+  getPermissionForPermissionManagement():boolean{
+    return returnUserPermissionForPermissionManagement();
+  }
+
+  getPermissionForBugManagement():boolean{
+    return returnUserPermissionForBugManagement();
   }
 
 }

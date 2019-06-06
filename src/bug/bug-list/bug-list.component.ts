@@ -3,6 +3,10 @@ import {RestBug} from '../models/restBug';
 import {BugService} from '../service/bug.service';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {FormControl} from '@angular/forms';
+import * as jsPDF from 'jspdf';
+import {infoToken} from "../../pages/login/login.component";
+import {returnUserPermissionForBugExportPDF, returnUserPermissionForBugManagement} from "../../pages/login/token";
+import {ExcelService} from "../service/excel.service";
 
 @Component({
   selector: 'app-bug-list',
@@ -15,10 +19,12 @@ export class BugListComponent implements OnInit {
 
   dataSource = new MatTableDataSource<RestBug>();
 
-  constructor(private bugService: BugService) {
+  constructor(private bugService: BugService,private excelService:ExcelService) {
   }
 
   public bugList: RestBug[];
+  public bugToPDF: RestBug;
+
   displayedColumns: string[] = [
     'title',
     'version',
@@ -59,7 +65,7 @@ export class BugListComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    console.log(infoToken);
     this.bugService.getAllBugs().subscribe((bugList) => {
       this.bugList = bugList;
       this.bugList.forEach(bug => {
@@ -117,7 +123,7 @@ export class BugListComponent implements OnInit {
     const filterFunction = function (data, filter): boolean {
       console.log('!!!!!!');
       const searchTerms = JSON.parse(filter);
-      return searchTerms.data !== '' ? JSON.stringify(data).toLowerCase().indexOf(searchTerms.data.toLowerCase()) !== -1 :
+      return// searchTerms.data !== '' ? JSON.stringify(data).toLowerCase().indexOf(searchTerms.data.toLowerCase()) !== -1 :
         data.title.trim().toLowerCase().indexOf(searchTerms.title.toLowerCase()) !== -1
         && data.version.trim().toLowerCase().indexOf(searchTerms.version.toLowerCase()) !== -1
         && data.fixedVersion.trim().toLowerCase().indexOf(searchTerms.fixedVersion.toLowerCase()) !== -1
@@ -129,5 +135,52 @@ export class BugListComponent implements OnInit {
     return filterFunction;
   }
 
+  exportBugPDF(title: any) {
+    this.bugService.getBugByTitleToExportPDF(title).subscribe(
+      (bug)=>{
+        this.bugToPDF=bug;
+        this.createPDFFile(this.bugToPDF);
+      },
+      error1 => {
+        console.log(error1);
+      })
+
+  }
+
+
+
+  private createPDFFile(bugToPDF: RestBug) {
+    const doc = new jsPDF();
+    doc.text('\t\t\t\t'+bugToPDF.title+'\n\n' +
+              'Title: '+bugToPDF.title+'\n'+
+              'Description: '+bugToPDF.description+'\n'+
+              'Version: '+bugToPDF.version+'\n'+
+              'Target Date: '+bugToPDF.targetDate+'\n'+
+              'Status: '+bugToPDF.status+'\n'+
+              'Fixed Version: '+bugToPDF.fixedVersion+'\n'+
+              'Severity: '+bugToPDF.severity+'\n'+
+              'Created by: '+bugToPDF.createdBy+'\n'+
+              'Assigned to: '+bugToPDF.assignedTo+'\n',10,10);
+    doc.save('Bug '+bugToPDF.title+'.pdf');
+  }
+
+
+
+  exportBugsToExcel() {
+    this.bugService.getAllBugs().subscribe(value => {
+      this.excelService.exportAsExcelFile(value, 'Bug List');
+    },
+      error => {
+      console.log(error);
+      })
+
+  }
+
+ getPermissionForBugManagement():boolean{
+    return returnUserPermissionForBugManagement();
+ }
+  returnPermissionPDFExportBug():boolean{
+    return returnUserPermissionForBugExportPDF();
+  }
 }
 
