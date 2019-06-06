@@ -25,6 +25,8 @@ import {AttachmentCreateComponent} from './attachment-create/attachment-create.c
 import {AttachmentListComponent} from './attachment-list/attachment-list.component';
 import { BugGraphComponent } from './bug-graph/bug-graph.component';
 import { PiechartComponent } from './piechart/piechart.component';
+import {BarChartModule} from "@swimlane/ngx-charts";
+
 
 
 
@@ -73,6 +75,7 @@ import { PiechartComponent } from './piechart/piechart.component';
     MatPaginatorModule,
     MatSortModule,
     MatSidenavModule,
+    BarChartModule,
 
 
   ]
