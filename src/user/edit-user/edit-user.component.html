@@ -8,7 +8,7 @@
                id="firstName"
                #firstName="ngModel"
                name="firstName"
-               pattern="^[A-Z][a-z ]+([A-Z][a-z]+)?$"
+               pattern="^[A-Z][a-z]+[ ]?([A-Z][a-z]+)?$"
                required
                maxlength="20"
                placeholder="First Name">
@@ -36,6 +36,7 @@
                required
                id="mobileNumber"
                name="mobileNumber"
+               maxlength="20"
                placeholder="Mobile Number"
                pattern="[+]4[0|9]{1}[0-9]{9}"
                #mobileNumber="ngModel">
@@ -63,6 +64,7 @@
                required
                id="password"
                name="password"
+               maxlength="50"
                placeholder="Password"
                #password="ngModel">
         <mat-error *ngIf="password.touched && password.invalid">Required</mat-error>

@@ -2,10 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {RestUser} from "../models/restUser";
 import {UserService} from "../service/user.service";
-import {NgModel} from "@angular/forms";
-import {RestRole, EnumRole} from "../../role/models/restRole";
+import {EnumRole, RestRole} from "../../role/models/restRole";
 import {RoleService} from "../../role/service/role.service";
-import { Observable } from 'rxjs';
 import {PopUpMessageComponent} from "../../pages/login/login.component";
 import {MatDialog} from "@angular/material";
 
@@ -20,20 +18,20 @@ export class AddUserComponent implements OnInit {
 
 
   public user: RestUser = {
-    username:'',
-    firstName:'',
-    lastName:'',
-    email:'',
-    mobileNumber:'',
-    password:'',
-    roles:[]
+    username: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    mobileNumber: '',
+    password: '',
+    roles: []
   };
 
   /*{firstName: '', lastName: '', email: '', mobileNumber: '', roles:null};*/
 
 
-
-  constructor(private roleService : RoleService, private userService: UserService, private router: Router, public dialog: MatDialog) { }
+  constructor(private roleService: RoleService, private userService: UserService, private router: Router, public dialog: MatDialog) {
+  }
 
   ngOnInit() {
 
@@ -55,16 +53,19 @@ export class AddUserComponent implements OnInit {
     // }
     // console.log(this.user.roles);
 
-     this.userService.save(this.user).subscribe(
-       (user) => {this.user = user
-         this.redirectToUserList()},
-    (error) => {
-         console.log(error);
-         this.dialog.open(PopUpMessageComponent, {width: '500px', height: '100px', data: {data: error.error.message}});},
-       ()=>{
-         this.redirectToUserList();
-       }
-     );
+    this.userService.save(this.user).subscribe(
+      (user) => {
+        this.user = user
+        this.redirectToUserList()
+      },
+      (error) => {
+        console.log(error);
+        this.dialog.open(PopUpMessageComponent, {width: '500px', height: '100px', data: {data: error.error.message}});
+      },
+      () => {
+        this.redirectToUserList();
+      }
+    );
 
   }
 
@@ -75,11 +76,6 @@ export class AddUserComponent implements OnInit {
   getEnumName(type: string): string {
     return EnumRole[type];
   }
-
-
-
-
-
 
 
 }

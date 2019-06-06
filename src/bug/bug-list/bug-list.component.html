@@ -5,14 +5,9 @@
   </button>
 
   <mat-form-field id="filter">
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    <input matInput [formControl]="globalFilter" placeholder="Filter">
   </mat-form-field>
 </div>
-
-
-<mat-card *ngIf="dataSource?.filteredData.length <= 0" style="margin-bottom: 5px">
-  <div><span id="zeroResult">ZERO RESULT</span></div>
-</mat-card>
 
 <div class="mat-elevation-z8">
 
@@ -125,3 +120,6 @@
   <mat-paginator [pageSize]="5" showFirstLastButtons></mat-paginator>
 </div>
 
+<mat-card *ngIf="dataSource?.filteredData.length <= 0" style="margin-bottom: 5px">
+  <div><span id="zeroResult">ZERO RESULT</span></div>
+</mat-card>

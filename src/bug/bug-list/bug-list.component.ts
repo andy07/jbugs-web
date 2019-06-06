@@ -44,8 +44,9 @@ export class BugListComponent implements OnInit {
   private severityFilter = new FormControl();
   private statusFilter = new FormControl();
   private assignedToFilter = new FormControl();
+  private globalFilter = new FormControl('');
 
-  private filterValues = {title: '', version: '', fixedVersion: '', severity: '', status: '', assignedTo: ''};
+  private filterValues = {title: '', version: '', fixedVersion: '', severity: '', status: '', assignedTo: '', data: ''};
   @Output()
   public outputFromBackend = new EventEmitter<RestBug>();
 
@@ -102,6 +103,13 @@ export class BugListComponent implements OnInit {
         this.filterValues.assignedTo = value
         this.dataSource.filter = JSON.stringify(this.filterValues);
       });
+    this.globalFilter.valueChanges
+      .subscribe(
+        value => {
+          this.filterValues.data = value
+          this.dataSource.filter = JSON.stringify(this.filterValues);
+        }
+      );
   }
 
 
@@ -109,7 +117,8 @@ export class BugListComponent implements OnInit {
     const filterFunction = function (data, filter): boolean {
       console.log('!!!!!!');
       const searchTerms = JSON.parse(filter);
-      return data.title.trim().toLowerCase().indexOf(searchTerms.title.toLowerCase()) !== -1
+      return searchTerms.data !== '' ? JSON.stringify(data).toLowerCase().indexOf(searchTerms.data.toLowerCase()) !== -1 :
+        data.title.trim().toLowerCase().indexOf(searchTerms.title.toLowerCase()) !== -1
         && data.version.trim().toLowerCase().indexOf(searchTerms.version.toLowerCase()) !== -1
         && data.fixedVersion.trim().toLowerCase().indexOf(searchTerms.fixedVersion.toLowerCase()) !== -1
         && data.severity.trim().toLowerCase().indexOf(searchTerms.severity.toLowerCase()) !== -1

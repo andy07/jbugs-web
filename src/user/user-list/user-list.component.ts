@@ -21,7 +21,10 @@ export class UserListComponent implements OnInit {
   public userList: RestUser[];
 
   displayedColumns: string[] = ['firstName', 'lastName', 'email', 'mobileNumber', 'status', 'username'];
-  displayedColumnsFilter: string[] = ['firstNameFilter', 'lastNameFilter', 'emailFilter', 'mobileNumberFilter', 'usernameFilter'];
+  displayedColumnsFilter: string[] = ['firstNameFilter', 'lastNameFilter',
+    'emailFilter', 'mobileNumberFilter',
+    'statusFilter', 'usernameFilter'];
+
 
   private firstNameFilter = new FormControl();
   private lastNameFilter = new FormControl();
