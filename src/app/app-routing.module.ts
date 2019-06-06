@@ -79,11 +79,11 @@ const routes: Routes = [
             component: BugCreateComponent
           },
           {
-            path: 'bug-edit/:title',
+            path: 'bug-edit/:id',
             component: BugEditComponent
           },
           {
-            path: 'bug-view-details/:title',
+            path: 'bug-view-details/:id',
             component: BugViewDetailsComponent
           }
         ]

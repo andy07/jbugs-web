@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {RestUser} from "../models/restUser";
-import {UserService} from "../service/user.service";
-import {EnumRole, RestRole} from "../../role/models/restRole";
-import {RoleService} from "../../role/service/role.service";
-import {PopUpMessageComponent} from "../../pages/login/login.component";
-import {MatDialog} from "@angular/material";
+import {RestUser} from '../models/restUser';
+import {UserService} from '../service/user.service';
+import {EnumRole, RestRole} from '../../role/models/restRole';
+import {RoleService} from '../../role/service/role.service';
+import {PopUpMessageComponent} from '../../pages/login/login.component';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-add-user',

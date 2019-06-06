@@ -99,11 +99,11 @@
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item [routerLink]="['../bug-edit/', element.title]">
+          <button mat-menu-item [routerLink]="['../bug-edit/', element.id]">
             <mat-icon>edit</mat-icon>
             <span>Edit</span>
           </button>
-          <button mat-menu-item [routerLink]="['../bug-view-details/', element.title]">
+          <button mat-menu-item [routerLink]="['../bug-view-details/', element.id]">
             <mat-icon>details</mat-icon>
             <span>View details</span>
           </button>

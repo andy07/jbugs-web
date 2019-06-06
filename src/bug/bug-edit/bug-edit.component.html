@@ -17,7 +17,12 @@
                #version="ngModel"
                id="version"
                name="version"
+               placeholder="Version"
+               required
+               pattern="[0-9a-z\.]*"
                placeholder="Version">
+        <mat-error *ngIf="version.errors?.required">Required</mat-error>
+        <mat-error *ngIf="version.errors?.pattern">Alphanumerical characters divided by dots</mat-error>
       </mat-form-field>
       <mat-form-field>
         <input matInput
@@ -26,6 +31,8 @@
                id="revision"
                name="revision"
                placeholder="Revision">
+        <mat-error *ngIf="version.errors?.required">Required</mat-error>
+        <mat-error *ngIf="version.errors?.pattern">Alphanumerical characters divided by dots</mat-error>
       </mat-form-field>
 
       <mat-form-field>
