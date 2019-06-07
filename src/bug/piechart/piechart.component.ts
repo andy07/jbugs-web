@@ -58,9 +58,15 @@ export class PiechartComponent implements OnInit {
         }
 
         this.init();
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
       })
 
     });
+
+    this.show=true;
 
   }
 
