@@ -26,9 +26,7 @@ import {AttachmentListComponent} from './attachment-list/attachment-list.compone
 import { BugGraphComponent } from './bug-graph/bug-graph.component';
 import { PiechartComponent } from './piechart/piechart.component';
 import {BarChartModule} from "@swimlane/ngx-charts";
-
-
-
+import { ChartModule } from 'angular-highcharts';
 
 
 @NgModule({
@@ -41,7 +39,7 @@ import {BarChartModule} from "@swimlane/ngx-charts";
     AttachmentCreateComponent,
     AttachmentListComponent,
     BugGraphComponent,
-    PiechartComponent
+    PiechartComponent,
   ],
   exports: [
     BugCreateComponent,
@@ -49,6 +47,7 @@ import {BarChartModule} from "@swimlane/ngx-charts";
     BugStatusComponent,
     BugEditComponent,
     BugViewDetailsComponent,
+    PiechartComponent
 
   ],
   imports: [
@@ -76,6 +75,7 @@ import {BarChartModule} from "@swimlane/ngx-charts";
     MatSortModule,
     MatSidenavModule,
     BarChartModule,
+    ChartModule
 
 
   ]

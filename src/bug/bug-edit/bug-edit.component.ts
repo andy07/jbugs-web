@@ -49,7 +49,7 @@ export class BugEditComponent implements OnInit {
   ngOnInit() {
     const title = this.route.snapshot.paramMap.get('title');
     this.bugService.getBugByTitle(title).subscribe((bug) => {
-      this.bugActualStatus=bug.status;
+      this.bugActualStatus = bug.status;
       this.bug = bug;
       this.bugService.getPostAllAllowedStatus(this.bug.status).subscribe((bugStatusList) => {
         this.bugStatusList = bugStatusList;
