@@ -18,6 +18,7 @@ export class PiechartComponent implements OnInit {
   noFIXED:number;
   noREJECTED:number;
   noCLOSED:number;
+  show:boolean=false;
 
 
   constructor(private bugService: BugService) { }
@@ -58,6 +59,7 @@ export class PiechartComponent implements OnInit {
         }
 
         this.init();
+        this.show=true;
       })
 
     });
