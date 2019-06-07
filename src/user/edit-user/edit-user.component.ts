@@ -32,7 +32,9 @@ export class EditUserComponent implements OnInit {
     const username = this.route.snapshot.paramMap.get('username');
     this.userService.getUserByUsername(username).subscribe((user) => {
       this.user = user;
-    });
+    },
+      error =>{
+        this.router.navigate(['/home/error'],{queryParams:{message:error.error}})});
 
     this.roleService.getAllRoles().subscribe((roleList) => {
       this.roleList = roleList;

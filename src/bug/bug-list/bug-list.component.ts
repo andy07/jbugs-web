@@ -69,9 +69,6 @@ export class BugListComponent implements OnInit {
     console.log(infoToken);
     this.bugService.getAllBugs().subscribe((bugList) => {
       this.bugList = bugList;
-      this.bugList.forEach(bug => {
-        console.log(bug);
-      });
       this.dataSource = new MatTableDataSource(this.bugList);
       this.dataSource.paginator = this.paginator;
       this.dataSource.filterPredicate = this.createTableFilter();
