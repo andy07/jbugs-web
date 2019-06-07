@@ -58,8 +58,10 @@ export class PiechartComponent implements OnInit {
             break;
           }
         }
-        if(this.isValid())
+        if(this.isValid()) {
           this.init();
+          this.show=true;
+        }
       })
     });
   }
@@ -176,7 +178,7 @@ export class PiechartComponent implements OnInit {
 
      });
 
-    this.show=true;
+
   }
 
 
