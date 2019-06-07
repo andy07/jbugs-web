@@ -45,16 +45,17 @@ export class UserListComponent implements OnInit {
   sortData() {
     this.dataSource.sort = this.sort;
   }
+
   ngOnInit() {
     this.userService.getAllUsers().subscribe((userList) => {
-      this.userList = userList;
-      this.dataSource = new MatTableDataSource(this.userList);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.filterPredicate = this.createTableFilter();
-    },
-      error =>{
-      this.router.navigate(['/home/error'],{queryParams:{message:error.error}});
-      } );
+        this.userList = userList;
+        this.dataSource = new MatTableDataSource(this.userList);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.filterPredicate = this.createTableFilter();
+      },
+      error => {// daca nu poate returna toti userii
+        this.router.navigate(['/home/error'], {queryParams: {message: error.error}});
+      });
     this.firstNameFilter.valueChanges
       .subscribe(value => {
         this.filterValues.firstName = value;

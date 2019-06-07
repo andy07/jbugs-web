@@ -37,9 +37,10 @@ export class BugViewDetailsComponent implements OnInit {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     console.log('id is ' + id);
     this.bugService.getBugById(id).subscribe((bug) => {
-      this.bug = bug;
-    });
+        this.bug = bug;
+      },
+      error => {
+        this.router.navigate(['/home/error'], {queryParams: {message: error.error}});
+      });
   }
-
-
 }

@@ -4,6 +4,7 @@ import {RestBug} from '../models/restBug';
 import {UserService} from '../../user/service/user.service';
 import {PopUpMessageComponent} from '../../pages/login/login.component';
 import {MatDialog} from '@angular/material';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-bug-create',
@@ -26,7 +27,7 @@ export class BugCreateComponent implements OnInit {
   };
   public usernames: string[] = [];
 
-  constructor(private service: BugService, private userService: UserService, public dialog: MatDialog) {
+  constructor(private service: BugService, private userService: UserService, public dialog: MatDialog, private router: Router) {
   }
 
   ngOnInit() {
@@ -39,11 +40,12 @@ export class BugCreateComponent implements OnInit {
   public onSubmit() {
     this.service.save(this.bug).subscribe(
       (bug) => {
-        this.bug = bug
+        this.bug = bug;
       },
       (error) => {
         console.log(error);
         this.dialog.open(PopUpMessageComponent, {width: '500px', height: '100px', data: {data: error.error.message}});
+        this.router.navigate(['/home/error'], {queryParams: {message: error.error}});
       });
   }
 

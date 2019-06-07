@@ -32,6 +32,7 @@ export class BugEditComponent implements OnInit {
     'LOW'
   ];
   public usernames: string[];
+
   constructor(private bugService: BugService,
               private route: ActivatedRoute,
               private router: Router,
@@ -46,7 +47,12 @@ export class BugEditComponent implements OnInit {
       this.bugService.getPostAllAllowedStatus(this.bug.status).subscribe((bugStatusList) => {
         this.bugStatusList = bugStatusList;
       });
-    });
+      },
+      error => {
+        this.router.navigate(['/home/error'], {queryParams: {message: error.error}});
+      }
+    )
+    ;
     this.userService.getUsernames().subscribe((usernames) => {
       this.usernames = usernames;
       console.log(usernames);
