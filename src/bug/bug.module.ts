@@ -24,7 +24,6 @@ import {BugViewDetailsComponent} from './bug-view-details/bug-view-details.compo
 import {AttachmentCreateComponent} from './attachment-create/attachment-create.component';
 import {AttachmentListComponent} from './attachment-list/attachment-list.component';
 import { PiechartComponent } from './piechart/piechart.component';
-import {BarChartModule} from "@swimlane/ngx-charts";
 import { ChartModule } from 'angular-highcharts';
 
 
@@ -75,7 +74,6 @@ import { ChartModule } from 'angular-highcharts';
     MatListModule,
     MatToolbarModule,
     MatSidenavModule,
-    BarChartModule,
     ChartModule
 
 

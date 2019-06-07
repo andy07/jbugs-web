@@ -70,15 +70,7 @@ export class RolePermissionComponent implements OnInit {
   }
 
   verifyUserPermission(): boolean {
-
     return returnUserPermissionForPermissionManagement();
-
-    // for (let i = 0; i < infoToken.permissions.length; i++) {
-    //   if (infoToken.permissions[i] === EnumPermission[EnumPermission.PERMISSION_MANAGEMENT]) {
-    //     return true;
-    //   }
-    // }
-    // return false;
   }
 
 }
