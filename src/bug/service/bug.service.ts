@@ -16,6 +16,7 @@ export class BugService {
   }
 
   public update(bug: RestBug): Observable<RestBug> {
+    console.log(`/api/bugs/` + bug);
     return this.backendService.put(`/api/bugs/${bug.id}`, bug);
   }
 
