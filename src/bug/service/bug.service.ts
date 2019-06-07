@@ -42,4 +42,8 @@ export class BugService {
     return this.backendService.get(`/api/bugs/status/no/${status}`);
   }
 
+  public getPostAllAllowedStatus(bugStatus: string): Observable<BugStatus[]> {
+    return this.backendService.get(`/api/bugs/status/${bugStatus}`);
+  }
+
 }

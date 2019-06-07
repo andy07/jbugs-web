@@ -5,6 +5,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../user/service/user.service';
 import {BugStatus} from '../models/bugStatus.model';
 import {returnUserPermissionForBugClose} from '../../pages/login/token';
+import {infoToken} from '../../pages/login/login.component';
+import {EnumPermission} from '../../role/models/restPermission';
+import {FormControl, Validators} from '@angular/forms';
 
 
 @Component({
@@ -35,7 +38,6 @@ export class BugEditComponent implements OnInit {
     'LOW'
   ];
   public usernames: string[];
-
   constructor(private bugService: BugService,
               private route: ActivatedRoute,
               private router: Router,
