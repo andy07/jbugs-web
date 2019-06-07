@@ -26,25 +26,25 @@
           <mat-error *ngIf="version.errors?.pattern">Alphanumerical characters divided by dots</mat-error>
         </mat-form-field>
         <mat-form-field>
-          <input matInput
-                 [(ngModel)]="bug.severity"
-                 #severity="ngModel"
-                 id="severity"
-                 name="severity"
-                 required
-                 placeholder="Severity">
-          <mat-error *ngIf="version.errors?.required">Required</mat-error>
-          <mat-error *ngIf="version.errors?.pattern">Alphanumerical characters divided by dots</mat-error>
+          <mat-label>Severity</mat-label>
+          <mat-select [(ngModel)]="bug.severity"
+                      name="severity"
+                      id="severity"
+                      #status="ngModel"
+                      required>
+            <mat-option *ngFor="let status of severity" [value]="status"
+                        selected="bug.severity === status">{{status}}</mat-option>
+          </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <input matInput
-                 [(ngModel)]="bug.assignedTo"
-                 #createdBy="ngModel"
-                 id="assigned_to"
-                 name="assigned_to"
-                 required
-                 placeholder="Assigned to">
-          <mat-error *ngIf="version.errors?.required">Required</mat-error>
+          <mat-label>AssignedTo</mat-label>
+          <mat-select [(ngModel)]="bug.assignedTo"
+                      name="assigned_to"
+                      id="assigned_to"
+                      #assigned_to="ngModel"
+                      required>
+            <mat-option *ngFor="let username of usernames" [value]="username">{{username}}</mat-option>
+          </mat-select>
         </mat-form-field>
         <mat-form-field>
           <input matInput

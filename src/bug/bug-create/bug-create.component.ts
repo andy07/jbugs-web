@@ -2,10 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {BugService} from '../service/bug.service';
 import {RestBug} from '../models/restBug';
 import {UserService} from '../../user/service/user.service';
-import {PopUpMessageComponent} from '../../pages/login/login.component';
+import {infoToken, PopUpMessageComponent} from '../../pages/login/login.component';
 import {MatDialog} from '@angular/material';
 import {Router} from '@angular/router';
-import {infoToken} from '../../pages/login/login.component';
 import {NgForm} from '@angular/forms';
 
 @Component({
@@ -28,7 +27,12 @@ export class BugCreateComponent implements OnInit {
     assignedTo: ''
   };
   public usernames: string[] = [];
-
+  severity: string[] = [
+    'CRITICAL',
+    'HIGH',
+    'MEDIUM',
+    'LOW'
+  ];
   constructor(private service: BugService, private userService: UserService, public dialog: MatDialog, private router: Router) {
   }
 
@@ -46,6 +50,7 @@ export class BugCreateComponent implements OnInit {
       (bug) => {
         this.bug = bug;
         console.log(bug);
+        this.redirectToBugList();
       },
       (error) => {
         console.log(error);
@@ -54,4 +59,7 @@ export class BugCreateComponent implements OnInit {
       });
   }
 
+  redirectToBugList() {
+    this.router.navigate(['home/bugs/bug-list']);
+  }
 }

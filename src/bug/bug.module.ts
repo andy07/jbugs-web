@@ -7,13 +7,15 @@ import {
   MatCardModule,
   MatDatepickerModule,
   MatIconModule,
-  MatInputModule, MatListModule,
+  MatInputModule,
+  MatListModule,
   MatMenuModule,
   MatNativeDateModule,
   MatPaginatorModule,
   MatSelectModule,
   MatSidenavModule,
-  MatTableModule, MatToolbarModule
+  MatTableModule,
+  MatToolbarModule
 } from '@angular/material';
 import {MatSortModule} from '@angular/material/sort';
 import {BugStatusComponent} from './bug-status/bug-status.component';
@@ -23,9 +25,8 @@ import {RouterModule} from '@angular/router';
 import {BugViewDetailsComponent} from './bug-view-details/bug-view-details.component';
 import {AttachmentCreateComponent} from './attachment-create/attachment-create.component';
 import {AttachmentListComponent} from './attachment-list/attachment-list.component';
-import { PiechartComponent } from './piechart/piechart.component';
-import {BarChartModule} from "@swimlane/ngx-charts";
-import { ChartModule } from 'angular-highcharts';
+import {PiechartComponent} from './piechart/piechart.component';
+import {ChartModule} from 'angular-highcharts';
 
 
 @NgModule({
@@ -75,7 +76,6 @@ import { ChartModule } from 'angular-highcharts';
     MatListModule,
     MatToolbarModule,
     MatSidenavModule,
-    BarChartModule,
     ChartModule
 
 
