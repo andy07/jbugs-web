@@ -19,7 +19,7 @@ export class NotificationService {
     const onConnect = () => {
       console.log('connected');
       this.client.subscribe(`/exchange/notifications/${infoToken.sub}`, (msg) => {
-        callback(msg);
+        callback(msg.body);
       });
     };
     const onError = () => {
@@ -35,5 +35,4 @@ export class NotificationService {
   public getAll(): Observable<any[]> {
     return this.backService.get(`/api/users/${infoToken.sub}/notifications`);
   }
-
 }

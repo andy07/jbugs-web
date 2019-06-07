@@ -12,13 +12,14 @@ import {
   MatMenuModule,
   MatPaginatorModule,
   MatSidenavModule,
+  MatSnackBarModule,
   MatSortModule,
   MatTableModule
 } from '@angular/material';
 import {MainComponent} from './main/main.component';
 import {MenuComponent} from './menu/menu.component';
 import {UserComponent} from './user/user.component';
-import { ErrorComponent } from './error/error.component';
+import {ErrorComponent} from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { ErrorComponent } from './error/error.component';
     MatMenuModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatSnackBarModule
   ]
 })
 export class PagesModule { }
