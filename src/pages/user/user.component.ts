@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {infoToken} from "../login/login.component";
+import {NotificationService} from "../../user/service/notification.service";
 
 @Component({
   selector: 'app-user',
