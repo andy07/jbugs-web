@@ -49,6 +49,7 @@ export class BugEditComponent implements OnInit {
     this.bugService.getBugById(id).subscribe((bug) => {
         console.log('bug-ul este', bug)
         this.bug = bug;
+        this.bugActualStatus = bug.status;
         this.bugService.getPostAllAllowedStatus(this.bug.status).subscribe((bugStatusList) => {
           this.bugStatusList = bugStatusList;
         });

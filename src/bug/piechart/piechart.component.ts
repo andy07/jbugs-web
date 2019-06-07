@@ -12,12 +12,13 @@ export class PiechartComponent implements OnInit {
 
   chartPie: Chart=new Chart();
   chartBar: Chart=new Chart();
-  noNEW:number;
-  noIN_PROGRESS:number;
-  noINFO_NEEDED:number;
-  noFIXED:number;
-  noREJECTED:number;
-  noCLOSED:number;
+  noNEW:number=-1;
+  noIN_PROGRESS:number=-1;
+  noINFO_NEEDED:number=-1;
+  noFIXED:number=-1;
+  noREJECTED:number=-1;
+  noCLOSED:number=-1;
+  show:boolean=false;
 
 
   constructor(private bugService: BugService) { }
@@ -28,6 +29,7 @@ export class PiechartComponent implements OnInit {
       this.bugService.getNoBugsByStatus(s).subscribe((no)=>{
 
         switch(s) {
+
           case BugStatus.NEW: {
             this.noNEW=+no;
             break;
@@ -56,17 +58,22 @@ export class PiechartComponent implements OnInit {
             break;
           }
         }
-
-        this.init();
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
+        if(this.isValid()) {
+          this.init();
+          this.show=true;
+        }
       })
-
     });
+  }
 
-    this.show=true;
+  isValid():boolean{
+    return this.noNEW != -1 &&
+      this.noIN_PROGRESS != -1 &&
+      this.noINFO_NEEDED != -1 &&
+      this.noFIXED != -1 &&
+      this.noREJECTED != -1 &&
+      this.noCLOSED != -1;
+
 
   }
 
@@ -170,6 +177,8 @@ export class PiechartComponent implements OnInit {
        ]
 
      });
+
+
   }
 
 

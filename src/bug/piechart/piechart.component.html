@@ -8,5 +8,5 @@
 <!--</div>-->
 
 
-<div [chart]="chartPie"></div>
-<div [chart]="chartBar"></div>
+<div [chart]="chartPie" *ngIf="show"></div>
+<div [chart]="chartBar" *ngIf="show"></div>

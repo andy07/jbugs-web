@@ -124,7 +124,7 @@ export class BugListComponent implements OnInit {
     const filterFunction = function(data, filter): boolean {
       console.log('!!!!!!');
       const searchTerms = JSON.parse(filter);
-      return; // searchTerms.data !== '' ? JSON.stringify(data).toLowerCase().indexOf(searchTerms.data.toLowerCase()) !== -1 :
+      return searchTerms.data !== '' ? JSON.stringify(data).toLowerCase().indexOf(searchTerms.data.toLowerCase()) !== -1 :
       data.title.trim().toLowerCase().indexOf(searchTerms.title.toLowerCase()) !== -1
       && data.version.trim().toLowerCase().indexOf(searchTerms.version.toLowerCase()) !== -1
       && data.fixedVersion.trim().toLowerCase().indexOf(searchTerms.fixedVersion.toLowerCase()) !== -1
