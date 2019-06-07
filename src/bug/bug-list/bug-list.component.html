@@ -11,6 +11,10 @@
     <mat-icon color="warn">graphic_eq</mat-icon>
     Statistics Bugs
   </button>
+
+  <mat-form-field id="filter">
+    <input matInput [formControl]="globalFilter" placeholder="Filter">
+  </mat-form-field>
 </div>
 
 <div class="mat-elevation-z8" *ngIf=getPermissionForBugManagement()>
