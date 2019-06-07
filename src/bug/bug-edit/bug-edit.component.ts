@@ -29,13 +29,13 @@ export class BugEditComponent implements OnInit {
     createdBy: '',
     assignedTo: ''
   };
-  public bugStatusList: string[];
   severity: string[] = [
     'CRITICAL',
     'HIGH',
     'MEDIUM',
     'LOW'
   ];
+  public bugStatusList: string[];
   public usernames: string[];
 
   private bugActualStatus: string;

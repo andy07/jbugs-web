@@ -13,6 +13,7 @@ import {RolePermissionComponent} from '../role/role-permission/role-permission.c
 import {BugViewDetailsComponent} from '../bug/bug-view-details/bug-view-details.component';
 import {AuthGuard} from '../interceptors/auth.guard';
 import {PiechartComponent} from "../bug/piechart/piechart.component";
+import {ErrorComponent} from "../pages/error/error.component";
 
 const routes: Routes = [
   {
@@ -33,6 +34,10 @@ const routes: Routes = [
         path: '',
         redirectTo: 'main',
         pathMatch: 'full'
+      },
+      {
+        path: 'error',
+        component: ErrorComponent
       },
       {
         path: 'main',

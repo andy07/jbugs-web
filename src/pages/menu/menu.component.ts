@@ -3,7 +3,7 @@ import {
   returnUserPermissionForBugManagement,
   returnUserPermissionForPermissionManagement,
   returnUserPermissionForUserManagement
-} from "../login/token";
+} from '../login/token';
 
 @Component({
   selector: 'app-menu',
@@ -16,15 +16,15 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
   }
 
-  getPermissionForUserManagement():boolean{
+  getPermissionForUserManagement(): boolean {
     return returnUserPermissionForUserManagement();
   }
 
-  getPermissionForPermissionManagement():boolean{
+  getPermissionForPermissionManagement(): boolean {
     return returnUserPermissionForPermissionManagement();
   }
 
-  getPermissionForBugManagement():boolean{
+  getPermissionForBugManagement(): boolean {
     return returnUserPermissionForBugManagement();
   }
 

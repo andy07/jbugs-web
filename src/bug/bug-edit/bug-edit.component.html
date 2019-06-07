@@ -27,7 +27,6 @@
                name="revision"
                placeholder="Revision">
       </mat-form-field>
-
       <mat-form-field>
         <mat-label>AssignedTo</mat-label>
         <mat-select [(ngModel)]="bug.assignedTo"
@@ -39,7 +38,6 @@
           <mat-option *ngFor="let username of usernames" [value]="username">{{username}}</mat-option>
         </mat-select>
       </mat-form-field>
-
       <mat-form-field>
         <mat-label>Status</mat-label>
         <mat-select [(ngModel)]="bug.status"
