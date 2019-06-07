@@ -5,6 +5,8 @@ import {UserService} from '../../user/service/user.service';
 import {PopUpMessageComponent} from '../../pages/login/login.component';
 import {MatDialog} from '@angular/material';
 import {Router} from '@angular/router';
+import {infoToken} from '../../pages/login/login.component';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-bug-create',
@@ -19,10 +21,10 @@ export class BugCreateComponent implements OnInit {
     description: '',
     version: '',
     targetDate: new Date(),
-    status: '',
+    status: 'NEW',
     fixedVersion: '',
     severity: '',
-    createdBy: '',
+    createdBy: infoToken.sub,
     assignedTo: ''
   };
   public usernames: string[] = [];
@@ -37,10 +39,13 @@ export class BugCreateComponent implements OnInit {
     });
   }
 
-  public onSubmit() {
+  public onSubmit(form: NgForm) {
+    this.bug.targetDate = form.controls.targetDate.value;
+    console.log(this.bug);
     this.service.save(this.bug).subscribe(
       (bug) => {
         this.bug = bug;
+        console.log(bug);
       },
       (error) => {
         console.log(error);

@@ -26,6 +26,13 @@ export class UserService {
     return this.backendService.post('/api/users/login', {username, password});
   }
 
+  public loggedIn(): boolean {
+    if (localStorage.getItem('token') === null) {
+      return false;
+    } else {
+      return true;
+    }
+  }
   public update(user: RestUser): Observable<RestBug> {
     return this.backendService.put(`/api/users/${user.username}`, user);
   }
@@ -36,14 +43,6 @@ export class UserService {
 
   public updateUserStatus(username: string, status: boolean): Observable<any> {
     return this.backendService.post('/api/users/update-user-status', {username, status});
-  }
-
-  public loggedIn(): boolean {
-    if (localStorage.getItem('token') === null) {
-      return false;
-    } else {
-      return true;
-    }
   }
 
   public getUsernames(): Observable<string[]> {

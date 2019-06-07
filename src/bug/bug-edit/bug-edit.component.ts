@@ -3,6 +3,11 @@ import {BugService} from '../service/bug.service';
 import {RestBug} from '../models/restBug';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../user/service/user.service';
+import {BugStatus} from '../models/bugStatus.model';
+import {returnUserPermissionForBugClose} from '../../pages/login/token';
+import {infoToken} from '../../pages/login/login.component';
+import {EnumPermission} from '../../role/models/restPermission';
+import {FormControl, Validators} from '@angular/forms';
 
 
 @Component({
@@ -25,6 +30,7 @@ export class BugEditComponent implements OnInit {
     assignedTo: ''
   };
   public bugStatusList: string[];
+  private bugActualStatus: string;
   severity: string[] = [
     'CRITICAL',
     'HIGH',
@@ -32,7 +38,6 @@ export class BugEditComponent implements OnInit {
     'LOW'
   ];
   public usernames: string[];
-
   constructor(private bugService: BugService,
               private route: ActivatedRoute,
               private router: Router,
@@ -42,11 +47,11 @@ export class BugEditComponent implements OnInit {
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.bugService.getBugById(id).subscribe((bug) => {
-      console.log('bug-ul este', bug)
-      this.bug = bug;
-      this.bugService.getPostAllAllowedStatus(this.bug.status).subscribe((bugStatusList) => {
-        this.bugStatusList = bugStatusList;
-      });
+        console.log('bug-ul este', bug)
+        this.bug = bug;
+        this.bugService.getPostAllAllowedStatus(this.bug.status).subscribe((bugStatusList) => {
+          this.bugStatusList = bugStatusList;
+        });
       },
       error => {
         this.router.navigate(['/home/error'], {queryParams: {message: error.error}});
@@ -59,9 +64,14 @@ export class BugEditComponent implements OnInit {
     });
   }
 
+  bugClosed(status: string): boolean {
+    if (status === BugStatus.CLOSED.toString()) {
+      return !returnUserPermissionForBugClose();
+    }
+  }
+
   public edit() {
     this.bugService.update(this.bug).subscribe(data => {
-      console.log('alan dala');
       this.redirectToBugList();
     });
   }

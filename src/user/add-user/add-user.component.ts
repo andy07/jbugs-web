@@ -40,7 +40,9 @@ export class AddUserComponent implements OnInit {
       //   s.type = RoleConverter.backEndToFrontEnd(s.type);
       // });
       this.roleList = roleList;
-    });
+    },
+      error =>{
+        this.router.navigate(['/home/error'],{queryParams:{message:error.error}})});
   }
 
   public onSubmit() {
@@ -59,7 +61,6 @@ export class AddUserComponent implements OnInit {
         this.redirectToUserList()
       },
       (error) => {
-        console.log(error);
         this.dialog.open(PopUpMessageComponent, {width: '500px', height: '100px', data: {data: error.error.message}});
       },
       () => {

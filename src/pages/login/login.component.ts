@@ -2,7 +2,7 @@ import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {UserService} from '../../user/service/user.service';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
-import {infoTokenDecoded} from "./token";
+import {infoTokenDecoded} from './token';
 
 
 function initializeInfoToken():infoTokenDecoded {
@@ -15,7 +15,7 @@ function initializeInfoToken():infoTokenDecoded {
 
 }
 
-export var infoToken: infoTokenDecoded=initializeInfoToken();
+export let infoToken: infoTokenDecoded = initializeInfoToken();
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

@@ -12,6 +12,7 @@ import {EditUserComponent} from '../user/edit-user/edit-user.component';
 import {RolePermissionComponent} from '../role/role-permission/role-permission.component';
 import {BugViewDetailsComponent} from '../bug/bug-view-details/bug-view-details.component';
 import {AuthGuard} from '../interceptors/auth.guard';
+import {PiechartComponent} from "../bug/piechart/piechart.component";
 import {ErrorComponent} from "../pages/error/error.component";
 
 const routes: Routes = [
@@ -90,6 +91,10 @@ const routes: Routes = [
           {
             path: 'bug-view-details/:id',
             component: BugViewDetailsComponent
+          },
+          {
+            path: 'bug-graph',
+            component: PiechartComponent
           }
         ]
       },

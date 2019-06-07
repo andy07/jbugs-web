@@ -9,10 +9,11 @@ import {BugService} from "../../bug/service/bug.service";
 import {RestRole, EnumRole} from "../models/restRole";
 import {FormControl} from "@angular/forms";
 import {take, takeUntil} from "rxjs/operators";
-import {MatSelect} from "@angular/material";
+import {MatDialog, MatSelect} from "@angular/material";
 import {RestUser} from "../../user/models/restUser";
-import {infoToken} from "../../pages/login/login.component";
+import {infoToken, PopUpMessageComponent} from "../../pages/login/login.component";
 import {EnumValue} from "@angular/compiler-cli/src/ngtsc/metadata";
+import {returnUserPermissionForPermissionManagement} from "../../pages/login/token";
 
 @Component({
   selector: 'app-role-permission',
@@ -28,23 +29,21 @@ export class RolePermissionComponent implements OnInit {
   @Output()
   public outputFromBackend = new EventEmitter<RestRole>();
 
-  constructor(private roleService: RoleService) {
+  constructor(private roleService: RoleService, private router:Router,  public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
-    console.log(infoToken);
-
-
     if(this.verifyUserPermission()) {
       this.roleService.getAllPermissions().subscribe((permissionList) => {
         this.permissionList = permissionList;
-      });
+      },
+        error =>{
+          this.router.navigate(['/home/error'],{queryParams:{message:error.error}})});
       this.roleService.getAllRoles().subscribe((roleList) => {
         this.roleList = roleList;
-      });
-
-      // const type  = someEnum.MARIA;
-      // console.log(someEnum[type])
+      },
+        error =>{
+          this.router.navigate(['/home/error'],{queryParams:{message:error.error}})});
 
     }
   }
@@ -52,10 +51,14 @@ export class RolePermissionComponent implements OnInit {
 
   public onSubmit(role: RestRole) {
 
-    this.roleService.update(role).subscribe();
+    this.roleService.update(role).subscribe(value => {},
+      (error) => {
+        this.dialog.open(PopUpMessageComponent, {width: '500px', height: '100px', data: {data: error.error.message}})});
     this.roleService.getAllRoles().subscribe((roleList) => {
       this.roleList = roleList;
-    });
+    },
+      error =>{
+        this.dialog.open(PopUpMessageComponent, {width: '500px', height: '100px', data: {data: error.error.message}})});
   }
 
   compareWithFunc(a, b) {
@@ -68,18 +71,14 @@ export class RolePermissionComponent implements OnInit {
 
   verifyUserPermission(): boolean {
 
-    for(let i=0;i<infoToken.permissions.length;i++){
-      if(infoToken.permissions[i]===EnumPermission[EnumPermission.PERMISSION_MANAGEMENT])
-        console.log(EnumPermission[EnumPermission.PERMISSION_MANAGEMENT]);
-      return true;
-    }
+    return returnUserPermissionForPermissionManagement();
 
-    // infoToken.permissions.forEach(ss =>{
-    //    if(ss===EnumPermission[EnumPermission.PERMISSION_MANAGEMENT])
-    //      console.log(EnumPermission[EnumPermission.PERMISSION_MANAGEMENT]);
-    //      return true;
-    // });
-    return false;
+    // for (let i = 0; i < infoToken.permissions.length; i++) {
+    //   if (infoToken.permissions[i] === EnumPermission[EnumPermission.PERMISSION_MANAGEMENT]) {
+    //     return true;
+    //   }
+    // }
+    // return false;
   }
 
 }

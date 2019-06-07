@@ -7,6 +7,10 @@
     <mat-icon color="warn">save_alt</mat-icon>
     Export Bugs
   </button>
+  <button mat-button [routerLink]="['../bug-graph/']" *ngIf=getPermissionForBugManagement()>
+    <mat-icon color="warn">graphic_eq</mat-icon>
+    Statistics Bugs
+  </button>
 </div>
 
 <div class="mat-elevation-z8" *ngIf=getPermissionForBugManagement()>
@@ -128,5 +132,7 @@
   <mat-card *ngIf="dataSource?.filteredData.length <= 0" style="margin-bottom: 5px">
     <div><span id="zeroResult">ZERO RESULT</span></div>
   </mat-card>
+
 </div>
+
 

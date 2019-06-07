@@ -2,7 +2,7 @@
   <mat-card>
     <p>Create a new bug</p>
     <mat-card-content>
-      <form #form="ngForm" (ngSubmit)="onSubmit()">
+      <form #form="ngForm" (ngSubmit)="onSubmit(form)">
         <mat-form-field>
           <input matInput
                  [(ngModel)]="bug.title"
@@ -38,17 +38,6 @@
         </mat-form-field>
         <mat-form-field>
           <input matInput
-                 [(ngModel)]="bug.createdBy"
-                 #createdBy="ngModel"
-                 id="created_by"
-                 name="created_by"
-                 required
-                 placeholder="Created By">
-          <mat-error *ngIf="version.errors?.required">Required</mat-error>
-        </mat-form-field>
-        <!--
-        <mat-form-field>
-          <input matInput
                  [(ngModel)]="bug.assignedTo"
                  #createdBy="ngModel"
                  id="assigned_to"
@@ -56,13 +45,13 @@
                  required
                  placeholder="Assigned to">
           <mat-error *ngIf="version.errors?.required">Required</mat-error>
-        </mat-form-field> -->
+        </mat-form-field>
         <mat-form-field>
           <input matInput
                  [ngModel]="bug.targetDate"
-                 #date="ngModel"
-                 id="date"
-                 name="date"
+                 #targetDate="ngModel"
+                 id="targetDate"
+                 name="targetDate"
                  required
                  [matDatepicker]="picker"
                  placeholder="Target date" [value]="bug.targetDate">
@@ -71,19 +60,7 @@
           <mat-error *ngIf="version.errors?.required">Required</mat-error>
         </mat-form-field>
         <mat-form-field>
-
-          <mat-form-field>
-            <mat-label>AssignedTo</mat-label>
-            <mat-select [(ngModel)]="bug.assignedTo"
-                        name="assigned_to"
-                        id="assigned_to"
-                        #assigned_to="ngModel"
-                        required>
-              <mat-option *ngFor="let username of usernames" [value]="username">{{username}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-
-          <textarea matInput
+      <textarea matInput
                 [(ngModel)]="bug.description"
                 #description="ngModel"
                 id="description"
@@ -96,6 +73,8 @@
         <button mat-raised-button class="save" color="primary" type="submit">Save</button>
       </form>
     </mat-card-content>
-
   </mat-card>
+  <app-attachment-create [bugTitle]="bug.title"></app-attachment-create>
+
+  {{form.value|json}}
 </div>
