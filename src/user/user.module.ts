@@ -2,20 +2,29 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {UserListComponent} from './user-list/user-list.component';
 import {JumperDirective} from './directives/jumper.directive';
-import {ButtonDisableDirective} from './directives/button-disable.directive';
+// import {ButtonDisableDirective} from './directives/button-disable.directive';
 import {HttpClientModule} from '@angular/common/http';
 import {BackendService} from '../assets/backend.service';
 import {
   MatButtonModule,
-  MatCardModule, MatCheckboxModule,
-  MatInputModule, MatListModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatPaginatorModule,
   MatRadioModule,
   MatSelectModule,
+  MatSidenavModule, MatSlideToggleModule,
+  MatSortModule,
   MatTableModule
 } from '@angular/material';
 import {AddUserComponent} from './add-user/add-user.component';
-import {FormsModule} from '@angular/forms';
-import { EditUserComponent } from './edit-user/edit-user.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {EditUserComponent} from './edit-user/edit-user.component';
+import {RouterModule} from '@angular/router';
+import { NotificationListComponent } from './notification-list/notification-list.component';
 
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations' ;
 
@@ -24,14 +33,15 @@ import { EditUserComponent } from './edit-user/edit-user.component';
   declarations: [
     UserListComponent,
     JumperDirective,
-    ButtonDisableDirective,
+    // ButtonDisableDirective,
     AddUserComponent,
-    EditUserComponent
+    EditUserComponent,
+    NotificationListComponent
   ],
   exports: [
     UserListComponent,
     JumperDirective,
-    ButtonDisableDirective,
+    // ButtonDisableDirective,
     AddUserComponent
   ],
   imports: [
@@ -47,7 +57,15 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     MatButtonModule,
     MatRadioModule,
     MatCheckboxModule,
-    MatListModule
+    MatListModule,
+    RouterModule,
+    MatIconModule,
+    MatPaginatorModule,
+    ReactiveFormsModule,
+    MatSortModule,
+    MatMenuModule,  // pentru formControl in html
+    MatSidenavModule,
+    MatSlideToggleModule
   ],
   providers: [
     BackendService

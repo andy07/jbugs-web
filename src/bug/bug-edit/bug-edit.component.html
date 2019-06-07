@@ -17,7 +17,12 @@
                #version="ngModel"
                id="version"
                name="version"
+               placeholder="Version"
+               required
+               pattern="[0-9a-z\.]*"
                placeholder="Version">
+        <mat-error *ngIf="version.errors?.required">Required</mat-error>
+        <mat-error *ngIf="version.errors?.pattern">Alphanumerical characters divided by dots</mat-error>
       </mat-form-field>
       <mat-form-field>
         <input matInput
@@ -26,51 +31,52 @@
                id="revision"
                name="revision"
                placeholder="Revision">
+        <mat-error *ngIf="version.errors?.required">Required</mat-error>
+        <mat-error *ngIf="version.errors?.pattern">Alphanumerical characters divided by dots</mat-error>
       </mat-form-field>
       <mat-form-field>
-        <input matInput
-               [(ngModel)]="bug.severity"
-               #severity="ngModel"
-               id="severity"
-               name="severity"
-               placeholder="Severity">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput
-               [(ngModel)]="bug.assignedTo"
-               #createdBy="ngModel"
-               id="assigned_to"
-               name="assigned_to"
-               placeholder="Assigned To">
-      </mat-form-field>
-      <!--<h4>Status</h4>
-      <mat-form-field>
-        <mat-label>Bug Status</mat-label>-->   <!--place holder-ul-->
-      <!--  <mat-select>
-          <mat-option *ngFor="let status of bugStatus" [value]="status">
-            {{status}}
-          </mat-option>
+        <mat-label>AssignedTo</mat-label>
+        <mat-select [(ngModel)]="bug.assignedTo"
+                    name="assigned_to"
+                    id="assigned_to"
+                    #assigned_to="ngModel"
+                    required>
+          <mat-option *ngIf="bug" [value]="bug.assignedTo" selected>{{bug.assignedTo}}</mat-option>
+          <mat-option *ngFor="let username of usernames" [value]="username">{{username}}</mat-option>
         </mat-select>
-      </mat-form-field> -->
-      <app-bug-status [currentStatus]="bug.status"></app-bug-status>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Status</mat-label>
+        <mat-select [(ngModel)]="bug.status"
+                    name="status"
+                    id="status"
+                    #status="ngModel"
+                    required>
+          <mat-option [value]="bugActualStatus" >{{bugActualStatus}}</mat-option>
+          <mat-option *ngFor="let status of bugStatusList" [value]="status"  [disabled]="bugClosed(status)">{{status}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
 
       <mat-form-field>
-      <textarea matInput
-                [(ngModel)]="bug.description"
-                #title="ngModel"
-                id="description"
-                name="description"
-                cols="10"
-                rows="10"
-                placeholder="Description"></textarea>
+        <mat-label>Severity</mat-label>
+        <mat-select [(ngModel)]="bug.severity"
+                    name="severity"
+                    id="severity"
+                    #status="ngModel"
+                    required>
+          <mat-option *ngFor="let status of severity" [value]="status"
+                      selected="bug.severity === status">{{status}}</mat-option>
+        </mat-select>
       </mat-form-field>
+
 
       <button mat-raised-button class="save" color="primary" type="submit">Edit</button>
+
     </form>
   </mat-card-content>
+  <p>
+    {{form.value|json}}
+  </p>
 </mat-card>
-
-<p>
-  {{form.value|json}}
-</p>
 

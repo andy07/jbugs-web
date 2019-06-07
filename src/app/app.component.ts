@@ -1,5 +1,5 @@
-import {Component, ViewChild} from '@angular/core';
-import {RestUser} from '../user/models/restUser';
+import {Component} from '@angular/core';
+import {infoToken} from '../pages/login/login.component';
 
 @Component({
   selector: 'app-root',
@@ -7,19 +7,10 @@ import {RestUser} from '../user/models/restUser';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Andrei';
-  titleApp = 'Title 2';
-
-  @ViewChild('userComponent')
-  public userComponent;
-
-  public users: RestUser[] = [];
-
-  alertUserFromList(user: RestUser) {
-    alert(user.firstName);
+  constructor() {
   }
 
-  alertUserChildComponent() {
-    alert(this.userComponent.user.firstname);
+  public isConnected() {
+    return infoToken != null;
   }
 }

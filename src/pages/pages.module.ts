@@ -1,13 +1,24 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {LoginComponent} from './login/login.component';
 import {HomeComponent} from './home/home.component';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {MatButtonModule, MatCardModule, MatIconModule, MatListModule, MatSidenavModule} from '@angular/material';
-import { MainComponent } from './main/main.component';
-import { MenuComponent } from './menu/menu.component';
-import { UserComponent } from './user/user.component';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatIconModule,
+  MatListModule,
+  MatMenuModule,
+  MatPaginatorModule,
+  MatSidenavModule,
+  MatSortModule,
+  MatTableModule
+} from '@angular/material';
+import {MainComponent} from './main/main.component';
+import {MenuComponent} from './menu/menu.component';
+import {UserComponent} from './user/user.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +26,14 @@ import { UserComponent } from './user/user.component';
     HomeComponent,
     MainComponent,
     MenuComponent,
-    UserComponent
+    UserComponent,
+    ErrorComponent
   ],
   exports: [
     LoginComponent,
     HomeComponent,
-    MainComponent
+    MainComponent,
+    UserComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +43,11 @@ import { UserComponent } from './user/user.component';
     MatCardModule,
     MatButtonModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    MatMenuModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ]
 })
 export class PagesModule { }

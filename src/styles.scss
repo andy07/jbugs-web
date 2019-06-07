@@ -13,3 +13,21 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+button:focus {
+  outline: none;
+  border-color: transparent;
+}
+
+th.mat-header-cell {
+  text-align: left;
+  font-size: 2vh;
+}
+
+.mat-header-row {
+  background: transparent;
+}
+
+table{
+  width: 100%;
+}

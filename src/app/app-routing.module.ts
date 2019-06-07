@@ -8,11 +8,17 @@ import {AddUserComponent} from '../user/add-user/add-user.component';
 import {HomeComponent} from '../pages/home/home.component';
 import {UserListComponent} from '../user/user-list/user-list.component';
 import {MainComponent} from '../pages/main/main.component';
+import {EditUserComponent} from '../user/edit-user/edit-user.component';
+import {RolePermissionComponent} from '../role/role-permission/role-permission.component';
+import {BugViewDetailsComponent} from '../bug/bug-view-details/bug-view-details.component';
+import {AuthGuard} from '../interceptors/auth.guard';
+import {PiechartComponent} from "../bug/piechart/piechart.component";
+import {ErrorComponent} from "../pages/error/error.component";
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
@@ -22,6 +28,7 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -29,11 +36,17 @@ const routes: Routes = [
         pathMatch: 'full'
       },
       {
+        path: 'error',
+        component: ErrorComponent
+      },
+      {
         path: 'main',
+        canActivate: [AuthGuard],
         component: MainComponent
       },
       {
         path: 'users',
+        canActivate: [AuthGuard],
         children: [
           {
             path: '',
@@ -45,17 +58,18 @@ const routes: Routes = [
             component: UserListComponent
           },
           {
-            path: 'user-create',
+            path: 'user-add',
             component: AddUserComponent
           },
           {
-            path: 'user-edit',
-            component: AddUserComponent
+            path: 'user-edit/:username',
+            component: EditUserComponent
           }
         ]
       },
       {
         path: 'bugs',
+        canActivate: [AuthGuard],
         children: [
           {
             path: '',
@@ -71,13 +85,38 @@ const routes: Routes = [
             component: BugCreateComponent
           },
           {
-            path: 'bug-edit/:title',
+            path: 'bug-edit/:id',
             component: BugEditComponent
+          },
+          {
+            path: 'bug-view-details/:id',
+            component: BugViewDetailsComponent
+          },
+          {
+            path: 'bug-graph',
+            component: PiechartComponent
           }
         ]
-      }
+      },
+      {
+        path: 'roles',
+        canActivate: [AuthGuard],
+        children: [
+          {
+            path: '',
+            redirectTo: 'role-list',
+            pathMatch: 'full'
+          },
+          {
+            path: 'role-list',
+            component: RolePermissionComponent
+          }
+
+        ]
+      },
     ]
-  }
+  },
+  { path: '**', redirectTo: '/login' }
 ];
 
 @NgModule({
