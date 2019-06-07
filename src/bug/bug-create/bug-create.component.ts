@@ -1,9 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {BugService} from '../service/bug.service';
 import {RestBug} from '../models/restBug';
-import {infoToken} from '../../pages/login/login.component';
-import {NgForm} from '@angular/forms';
 import {UserService} from '../../user/service/user.service';
+import {infoToken, PopUpMessageComponent} from '../../pages/login/login.component';
+import {MatDialog} from '@angular/material';
+import {Router} from '@angular/router';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-bug-create',
@@ -25,8 +27,13 @@ export class BugCreateComponent implements OnInit {
     assignedTo: ''
   };
   public usernames: string[] = [];
-
-  constructor(private service: BugService, private userService: UserService) {
+  severity: string[] = [
+    'CRITICAL',
+    'HIGH',
+    'MEDIUM',
+    'LOW'
+  ];
+  constructor(private service: BugService, private userService: UserService, public dialog: MatDialog, private router: Router) {
   }
 
   ngOnInit() {
@@ -39,10 +46,20 @@ export class BugCreateComponent implements OnInit {
   public onSubmit(form: NgForm) {
     this.bug.targetDate = form.controls.targetDate.value;
     console.log(this.bug);
-    this.service.save(this.bug).subscribe((bug) => {
-      this.bug = bug;
-      console.log(bug);
-    });
+    this.service.save(this.bug).subscribe(
+      (bug) => {
+        this.bug = bug;
+        console.log(bug);
+        this.redirectToBugList();
+      },
+      (error) => {
+        console.log(error);
+        this.dialog.open(PopUpMessageComponent, {width: '500px', height: '100px', data: {data: error.error.message}});
+        this.router.navigate(['/home/error'], {queryParams: {message: error.error}});
+      });
   }
 
+  redirectToBugList() {
+    this.router.navigate(['home/bugs/bug-list']);
+  }
 }
