@@ -13,6 +13,7 @@ import {MatDialog, MatSelect} from "@angular/material";
 import {RestUser} from "../../user/models/restUser";
 import {infoToken, PopUpMessageComponent} from "../../pages/login/login.component";
 import {EnumValue} from "@angular/compiler-cli/src/ngtsc/metadata";
+import {returnUserPermissionForPermissionManagement} from "../../pages/login/token";
 
 @Component({
   selector: 'app-role-permission',
@@ -70,12 +71,14 @@ export class RolePermissionComponent implements OnInit {
 
   verifyUserPermission(): boolean {
 
-    for (let i = 0; i < infoToken.permissions.length; i++) {
-      if (infoToken.permissions[i] === EnumPermission[EnumPermission.PERMISSION_MANAGEMENT]) {
-        return true;
-      }
-    }
-    return false;
+    return returnUserPermissionForPermissionManagement();
+
+    // for (let i = 0; i < infoToken.permissions.length; i++) {
+    //   if (infoToken.permissions[i] === EnumPermission[EnumPermission.PERMISSION_MANAGEMENT]) {
+    //     return true;
+    //   }
+    // }
+    // return false;
   }
 
 }

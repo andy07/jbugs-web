@@ -10,8 +10,8 @@ import {BugStatus} from "../models/bugStatus.model";
 })
 export class PiechartComponent implements OnInit {
 
-  chartPie: Chart;
-  chartBar: Chart;
+  chartPie: Chart=new Chart();
+  chartBar: Chart=new Chart();
   noNEW:number;
   noIN_PROGRESS:number;
   noINFO_NEEDED:number;
@@ -19,10 +19,12 @@ export class PiechartComponent implements OnInit {
   noREJECTED:number;
   noCLOSED:number;
 
+
   constructor(private bugService: BugService) { }
 
   ngOnInit() {
     Object.keys(BugStatus).forEach(s=>{
+
       this.bugService.getNoBugsByStatus(s).subscribe((no)=>{
 
         switch(s) {
@@ -54,6 +56,7 @@ export class PiechartComponent implements OnInit {
             break;
           }
         }
+
         this.init();
       })
 
@@ -61,9 +64,10 @@ export class PiechartComponent implements OnInit {
 
   }
 
-  init() {
-     this.chartPie = new Chart({
 
+  init() {
+
+     this.chartPie = new Chart({
 
       chart : {
         plotBorderWidth: null,
@@ -89,7 +93,7 @@ export class PiechartComponent implements OnInit {
       },
       series : [{
         type: 'pie',
-        name: 'This bug ',
+        name: 'Bugs Status: ',
         data: [
           [BugStatus.NEW,this.noNEW],
           [BugStatus.IN_PROGRESS,this.noIN_PROGRESS],
