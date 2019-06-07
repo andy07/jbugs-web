@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {BackendService} from '../../assets/backend.service';
 import {Observable} from 'rxjs';
 import * as Stomp from 'stompjs';
 import {infoToken} from '../../pages/login/login.component';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -34,4 +35,5 @@ export class NotificationService {
   public getAll(): Observable<any[]> {
     return this.backService.get(`/api/users/${infoToken.sub}/notifications`);
   }
+
 }

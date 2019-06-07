@@ -27,4 +27,5 @@ export class UserComponent implements OnInit {
   getUsername() {
     return infoToken.sub;
   }
+
 }
