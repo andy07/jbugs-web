@@ -7,13 +7,13 @@ import {
   MatCardModule,
   MatDatepickerModule,
   MatIconModule,
-  MatInputModule,
+  MatInputModule, MatListModule,
   MatMenuModule,
   MatNativeDateModule,
   MatPaginatorModule,
   MatSelectModule,
   MatSidenavModule,
-  MatTableModule
+  MatTableModule, MatToolbarModule
 } from '@angular/material';
 import {MatSortModule} from '@angular/material/sort';
 import {BugStatusComponent} from './bug-status/bug-status.component';
@@ -65,7 +65,9 @@ import {AttachmentListComponent} from './attachment-list/attachment-list.compone
     MatMenuModule,
     MatPaginatorModule,
     MatSortModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatListModule,
+    MatToolbarModule
   ]
 })
 export class BugModule {

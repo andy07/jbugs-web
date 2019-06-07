@@ -1,4 +1,3 @@
-
 export interface RestUser {
   username: string;
   firstName: string;
