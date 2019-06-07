@@ -3,11 +3,11 @@ import {BugService} from '../service/bug.service';
 import {RestBug} from '../models/restBug';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../user/service/user.service';
-import {BugStatus} from "../models/bugStatus.model";
-import {infoToken} from "../../pages/login/login.component";
-import {EnumPermission} from "../../role/models/restPermission";
-import {returnUserPermissionForBugClose} from "../../pages/login/token";
-import {FormControl, Validators} from "@angular/forms";
+import {BugStatus} from '../models/bugStatus.model';
+import {returnUserPermissionForBugClose} from '../../pages/login/token';
+import {infoToken} from '../../pages/login/login.component';
+import {EnumPermission} from '../../role/models/restPermission';
+import {FormControl, Validators} from '@angular/forms';
 
 
 @Component({
@@ -29,17 +29,15 @@ export class BugEditComponent implements OnInit {
     createdBy: '',
     assignedTo: ''
   };
+  public bugStatusList: string[];
+  private bugActualStatus: string;
   severity: string[] = [
     'CRITICAL',
     'HIGH',
     'MEDIUM',
     'LOW'
   ];
-  public bugStatusList: string[];
   public usernames: string[];
-
-  private bugActualStatus: string;
-
   constructor(private bugService: BugService,
               private route: ActivatedRoute,
               private router: Router,
@@ -47,21 +45,27 @@ export class BugEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    const title = this.route.snapshot.paramMap.get('title');
-    this.bugService.getBugByTitle(title).subscribe((bug) => {
-      this.bugActualStatus = bug.status;
-      this.bug = bug;
-      this.bugService.getPostAllAllowedStatus(this.bug.status).subscribe((bugStatusList) => {
-        this.bugStatusList = bugStatusList;
-      });
-    });
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.bugService.getBugById(id).subscribe((bug) => {
+        console.log('bug-ul este', bug)
+        this.bug = bug;
+        this.bugService.getPostAllAllowedStatus(this.bug.status).subscribe((bugStatusList) => {
+          this.bugStatusList = bugStatusList;
+        });
+      },
+      error => {
+        this.router.navigate(['/home/error'], {queryParams: {message: error.error}});
+      }
+    )
+    ;
     this.userService.getUsernames().subscribe((usernames) => {
       this.usernames = usernames;
+      console.log(usernames);
     });
   }
 
   bugClosed(status: string): boolean {
-    if (status == BugStatus.CLOSED.toString()) {
+    if (status === BugStatus.CLOSED.toString()) {
       return !returnUserPermissionForBugClose();
     }
   }
