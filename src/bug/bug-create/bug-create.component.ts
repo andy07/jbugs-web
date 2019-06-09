@@ -79,7 +79,6 @@ export class BugCreateComponent implements OnInit {
           console.log(attachment.bugId);
         });
         this.service.saveAttachments(bug.id, this.attachments).subscribe(data => {
-          console.log(data);
           this.redirectToBugList();
         }, (error1) => {
           console.error(error1);

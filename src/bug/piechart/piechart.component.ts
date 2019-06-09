@@ -127,7 +127,7 @@ export class PiechartComponent implements OnInit {
          text: 'Bug Status'
        },
        subtitle : {
-         text: 'Number of each bug'
+         text: 'Number of bug per status'
        },
        legend : {
          layout: 'vertical',

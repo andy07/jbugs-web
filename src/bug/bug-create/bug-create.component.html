@@ -1,6 +1,10 @@
 <div>
   <mat-card>
-    <p>Create a new bug</p>
+    <mat-card-title-group>
+      <mat-card-title>
+        <p>Create a new bug</p>
+      </mat-card-title>
+    </mat-card-title-group>
     <mat-card-content>
       <form #form="ngForm" (ngSubmit)="onSubmit(form)">
         <mat-form-field>
@@ -74,5 +78,7 @@
       </form>
     </mat-card-content>
   </mat-card>
-  <app-attachment-create [attachments]="attachments"></app-attachment-create>
+  <div class="attachments">
+    <app-attachment-create [attachments]="attachments"></app-attachment-create>
+  </div>
 </div>

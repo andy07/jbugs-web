@@ -1,15 +1,14 @@
-<div id="buttonAndFilter">
-  <button mat-menu-item [routerLink]="['../user-add/']">
-    <mat-icon color="primary">add</mat-icon>
+<div id="buttonAndFilter" *ngIf="getPermissionForUserManagement()">
+  <button mat-button [routerLink]="['../user-create/']" *ngIf=getPermissionForUserManagement()>
+    <mat-icon color="warn">add</mat-icon>
     <span>Add</span>
   </button>
-
   <mat-form-field id="filter">
     <input matInput [formControl]="globalFilter" placeholder="Filter">
   </mat-form-field>
 </div>
 
-<div class="mat-elevation-z8">
+<div class="mat-elevation-z8" *ngIf="getPermissionForUserManagement()">
   <table mat-table *ngIf='true' [dataSource]="dataSource" matSort (matSortChange)="sortData()">
 
     <ng-container matColumnDef="firstName">
@@ -105,8 +104,10 @@
 
   </table>
   <mat-paginator [pageSize]="5" showFirstLastButtons></mat-paginator>
+
+  <mat-card *ngIf="dataSource?.filteredData.length <= 0" style="margin-bottom: 5px">
+    <div><span id="zeroResult">ZERO RESULT</span></div>
+  </mat-card>
 </div>
 
-<mat-card *ngIf="dataSource?.filteredData.length <= 0" style="margin-bottom: 5px">
-  <div><span id="zeroResult">ZERO RESULT</span></div>
-</mat-card>
+

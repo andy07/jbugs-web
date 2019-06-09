@@ -1,18 +1,18 @@
 <mat-list *ngIf="true">
   <mat-list-item>
-    <mat-icon matListIcon>home</mat-icon>
+    <mat-icon matListIcon [routerLink]="['main']">home</mat-icon>
     <button mat-button [routerLink]="['main']">Home</button>
   </mat-list-item>
   <mat-list-item *ngIf="getPermissionForUserManagement()">
-    <mat-icon matListIcon>supervised_user_circle</mat-icon>
+    <mat-icon matListIcon [routerLink]="['users']">supervised_user_circle</mat-icon>
     <button mat-button [routerLink]="['users']">Users</button>
   </mat-list-item>
   <mat-list-item *ngIf="getPermissionForPermissionManagement()">
-    <mat-icon matListIcon>whatshot</mat-icon>
+    <mat-icon matListIcon [routerLink]="['roles']">whatshot</mat-icon>
     <button mat-button [routerLink]="['roles']">Roles</button>
   </mat-list-item>
   <mat-list-item *ngIf="getPermissionForBugManagement()">
-    <mat-icon matListIcon>bug_report</mat-icon>
+    <mat-icon matListIcon [routerLink]="['bugs']">bug_report</mat-icon>
     <button mat-button [routerLink]="['bugs']">Bugs</button>
   </mat-list-item>
 </mat-list>

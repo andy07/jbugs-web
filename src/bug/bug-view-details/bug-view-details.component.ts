@@ -24,32 +24,7 @@ export class BugViewDetailsComponent implements OnInit {
     assignedTo: ''
   };
 
-  public attachments: Attachment[] = [
-    {
-      file: '',
-      name: 'file1',
-      type: 'application/json',
-      bugId: 0
-    },
-    {
-      file: '',
-      name: 'file2',
-      type: 'application/json',
-      bugId: 0
-    },
-    {
-      file: '',
-      name: 'file3',
-      type: 'application/json',
-      bugId: 0
-    },
-    {
-      file: '',
-      name: 'file4',
-      type: 'application/json',
-      bugId: 0
-    }
-  ];
+  public attachments: Attachment[] = [];
 
   constructor(private bugService: BugService,
               private router: Router,
@@ -65,6 +40,10 @@ export class BugViewDetailsComponent implements OnInit {
     console.log('id is ' + id);
     this.bugService.getBugById(id).subscribe((bug) => {
         this.bug = bug;
+        this.bugService.getAttachmentsByBugId(this.bug.id).subscribe( attachments => {
+          console.log(attachments);
+          this.attachments = attachments;
+        })
       },
       error => {
         this.router.navigate(['/home/error'], {queryParams: {message: error.error}});

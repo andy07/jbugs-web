@@ -5,6 +5,7 @@ import {infoToken, PopUpMessageComponent} from '../../pages/login/login.componen
 import {FormControl} from '@angular/forms';
 import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {Router} from '@angular/router';
+import {returnUserPermissionForBugManagement, returnUserPermissionForUserManagement} from "../../pages/login/token";
 
 
 @Component({
@@ -139,5 +140,9 @@ export class UserListComponent implements OnInit {
     } else {
       return 'Deactivated';
     }
+  }
+
+  getPermissionForUserManagement() {
+    return returnUserPermissionForUserManagement();
   }
 }

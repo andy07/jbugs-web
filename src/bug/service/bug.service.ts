@@ -30,8 +30,11 @@ export class BugService {
      return this.backendService.get(`/api/bugs/${title}`);
    }*/
   public getBugById(id: number): Observable<RestBug> {
-    console.log(`/api/bugs/` + id);
     return this.backendService.get(`/api/bugs/${id}`);
+  }
+
+  public getAttachmentsByBugId(id: number): Observable<Attachment[]> {
+    return this.backendService.get(`/api/bugs/${id}/attachments`);
   }
 
   public getBugByTitleToExportPDF(title: string): Observable<RestBug> {

@@ -14,6 +14,7 @@ import {BugViewDetailsComponent} from '../bug/bug-view-details/bug-view-details.
 import {AuthGuard} from '../interceptors/auth.guard';
 import {PiechartComponent} from "../bug/piechart/piechart.component";
 import {ErrorComponent} from "../pages/error/error.component";
+import {NotificationListComponent} from "../user/notification-list/notification-list.component";
 
 const routes: Routes = [
   {
@@ -58,7 +59,7 @@ const routes: Routes = [
             component: UserListComponent
           },
           {
-            path: 'user-add',
+            path: 'user-create',
             component: AddUserComponent
           },
           {
@@ -114,6 +115,10 @@ const routes: Routes = [
 
         ]
       },
+      {
+        path: 'notifications',
+        component: NotificationListComponent
+      }
     ]
   },
   { path: '**', redirectTo: '/login' }

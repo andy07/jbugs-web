@@ -1,7 +1,10 @@
 mat-card {
   max-width: 500px;
-  height: 700px;
+  left: 50%;
+  height: 100%;
+  transform: translate(-50%, 0);
 }
+
 
 form {
   display: flex;
