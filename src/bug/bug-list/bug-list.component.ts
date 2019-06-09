@@ -67,6 +67,7 @@ export class BugListComponent implements OnInit {
 
   ngOnInit() {
     console.log(infoToken);
+	console.log('Hello');
     this.bugService.getAllBugs().subscribe((bugList) => {
       this.bugList = bugList;
       this.dataSource = new MatTableDataSource(this.bugList);
