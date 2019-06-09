@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
 import {Attachment} from '../models/restBug';
 
 @Component({
@@ -9,38 +9,32 @@ import {Attachment} from '../models/restBug';
 export class AttachmentCreateComponent implements OnInit {
 
   @Input()
-  public bugTitle: string;
   public attachments: Attachment[];
 
-  constructor() {
-    this.attachments = [];
+  constructor(private cd: ChangeDetectorRef) {
   }
 
   ngOnInit() {
   }
 
-  addAttachment() {
-    this.attachments.push({
-      file: 'ma-sa',
-      id: 1
-    });
-    console.log(this.attachments);
-  }
-
-  onFileChange(event) {
-    const reader = new FileReader();
-
+  createAttachments(event) {
     if (event.target.files && event.target.files.length) {
-      const [file] = event.target.files;
-      reader.readAsDataURL(file);
-
-      reader.onload = () => {
-        console.log(file);
-      };
+      const files: FileList = event.target.files;
+      for (let i = 0; i < files.length; i++) {
+        const file = files.item(i);
+        console.log(file.type);
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+          this.attachments.push({name : file.name, file: reader.result, bugId: -1, type: file.type});
+        };
+      }
+      this.cd.markForCheck();
     }
   }
 
-  send() {
-
+  remove(attachment: Attachment){
+    const index = this.attachments.indexOf(attachment);
+    this.attachments.splice(index, 1);
   }
 }

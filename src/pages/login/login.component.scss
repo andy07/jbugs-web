@@ -5,3 +5,10 @@
   transform: translate(-50%, -50%);
   align-content: center;
 }
+
+.mat-toolbar {
+  top: 0;
+  position: fixed;
+  z-index: 1000;
+  height: 8vh;
+}

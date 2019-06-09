@@ -1,3 +1,8 @@
-<p>
-  attachment-list works!
-</p>
+<mat-grid-list cols="5" rowHeight="1:1">
+  <mat-grid-tile *ngFor="let attachment of attachments">
+    <mat-icon>insert_drive_file</mat-icon>
+    <button (click)="save(attachment)">
+      {{attachment.name}}
+    </button>
+  </mat-grid-tile>
+</mat-grid-list>

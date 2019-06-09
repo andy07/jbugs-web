@@ -10,5 +10,16 @@
   width: 15%;
   top: 64px;
   position: fixed;
-  background: #bc2356;
+  background: #eeeeee;
+}
+
+span {
+  flex: 1 1 auto;
+}
+
+.mat-toolbar {
+  top: 0;
+  position: fixed;
+  z-index: 1000;
+  height: 8vh;
 }

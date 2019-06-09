@@ -5,7 +5,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {
   MatButtonModule,
   MatCardModule,
-  MatDatepickerModule,
+  MatDatepickerModule, MatGridListModule,
   MatIconModule,
   MatInputModule,
   MatListModule,
@@ -76,7 +76,8 @@ import {ChartModule} from 'angular-highcharts';
     MatListModule,
     MatToolbarModule,
     MatSidenavModule,
-    ChartModule
+    ChartModule,
+    MatGridListModule
 
 
   ]

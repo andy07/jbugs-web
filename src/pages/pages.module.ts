@@ -14,7 +14,7 @@ import {
   MatSidenavModule,
   MatSnackBarModule,
   MatSortModule,
-  MatTableModule
+  MatTableModule, MatToolbarModule
 } from '@angular/material';
 import {MainComponent} from './main/main.component';
 import {MenuComponent} from './menu/menu.component';
@@ -49,7 +49,8 @@ import {ErrorComponent} from './error/error.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatToolbarModule
   ]
 })
 export class PagesModule { }

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BugService} from '../service/bug.service';
-import {RestBug} from '../models/restBug';
+import {Attachment, RestBug} from '../models/restBug';
 import {UserService} from '../../user/service/user.service';
 import {infoToken, PopUpMessageComponent} from '../../pages/login/login.component';
 import {MatDialog} from '@angular/material';
@@ -19,19 +19,47 @@ export class BugCreateComponent implements OnInit {
     title: '',
     description: '',
     version: '',
-    targetDate: new Date(),
+    targetDate: '',
     status: 'NEW',
-    fixedVersion: '',
+    fixedVersion: 'waiting',
     severity: '',
     createdBy: infoToken.sub,
     assignedTo: ''
   };
+
   public usernames: string[] = [];
   severity: string[] = [
     'CRITICAL',
     'HIGH',
     'MEDIUM',
     'LOW'
+  ];
+
+  public attachments: Attachment[] = [
+    {
+      file: '',
+      name: 'file1',
+      type: 'application/json',
+      bugId: 0
+    },
+    {
+      file: '',
+      name: 'file2',
+      type: 'application/json',
+      bugId: 0
+    },
+    {
+      file: '',
+      name: 'file3',
+      type: 'application/json',
+      bugId: 0
+    },
+    {
+      file: '',
+      name: 'file4',
+      type: 'application/json',
+      bugId: 0
+    }
   ];
   constructor(private service: BugService, private userService: UserService, public dialog: MatDialog, private router: Router) {
   }
@@ -43,14 +71,19 @@ export class BugCreateComponent implements OnInit {
     });
   }
 
-  public onSubmit(form: NgForm) {
-    this.bug.targetDate = form.controls.targetDate.value;
-    console.log(this.bug);
-    this.service.save(this.bug).subscribe(
-      (bug) => {
-        this.bug = bug;
+  public onSubmit(form) {
+    this.service.save(this.bug).subscribe((bug) => {
         console.log(bug);
-        this.redirectToBugList();
+        this.attachments.forEach(attachment => {
+          attachment.bugId = bug.id;
+          console.log(attachment.bugId);
+        });
+        this.service.saveAttachments(bug.id, this.attachments).subscribe(data => {
+          console.log(data);
+          this.redirectToBugList();
+        }, (error1) => {
+          console.error(error1);
+        });
       },
       (error) => {
         console.log(error);

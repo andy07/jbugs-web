@@ -1,4 +1,7 @@
-<button mat-button [matMenuTriggerFor]="userMenu">{{getUsername()}}</button>
+<button mat-button [matMenuTriggerFor]="userMenu">
+  <mat-icon>supervised_user_circle</mat-icon>
+  {{getUsername()}}
+</button>
 <mat-menu #userMenu="matMenu" xPosition="before">
   <button mat-menu-item>
     <mat-icon>info</mat-icon>

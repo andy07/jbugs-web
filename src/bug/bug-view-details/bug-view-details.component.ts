@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BugService} from '../service/bug.service';
-import {RestBug} from '../models/restBug';
+import {Attachment, RestBug} from '../models/restBug';
 
 @Component({
   selector: 'app-bug-view-details',
@@ -16,13 +16,40 @@ export class BugViewDetailsComponent implements OnInit {
     title: '',
     description: '',
     version: '',
-    targetDate: new Date(),
+    targetDate: '',
     status: '',
     fixedVersion: '',
     severity: '',
     createdBy: '',
     assignedTo: ''
   };
+
+  public attachments: Attachment[] = [
+    {
+      file: '',
+      name: 'file1',
+      type: 'application/json',
+      bugId: 0
+    },
+    {
+      file: '',
+      name: 'file2',
+      type: 'application/json',
+      bugId: 0
+    },
+    {
+      file: '',
+      name: 'file3',
+      type: 'application/json',
+      bugId: 0
+    },
+    {
+      file: '',
+      name: 'file4',
+      type: 'application/json',
+      bugId: 0
+    }
+  ];
 
   constructor(private bugService: BugService,
               private router: Router,

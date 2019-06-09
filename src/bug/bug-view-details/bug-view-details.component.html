@@ -96,8 +96,6 @@
 
   <button (click)="redirectToBugList()" mat-raised-button color="accent">Return to list</button>
 
-  <p>
-    {{form.value|json}}
-  </p>
+  <app-attachment-list [attachments]="null"></app-attachment-list>
 
 </div>
