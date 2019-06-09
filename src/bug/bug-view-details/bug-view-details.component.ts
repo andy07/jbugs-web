@@ -37,9 +37,9 @@ export class BugViewDetailsComponent implements OnInit {
 
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    console.log('id is ' + id);
     this.bugService.getBugById(id).subscribe((bug) => {
         this.bug = bug;
+        console.log(bug);
         this.bugService.getAttachmentsByBugId(this.bug.id).subscribe( attachments => {
           console.log(attachments);
           this.attachments = attachments;

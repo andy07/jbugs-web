@@ -19,7 +19,7 @@ export class BugCreateComponent implements OnInit {
     title: '',
     description: '',
     version: '',
-    targetDate: '',
+    targetDate: new Date(new Date().getTime()).toDateString(),
     status: 'NEW',
     fixedVersion: 'waiting',
     severity: '',
@@ -86,7 +86,8 @@ export class BugCreateComponent implements OnInit {
       },
       (error) => {
         console.log(error);
-        this.dialog.open(PopUpMessageComponent, {width: '500px', height: '100px', data: {data: error.error.message}});
+        this.dialog.open(PopUpMessageComponent, {width: '500px', height: '100px',
+          data: {data: error.error.message || 'Something broke...'}});
         this.router.navigate(['/home/error'], {queryParams: {message: error.error}});
       });
   }
