@@ -20,6 +20,7 @@ import {MainComponent} from './main/main.component';
 import {MenuComponent} from './menu/menu.component';
 import {UserComponent} from './user/user.component';
 import {ErrorComponent} from './error/error.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {ErrorComponent} from './error/error.component';
     MainComponent,
     MenuComponent,
     UserComponent,
-    ErrorComponent
+    ErrorComponent,
+    AboutComponent
   ],
   exports: [
     LoginComponent,

@@ -3,7 +3,7 @@
   {{getUsername()}}
 </button>
 <mat-menu #userMenu="matMenu" xPosition="before">
-  <button mat-menu-item>
+  <button mat-menu-item [routerLink]="['about']">
     <mat-icon>info</mat-icon>
     Info
   </button>

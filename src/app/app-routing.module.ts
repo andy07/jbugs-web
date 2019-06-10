@@ -15,6 +15,7 @@ import {AuthGuard} from '../interceptors/auth.guard';
 import {PiechartComponent} from "../bug/piechart/piechart.component";
 import {ErrorComponent} from "../pages/error/error.component";
 import {NotificationListComponent} from "../user/notification-list/notification-list.component";
+import {AboutComponent} from "../pages/about/about.component";
 
 const routes: Routes = [
   {
@@ -118,6 +119,10 @@ const routes: Routes = [
       {
         path: 'notifications',
         component: NotificationListComponent
+      },
+      {
+        path: 'about',
+        component: AboutComponent
       }
     ]
   },
