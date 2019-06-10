@@ -5,9 +5,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../user/service/user.service';
 import {BugStatus} from '../models/bugStatus.model';
 import {returnUserPermissionForBugClose} from '../../pages/login/token';
-import {infoToken} from '../../pages/login/login.component';
-import {EnumPermission} from '../../role/models/restPermission';
-import {FormControl, Validators} from '@angular/forms';
 
 
 @Component({
@@ -22,7 +19,7 @@ export class BugEditComponent implements OnInit {
     title: '',
     description: '',
     version: '',
-    targetDate: new Date(),
+    targetDate: '',
     status: '',
     fixedVersion: '',
     severity: '',
@@ -47,7 +44,6 @@ export class BugEditComponent implements OnInit {
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.bugService.getBugById(id).subscribe((bug) => {
-        console.log('bug-ul este', bug)
         this.bug = bug;
         this.bugActualStatus = bug.status;
         this.bugService.getPostAllAllowedStatus(this.bug.status).subscribe((bugStatusList) => {
@@ -61,7 +57,6 @@ export class BugEditComponent implements OnInit {
     ;
     this.userService.getUsernames().subscribe((usernames) => {
       this.usernames = usernames;
-      console.log(usernames);
     });
   }
 

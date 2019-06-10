@@ -1,4 +1,5 @@
 mat-card {
+  position: absolute;
   max-width: 500px;
   left: 30%;
   height: 100%;
@@ -23,5 +24,7 @@ div{
   margin-bottom: 5px;
 }
 
-.attachments{
+span{
+  position: absolute;
+  left: calc(15% + 600px);
 }
