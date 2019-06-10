@@ -7,9 +7,9 @@
     <mat-icon>info</mat-icon>
     Info
   </button>
-  <button mat-menu-item>
+  <button mat-menu-item [routerLink]="['notifications']">
     <mat-icon>notification_important</mat-icon>
-    <button mat-button [routerLink]="['notifications']">Notifications</button>
+    Notifications
   </button>
   <mat-divider></mat-divider>
   <button mat-menu-item (click)="logout()">

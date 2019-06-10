@@ -53,4 +53,8 @@ export class BugService {
   public saveAttachments(bugId: number, attachments: Attachment[]) {
     return this.backendService.post(`/api/bugs/${bugId}/attachments`, attachments);
   }
+
+  public deleteAttachment(id: number) {
+    return this.backendService.delete(`/api/bugs/attachments/${id}`);
+  }
 }

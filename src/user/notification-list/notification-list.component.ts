@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {RestNotification} from "../models/restNotification";
+import {NotificationService} from "../service/notification.service";
 
 @Component({
   selector: 'app-notification-list',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotificationListComponent implements OnInit {
 
-  constructor() { }
+  public notifications: RestNotification[] = [];
+
+  constructor(private notificationService: NotificationService) { }
 
   ngOnInit() {
+    this.notificationService.getAll().subscribe(data => {
+      this.notifications = data;
+    })
   }
 
+  getIcon(notification: RestNotification) {
+    return 'home';
+  }
 }

@@ -1,8 +1,11 @@
-<mat-grid-list cols="5" rowHeight="1:1">
-  <mat-grid-tile *ngFor="let attachment of attachments">
-    <mat-icon>insert_drive_file</mat-icon>
-    <button (click)="save(attachment)">
-      {{attachment.name}}
+<mat-list>
+  <h3 mat-subheader>Attachments</h3>
+  <mat-list-item *ngFor="let attachment of attachments">
+    <mat-icon mat-list-icon>insert_drive_file</mat-icon>
+    <h4 mat-line>{{attachment.name}}</h4>
+    <p mat-line> {{attachment.type}} </p>
+    <button mat-icon-button (click)="save(attachment)">
+      <mat-icon>save_alt</mat-icon>
     </button>
-  </mat-grid-tile>
-</mat-grid-list>
+  </mat-list-item>
+</mat-list>

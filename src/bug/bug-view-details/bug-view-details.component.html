@@ -80,7 +80,7 @@
                  [disabled]="date">
         </mat-form-field>
         <mat-form-field>
-          <mat-placeholder class="placeholder">Descriprion</mat-placeholder>
+          <mat-placeholder class="placeholder">Description</mat-placeholder>
           <input matInput
                  [(ngModel)]="bug.description"
                  #description="ngModel"
@@ -94,8 +94,10 @@
     </mat-card-content>
   </mat-card>
 
-  <button (click)="redirectToBugList()" mat-raised-button color="accent">Return to list</button>
-
-  <app-attachment-list [attachments]="attachments"></app-attachment-list>
+  <!--  <button (click)="redirectToBugList()" mat-raised-button color="accent">Return to list</button>
+  -->
+  <span>
+    <app-attachment-list [attachments]="attachments"></app-attachment-list>
+  </span>
 
 </div>

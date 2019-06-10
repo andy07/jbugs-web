@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {BugService} from '../service/bug.service';
-import {RestBug} from '../models/restBug';
+import {Attachment, RestBug} from '../models/restBug';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../user/service/user.service';
 import {BugStatus} from '../models/bugStatus.model';
@@ -28,13 +28,15 @@ export class BugEditComponent implements OnInit {
   };
   public bugStatusList: string[];
   private bugActualStatus: string;
-  severity: string[] = [
+  public severityList: string[] = [
     'CRITICAL',
     'HIGH',
     'MEDIUM',
     'LOW'
   ];
   public usernames: string[];
+  public attachments: Attachment[] = [];
+  public deleted: Attachment[] = [];
   constructor(private bugService: BugService,
               private route: ActivatedRoute,
               private router: Router,
@@ -49,6 +51,9 @@ export class BugEditComponent implements OnInit {
         this.bugService.getPostAllAllowedStatus(this.bug.status).subscribe((bugStatusList) => {
           this.bugStatusList = bugStatusList;
         });
+        this.bugService.getAttachmentsByBugId(bug.id).subscribe(data =>{
+          this.attachments = data;
+        })
       },
       error => {
         this.router.navigate(['/home/error'], {queryParams: {message: error.error}});
@@ -68,7 +73,14 @@ export class BugEditComponent implements OnInit {
 
   public edit() {
     this.bugService.update(this.bug).subscribe(data => {
-      this.redirectToBugList();
+      this.deleted.forEach(attachment => {
+        /*
+        this.bugService.deleteAttachment(attachment.id).subscribe(data => {
+          console.log(data);
+        });
+         */
+      });
+      this.redirectToBugList()
     });
   }
 

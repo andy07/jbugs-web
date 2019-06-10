@@ -1,7 +1,7 @@
 mat-card {
   position: absolute;
   max-width: 500px;
-  left: 30%;
+  left: 35%;
   height: 100%;
   transform: translate(-50%, 0);
 }
@@ -26,5 +26,7 @@ div{
 
 span{
   position: absolute;
-  left: calc(15% + 600px);
+  left: calc(18% + 600px);
+  display: flex;
+  height: 100%;
 }

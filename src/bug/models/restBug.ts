@@ -12,6 +12,7 @@ export interface RestBug {
 }
 
 export interface Attachment {
+  id: number;
   file: string | ArrayBuffer;
   name: string;
   type: string;

@@ -1,0 +1,13 @@
+.trash:hover{
+  color: #762819;
+}
+
+mat-list-item,
+.mat-list-item{
+  min-width: 500px;
+  max-width: 500px;
+}
+
+mat-list-item:nth-child(2n+1){
+  background: #dddddd;
+}

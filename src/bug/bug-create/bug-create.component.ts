@@ -35,32 +35,7 @@ export class BugCreateComponent implements OnInit {
     'LOW'
   ];
 
-  public attachments: Attachment[] = [
-    {
-      file: '',
-      name: 'file1',
-      type: 'application/json',
-      bugId: 0
-    },
-    {
-      file: '',
-      name: 'file2',
-      type: 'application/json',
-      bugId: 0
-    },
-    {
-      file: '',
-      name: 'file3',
-      type: 'application/json',
-      bugId: 0
-    },
-    {
-      file: '',
-      name: 'file4',
-      type: 'application/json',
-      bugId: 0
-    }
-  ];
+  public attachments: Attachment[] = [];
   constructor(private service: BugService, private userService: UserService, public dialog: MatDialog, private router: Router) {
   }
 
@@ -72,7 +47,9 @@ export class BugCreateComponent implements OnInit {
   }
 
   public onSubmit(form) {
+    console.log(this.bug);
     this.service.save(this.bug).subscribe((bug) => {
+      console.log("here");
         console.log(bug);
         this.attachments.forEach(attachment => {
           attachment.bugId = bug.id;

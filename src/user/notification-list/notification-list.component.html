@@ -1,3 +1,8 @@
-<p>
-  notification-list works!
-</p>
+<mat-list>
+  <h3 mat-subheader>Notifications</h3>
+  <mat-list-item *ngFor="let notification of notifications">
+    <mat-icon mat-list-icon>{{getIcon(notification)}}</mat-icon>
+    <h4 mat-line>{{notification.message}}</h4>
+    <p>{{notification.date}}</p>
+  </mat-list-item>
+</mat-list>

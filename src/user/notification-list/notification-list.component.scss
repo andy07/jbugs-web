@@ -1,0 +1,16 @@
+mat-list-item,
+.mat-list-item{
+  width: 100%;
+}
+
+mat-list-item:nth-child(2n+1){
+  background: #dddddd;
+}
+
+mat-icon{
+  margin-left: 20px;
+}
+
+p{
+  width: 150px;
+}

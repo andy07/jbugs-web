@@ -18,10 +18,39 @@ mat-cell {
   margin-right: 40px;
 }
 
-div {
-  display: inline;
-  margin-left: 40px;
+mat-card {
+  position: absolute;
+  max-width: 500px;
+  left: 30%;
+  height: 100%;
+  transform: translate(-50%, 0);
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+}
+
+div{
+  //display: inline-flex;
+  background: white;
+  height: 100%;
+  width: 100%;
+}
+
+.mat-form-field{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+span{
+  position: absolute;
+  left: calc(18% + 600px);
+  display: flex;
+  height: 100%;
+}
+
 
 button {
   border-color: transparent;

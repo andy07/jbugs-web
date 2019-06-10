@@ -10,7 +10,10 @@ import {saveAs} from 'file-saver'
 export class AttachmentListComponent implements OnInit {
 
   @Input()
-  public attachments: Attachment[];
+  public attachments: Attachment[] = [];
+
+  @Input()
+  public deleted: Attachment[] = [];
 
   constructor() { }
 
@@ -19,5 +22,11 @@ export class AttachmentListComponent implements OnInit {
 
   save(attachment: Attachment){
     saveAs(attachment.file, attachment.name);
+  }
+
+  remove(attachment: Attachment) {
+    const index = this.attachments.indexOf(attachment);
+    this.attachments.splice(index, 1);
+    this.deleted.push(attachment);
   }
 }

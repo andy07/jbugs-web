@@ -26,7 +26,7 @@ export class AttachmentCreateComponent implements OnInit {
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = () => {
-          this.attachments.push({name : file.name, file: reader.result, bugId: -1, type: file.type});
+          this.attachments.push({id: -1, name : file.name, file: reader.result, bugId: -1, type: file.type});
         };
       }
       this.cd.markForCheck();

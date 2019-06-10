@@ -1,22 +1,23 @@
-<mat-grid-list cols="5" rowHeight="1:1">
-  <mat-grid-tile>
-    <button mat-raised-button color="primary">
-      <mat-icon>attach_file</mat-icon>
-      <label for="files">Add</label>
+<mat-list>
+  <h3 mat-subheader>Attachments</h3>
+  <button mat-raised-button color="primary">
+    <mat-icon>attach_file</mat-icon>
+    <label for="files">Add</label>
+  </button>
+  <input type="file"
+         ngModel
+         id="files"
+         name="files"
+         #files="ngModel"
+         class="input-file"
+         multiple
+         (change)="createAttachments($event)">
+  <mat-list-item *ngFor="let attachment of attachments">
+    <mat-icon mat-list-icon>insert_drive_file</mat-icon>
+    <h4 mat-line>{{attachment.name}}</h4>
+    <p mat-line> {{attachment.type}} </p>
+    <button mat-icon-button (click)="remove(attachment)">
+      <mat-icon class="trash">delete_outline</mat-icon>
     </button>
-    <input type="file"
-           ngModel
-           id="files"
-           name="files"
-           #files="ngModel"
-           class="input-file"
-           multiple
-           (change)="createAttachments($event)">
-  </mat-grid-tile>
-  <mat-grid-tile *ngFor="let attachment of attachments">
-    <mat-icon>insert_drive_file</mat-icon>
-    <button (click)="remove(attachment)">
-      {{attachment.name}}
-    </button>
-  </mat-grid-tile>
-</mat-grid-list>
+  </mat-list-item>
+</mat-list>

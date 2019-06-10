@@ -3,6 +3,7 @@ import {BackendService} from '../../assets/backend.service';
 import {Observable} from 'rxjs';
 import * as Stomp from 'stompjs';
 import {infoToken} from '../../pages/login/login.component';
+import {RestNotification} from "../models/restNotification";
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +33,7 @@ export class NotificationService {
     this.client.disconnect();
   }
 
-  public getAll(): Observable<any[]> {
-    return this.backService.get(`/api/users/${infoToken.sub}/notifications`);
+  public getAll(): Observable<RestNotification[]> {
+    return this.backService.get(`/api/notifications/${infoToken.sub}`);
   }
 }
